@@ -1,0 +1,24 @@
+\documentclass[10pt,letterpaper,draft]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\author{Trent Gerew}
+\title{Reaction-diffusion spacial modeling of COVID-19 in Chicago}
+
+\begin{document}
+	\begin{align}
+		S_t &= - \beta_{SA} SA - \beta_{SI} SI - \mu S, \\
+		E_t &= \beta_{SA} SA - \beta_{SI} - (\sigma_A + \sigma_I) E, \\
+		A_t &= \sigma_A E - M_{AR} A, \\
+		AR_t &= M_{AR} A, \\
+		I_t &= \sigma_I E - MI, \\
+		H_t &= \gamma M I - (1 - \omega) \chi H - \omega \psi H, \\
+		R_t &= (1 - \gamma) M I + (1 - \omega) \chi H, \\
+		D_t &= \omega \psi H.
+	\end{align}
+\end{document}
