@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{footnote}
 
 %images and image path
 \usepackage{graphicx}
@@ -85,6 +86,28 @@ which integrate over the spatial surface to the true population of each category
 
 \section{Results}
 \subsection{ODE Model}
+
+\begin{savenotes}
+\begin{table}[h]
+	\centering
+	\caption{ODE parameters}
+	\label{tab:parameters}
+	\begin{tabular}{ c c c c }
+		\hline
+		\hline
+			&	&	Median	&	Initial value \\
+		\hline
+		Population	&	$N$	&	2,695,598 \\
+		Initial population	&	$I_0$	&	200 \\
+		Transmission rate, $S \rightarrow I$ [per day]	&	$\beta$\footnote{The transmission rate $\beta$ must be divided by $N$ when used in the ODE model.}	&	0.30	&	$c \in U[0,1]$ \\
+		Transition rate, $I \rightarrow R$ [per day]	&	$\gamma$	&	0.55	&	$c \in U[0.25,0.75]$ \\
+		Diffusivity, $S$ [km$^2$/day]	&	$\D_S$	&	10	&	\\
+		Diffusivity, $I$ [km$^2$/day]	&	$\D_I$	&	100	&	\\
+		\hline
+		\hline
+	\end{tabular}
+\end{table}
+\end{savenotes}
 
 
 \bibliographystyle{abbrv}
