@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+
+%imports
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%images and image path
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+%custom commands
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\num}{\text{num}}
+\newcommand{\obs}{\text{obs}}
+\newcommand{\D}{\mathfrak{D}}
+
+%margins
+\usepackage[letterpaper, total={6.5in, 9.5in}]{geometry}
+
+%opening
+\title{Reaction-diffusion spatial modeling of COVID-19 in Chicago}
+\author{Trent Gerew}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	We examine an application of the Law of Mass Action to model the outbreak of COVID-19 in Chicago.
+	We begin with a zero-dimension (ODE) compartmental epidemiological model consisting of Susceptible, Infected, and Removed populations (SIR model).
+	We then develop a spatially distributed version of the model in the form of reaction-diffusion equations (PDE).
+\end{abstract}
+
+\section{ODE and PDE Model Setup}
+We begin by explaining the ODE model which is simply obtained from the full PDE model by removing the diffusion terms in the reaction-diffusion equations.
+
+We start with a population of \textit{susceptibles} ($S$), which may become \textit{infected} ($I$) upon the emergence of the virus within the population.
+Infected individuals can interact with the susceptibles at rate $\beta$ to draw new members into the group $I$ of individuals infected by the virus.
+We note that the transmission rate $\beta$ incorporates the total population size (ODE model) or the total population density (PDE model).
+A fraction of the infected population recover or die at a rate $\gamma$, giving rise to the \textit{removed} ($R$) population.
+
+These parameters specify the ODE process.
+They represent processes that occur in a ``well mixed'' situation when no spatial dependence is assigned,
+or processes that happen locally at every point in space for the PDE's.
+We discuss parameter selection in the next section.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{sir_schematic}
+	\caption{Schematic diagram of the SIR model. The dashed line denotes the interaction of the infectious population with the susceptible population that leads to infection.}
+	\label{fig:schematic}
+\end{figure}
+
+The population model at the PDE level is an autonomous diffusion with a source:
+\begin{align}
+	S_t	&=	\Delta (\D_s \Delta S) - \beta SI,	\\
+	I_t	&=	\Delta (\D_I \Delta I) + \beta SI - \gamma I,	\\
+	R_t	&=	\gamma I.
+\end{align}
+In principle the $R$ population can have a diffusion, but since we assume this population has immunity we assign $\D_R = 0$.
+
+At the PDE level, we have not incorporated any functional forms for directional spreading.
+In principle, these terms can represent ``daily practices'' (work commutes, etc.), as well as longer temporal or spatial scales (major thoroughfare traffic, etc.).
+We simply allow diffusion to perform the relevant spreading.
+Arriving infected individuals are assumed to form local hotspots within the susceptible population.
+This initial seeding roughly approximates long-range transportation.
+
+
+\end{document}

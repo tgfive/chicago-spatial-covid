@@ -52,7 +52,7 @@
 		+ \left| \log(D_{\num}(t_i)) - \log(D_{\obs}(t_i)) \right|^2 \right)
 	\end{equation}
 	where the index $i$ identifies a point in the time series.
-	The optimization tries to reproduce the number of total reported cases ($C(t) = I(t) + H(t) + R(t) + D(t)$) and the total number of deceased ($D(t)$).
+	The optimization tries to reproduce the number of total reported cases ($C(t) = I(t) + H(t) + R(t) + D(t)$) and the total number of deceased ($D(t)$). \cite{Kevrekidis_2021}
 	
 	We can account for a change in the parameters due to the lockdown by imposing a time dependence on the transmission rates $\beta$:
 	\begin{align}
@@ -76,6 +76,7 @@
 	\end{tabular}
 	\end{center}
 
+\bibliographystyle{siam}
 \bibliography{chicago-spatial-covid}
 
 \end{document}
