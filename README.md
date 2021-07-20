@@ -1,1 +1,1 @@
-# chicago-spacial-covid
+# chicago-spatial-covid
