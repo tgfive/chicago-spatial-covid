@@ -1,6 +1,7 @@
 # Imports
 import pandas as pd
 import datetime
+import matplotlib.pyplot as plt
 
 # Read in csv and convert dates to DateTime format
 df = pd.read_csv("COVID-19_Daily_Cases__Deaths__and_Hospitalizations.csv", parse_dates=["Date"])
@@ -27,3 +28,7 @@ df = df.loc["2020-03-01":"2021-07-16"]
 
 # Export to a csv
 df.to_csv("chicago_data.csv")
+
+# Create plot
+#df.plot()
+#plt.show()

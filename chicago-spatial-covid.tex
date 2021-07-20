@@ -1,4 +1,4 @@
-\documentclass[10pt,letterpaper,draft]{article}
+\documentclass[10pt,letterpaper,final]{article}
 
 \usepackage{geometry}
 \geometry{
@@ -13,7 +13,9 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+
 \usepackage{graphicx}
+\graphicspath{ {./images/} }
 
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\num}{\text{num}}
@@ -23,6 +25,15 @@
 \title{Reaction-diffusion spacial modeling of COVID-19 in Chicago}
 
 \begin{document}
+	
+	\maketitle
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=8cm]{series_plot}
+		\caption{Reported cases in Chicago.}
+		\label{fig:series_plot}
+	\end{figure}
 	
 	\begin{align}
 		S_t &= - \beta_{SA} SA - \beta_{SI} SI - \mu S, \\
@@ -48,7 +59,7 @@
 		\beta_{IS} (t) &= \beta_{IS} \left[ \eta_{IS} + (1 - \eta_{IS}) \frac{1 - \tanh[2(t - t_q)]}{2} \right], \\
 		\beta_{AS} (t) &= \beta_{AS} \left[ \eta_{AS} + (1 - \eta_{AS}) \frac{1 - \tanh[2(t - t_q)]}{2} \right].
 	\end{align}
-	This causes the transmission rates $\beta_{IS}$ and $\beta_{AS}$ to decrease abruptly by a factor of $\eta_{IS}$ and $\eta_{AS}$ respectively at the time $t_q$ when the lockdown was imposed.
+	This causes the transmission rates $\beta_{IS}$ and $\beta_{AS}$ to decrease abruptly by a factor of $\eta_{IS}$ and $\eta_{AS}$ respectively at the time $t_q$ when the lockdown was imposed. \cite{Wang_2020}
 	
 	\begin{center}
 	\begin{tabular}{ c c c c c }
@@ -64,4 +75,7 @@
 		\hline
 	\end{tabular}
 	\end{center}
+
+\bibliography{chicago-spatial-covid}
+
 \end{document}
