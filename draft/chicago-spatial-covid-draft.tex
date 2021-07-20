@@ -34,6 +34,8 @@
 	We then develop a spatially distributed version of the model in the form of reaction-diffusion equations (PDE).
 \end{abstract}
 
+\section{Introduction and Similar Work}
+
 \section{ODE and PDE Model Setup}
 We begin by explaining the ODE model which is simply obtained from the full PDE model by removing the diffusion terms in the reaction-diffusion equations.
 
@@ -76,6 +78,10 @@ We determine the optimal parameters by minimizing the Euclidean distance between
 \end{equation}
 where the index $i$ identifies a point in the time series.
 The parameters are optimized to reproduce the reported total number of infected cases $C(t) = I(t) + R(t)$, and the total number of removed $R(t)$.
+
+Since the transition rate $\gamma$ is an ``individual'' parameter, and thus acts ``on average'', we preserve the same value at the PDE level as at the ODE level.
+The transmission rate $\beta$ is more complicated, since at the PDE level the quantities $S$, $I$, and $R$ are densities rather than populations,
+which integrate over the spatial surface to the true population of each category.
 
 \bibliographystyle{abbrv}
 \bibliography{chicago-spatial-covid-draft}
