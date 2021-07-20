@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  20 JUL 2021 15:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  20 JUL 2021 15:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -239,9 +239,9 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <./images/sir_schematic.jpg, id=1, 434.62375pt x 157.58875pt>
 File: ./images/sir_schematic.jpg Graphic file (type jpg)
 <use ./images/sir_schematic.jpg>
-Package pdftex.def Info: ./images/sir_schematic.jpg  used on input line 52.
+Package pdftex.def Info: ./images/sir_schematic.jpg  used on input line 54.
 (pdftex.def)             Requested size: 234.87749pt x 85.16397pt.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 62.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 64.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
@@ -252,33 +252,34 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 >]
 (./chicago-spatial-covid-draft.bbl) [2] (./chicago-spatial-covid-draft.aux) ) 
 Here is how much of TeX's memory you used:
- 3070 strings out of 483183
- 39505 string characters out of 5966292
+ 3072 strings out of 483183
+ 39527 string characters out of 5966292
  274915 words of memory out of 5000000
- 18054 multiletter control sequences out of 15000+600000
- 546841 words of font info for 61 fonts, out of 8000000 for 9000
+ 18055 multiletter control sequences out of 15000+600000
+ 547617 words of font info for 62 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  30i,9n,33p,317b,229s stack positions out of 5000i,500n,10000p,200000b,80000s
  <
-/home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> 
-</home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk>
- </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk
-> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600p
-k> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600
-pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.60
-0pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.6
-00pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.
-600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/euler/eufm10.pfb>
-Output written on chicago-spatial-covid-draft.pdf (2 pages, 126048 bytes).
+/home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> 
+</home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk>
+ </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk
+> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600p
+k> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600
+pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.60
+0pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.6
+00pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.
+600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728
+.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/euler/eufm10.pfb>
+Output written on chicago-spatial-covid-draft.pdf (2 pages, 132302 bytes).
 PDF statistics:
- 280 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
+ 302 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

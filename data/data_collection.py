@@ -18,7 +18,7 @@ df = df.sort_index()
 df = df.rename(columns = {"Cases - Total": "Daily Cases", "Deaths - Total": "Daily Deaths", "Hospitalizations - Total": "Daily Hospitalizations"})
 
 # Create a cumulative deaths column
-df["Cum Deaths"] = df["Daily Deaths"].cumsum()
+df["Cumulative Deaths"] = df["Daily Deaths"].cumsum()
 
 # Drop any rows with missing values (note this ordering preserves the original cum deaths)
 df = df.dropna()
@@ -30,5 +30,5 @@ df = df.loc["2020-03-01":"2021-07-16"]
 df.to_csv("chicago_data.csv")
 
 # Create plot
-#df.plot()
-#plt.show()
+df.plot(figsize=(12,8))
+plt.show()
