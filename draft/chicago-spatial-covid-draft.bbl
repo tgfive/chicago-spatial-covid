@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{Chicago_2021}
+{City of Chicago}.
+\newblock Daily chicago covid-19 cases, deaths, and hospitalizations, 2021.
+\newblock data retrieved from Chicago Data Portal,
+  \url{https://data.cityofchicago.org/Health-Human-Services/Daily-Chicago-COVID-19-Cases-Deaths-and-Hospitaliz/kxzd-kd6a}.
+
 \bibitem{Forster_2013}
 J.~Forster.
 \newblock Mathematical modeling of complex fluids, March 2013.

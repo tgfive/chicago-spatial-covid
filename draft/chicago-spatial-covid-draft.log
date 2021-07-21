@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  20 JUL 2021 23:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  20 JUL 2021 23:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -105,6 +105,17 @@ Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box47
 \fn@width=\dimen144
 )
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip52
+\bibsep=\skip53
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count187
+)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -138,9 +149,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2019/11/07 v1.0c TeX engine tests
 ))
-\Gm@cnth=\count187
-\Gm@cntv=\count188
-\c@Gm@tempcnt=\count189
+\Gm@cnth=\count188
+\Gm@cntv=\count189
+\c@Gm@tempcnt=\count190
 \Gm@bindingoffset=\dimen147
 \Gm@wd@mp=\dimen148
 \Gm@odd@mp=\dimen149
@@ -153,39 +164,39 @@ Package: iftex 2019/11/07 v1.0c TeX engine tests
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count190
+\l__kernel_color_stack_int=\count191
 \l__pdf_internal_box=\box48
 )
 (./chicago-spatial-covid-draft.aux)
 \openout1 = `chicago-spatial-covid-draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count191
+\scratchcounter=\count192
 \scratchdimen=\dimen155
 \scratchbox=\box49
-\nofMPsegments=\count192
-\nofMParguments=\count193
+\nofMPsegments=\count193
+\nofMParguments=\count194
 \everyMPshowfont=\toks23
-\MPscratchCnt=\count194
+\MPscratchCnt=\count195
 \MPscratchDim=\dimen156
-\MPnumerator=\count195
-\makeMPintoPDFobject=\count196
+\MPnumerator=\count196
+\makeMPintoPDFobject=\count197
 \everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -230,12 +241,12 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -244,9 +255,9 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <./images/sir_schematic.pdf, id=1, 326.21875pt x 117.43875pt>
 File: ./images/sir_schematic.pdf Graphic file (type pdf)
 <use ./images/sir_schematic.pdf>
-Package pdftex.def Info: ./images/sir_schematic.pdf  used on input line 56.
+Package pdftex.def Info: ./images/sir_schematic.pdf  used on input line 60.
 (pdftex.def)             Requested size: 234.87749pt x 84.5594pt.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 66.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 70.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
@@ -258,43 +269,55 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 <./images/local_dynamics.png, id=37, 260.172pt x 258.0039pt>
 File: ./images/local_dynamics.png Graphic file (type png)
 <use ./images/local_dynamics.png>
-Package pdftex.def Info: ./images/local_dynamics.png  used on input line 105.
+Package pdftex.def Info: ./images/local_dynamics.png  used on input line 109.
 (pdftex.def)             Requested size: 117.43874pt x 116.46286pt.
- [2 <./images/local_dynamics.png>] (./chicago-spatial-covid-draft.bbl) [3]
-(./chicago-spatial-covid-draft.aux) ) 
+ [2 <./images/local_dynamics.png>] (./chicago-spatial-covid-draft.bbl
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+Underfull \hbox (badness 2088) in paragraph at lines 4--8
+\T1/cmr/m/n/10.95 from Chicago Data Por-tal, $\T1/cmtt/m/n/10.95 https : / / da
+ta . cityofchicago . org / Health-[]Human-[]Services /
+ []
+
+) [3] (./chicago-spatial-covid-draft.aux) ) 
 Here is how much of TeX's memory you used:
- 3154 strings out of 483183
- 40699 string characters out of 5966292
- 277526 words of memory out of 5000000
- 18122 multiletter control sequences out of 15000+600000
- 552590 words of font info for 79 fonts, out of 8000000 for 9000
+ 3594 strings out of 483183
+ 46404 string characters out of 5966292
+ 283375 words of memory out of 5000000
+ 18550 multiletter control sequences out of 15000+600000
+ 552904 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 30i,15n,33p,317b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/trent/.texlive2019/texmf-var/fonts
-/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/trent/.texlive2019/texmf-var/font
-s/pk/ljfour/jknappen/ec/ecrm0600.600pk> </home/trent/.texlive2019/texmf-var/fon
-ts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/trent/.texlive2019/texmf-var/fo
-nts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/trent/.texlive2019/texmf-var/f
-onts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/trent/.texlive2019/texmf-var/
-fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/trent/.texlive2019/texmf-var
-/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/trent/.texlive2019/texmf-va
-r/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/trent/.texlive2019/texmf-v
-ar/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/trent/.texlive2019/texmf-
-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/trent/.texlive2019/texmf
--var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb>
-Output written on chicago-spatial-covid-draft.pdf (3 pages, 252721 bytes).
+ 30i,15n,33p,324b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/trent/.texlive2019/texmf-var
+/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/trent/.texlive2019/texmf-va
+r/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </home/trent/.texlive2019/texmf-v
+ar/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/trent/.texlive2019/texmf-
+var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/trent/.texlive2019/texmf
+-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/trent/.texlive2019/texm
+f-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/trent/.texlive2019/tex
+mf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/trent/.texlive2019/te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/trent/.texlive2019/t
+exmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/trent/.texlive2019/
+texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/trent/.texlive2019
+/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/trent/.texlive201
+9/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb>
+Output written on chicago-spatial-covid-draft.pdf (3 pages, 263182 bytes).
 PDF statistics:
- 387 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
+ 428 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
