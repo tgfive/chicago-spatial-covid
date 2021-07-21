@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  20 JUL 2021 23:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  20 JUL 2021 23:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -265,7 +265,7 @@ Package pdftex.def Info: ./images/local_dynamics.png  used on input line 105.
 Here is how much of TeX's memory you used:
  3154 strings out of 483183
  40699 string characters out of 5966292
- 276526 words of memory out of 5000000
+ 277526 words of memory out of 5000000
  18122 multiletter control sequences out of 15000+600000
  552590 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -291,7 +291,7 @@ mmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb>
-Output written on chicago-spatial-covid-draft.pdf (3 pages, 252665 bytes).
+Output written on chicago-spatial-covid-draft.pdf (3 pages, 252712 bytes).
 PDF statistics:
  387 PDF objects out of 1000 (max. 8388607)
  97 compressed objects within 1 object stream
