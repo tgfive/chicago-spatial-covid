@@ -4,5 +4,7 @@ function [] = sim(p0)
   [t,y] = ode45(@(t,y)odefcn(t,y,p0), [0 498], [8413809,431]);
   
   %actual values
+  hold on
   plot(t,y)
-  %plot(t,removed)
+  plot(t,removed)
+  hold off
