@@ -3,44 +3,48 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: chicago-spatial-covid-draft.aux
 The style file: abbrv.bst
 Database file #1: chicago-spatial-covid-draft.bib
-You've used 1 entry,
+Warning--entry type for "Forster_2013" isn't style-file defined
+--line 31 of file chicago-spatial-covid-draft.bib
+Warning--empty note in Wang_SIR
+You've used 4 entries,
             2118 wiz_defined-function locations,
-            504 strings with 3989 characters,
-and the built_in function-call counts, 355 in all, are:
-= -- 29
-> -- 28
+            524 strings with 4341 characters,
+and the built_in function-call counts, 1033 in all, are:
+= -- 90
+> -- 65
 < -- 0
-+ -- 11
-- -- 10
-* -- 29
-:= -- 72
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 8
++ -- 26
+- -- 22
+* -- 72
+:= -- 196
+add.period$ -- 10
+call.type$ -- 4
+change.case$ -- 23
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 10
-empty$ -- 18
-format.name$ -- 10
-if$ -- 64
+cite$ -- 5
+duplicate$ -- 33
+empty$ -- 69
+format.name$ -- 22
+if$ -- 197
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 1
-newline$ -- 8
-num.names$ -- 2
-pop$ -- 8
+int.to.str$ -- 4
+missing$ -- 2
+newline$ -- 21
+num.names$ -- 8
+pop$ -- 26
 preamble$ -- 1
-purify$ -- 7
+purify$ -- 19
 quote$ -- 0
-skip$ -- 7
+skip$ -- 27
 stack$ -- 0
-substring$ -- 5
-swap$ -- 1
+substring$ -- 20
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
-warning$ -- 0
-while$ -- 2
-width$ -- 2
-write$ -- 12
+type$ -- 16
+warning$ -- 1
+while$ -- 8
+width$ -- 5
+write$ -- 38
+(There were 2 warnings)

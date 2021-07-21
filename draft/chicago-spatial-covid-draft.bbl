@@ -1,8 +1,22 @@
 \begin{thebibliography}{1}
 
+\bibitem{Forster_2013}
+J.~Forster.
+\newblock Mathematical modeling of complex fluids, March 2013.
+
 \bibitem{Kevrekidis_2021}
 P.~Kevrekidis, J.~Cuevas-Maraver, Y.~Drossinos, Z.~Rapti, and G.~Kevrekidis.
 \newblock Spatial modeling of covid-19: Greece and andalusia as case examples.
 \newblock {\em Physical Review E}, April 2021.
+
+\bibitem{Wang_SIR}
+Y.~Wang.
+\newblock Sir and sis model.
+
+\bibitem{Wang_2020}
+Y.~Wang, C.~Liu, P.~Liu, and B.~Eisenberg.
+\newblock Field theory of reaction-diffusion: Law of mass action with an
+  energetic variational approach.
+\newblock {\em Physical Review E}, 102(6), Dec 2020.
 
 \end{thebibliography}
