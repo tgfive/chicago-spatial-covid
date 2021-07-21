@@ -1,6 +1,6 @@
-function dydt = odefcn(y,p)
+function dydt = odefcn(t,y,p)
   %ODEFCN   SIR system of ode's.
-  %   dydt = odefcn(y,p) where
+  %   dydt = odefcn(t,y,p) where
   %   y(1) = S(t), y(2) = I(t),
   %   p(1) = beta, p(2) = gamma
   
