@@ -1,4 +1,4 @@
-function dydt = odefcn(t,y,b,g)
+function dydt = odefcn(y,b,g)
   %sir system of ode's
   dydt = zeros(2,1);
   dydt(1) = - b * y(1) * y(2);
