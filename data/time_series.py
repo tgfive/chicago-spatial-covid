@@ -19,4 +19,4 @@ series["Cases"] = df["Daily Cases"] + df["Daily Hospitalizations"] + df["Cumulat
 series["Removed"] = df["Cumulative Deaths"]
 
 # Export new dataframe to a csv
-series.to_csv("time_series.csv", header=False, index=False)
+series.to_csv("../local-model/time_series.csv", header=False, index=False)
