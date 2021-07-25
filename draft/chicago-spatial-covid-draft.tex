@@ -130,7 +130,14 @@ is a conserved quantity for the system.
 We begin by discussing the zero-dimensional model for Chicago.
 Data for the progression of the pandemic in Chicago were obtained from the Chicago Data Portal \cite{Chicago_2021}.
 The relevant results are given in Figure \ref{fig:ode_results}.
-We obtained the optimal ODE model parameters for Chicago from 1,000 optimizations that compared model predictions to jointly the number of cumulative infected and the deceased, as in Equation \ref{eq:obj}.
+We obtained the optimal ODE model parameters for Chicago from 1,000 optimizations (implemented in MATLAB via the \verb|fminsearch| function)
+that compared model predictions to jointly the number of cumulative infected and the deceased, as in Equation \ref{eq:obj}.
+For each optimization, the initial guess for each parameter was uniformly sampled within a pre-specified range.
+The parameter ranges were determined from epidemiological information.
+
+Upon performing the optimizations we find that the fitting yields the results summarized in Table \ref{tab:parameters}.
+We show the median parameters, as well as the interquartile range, and the range of variation used to sample the parameters.
+Model predictions (with median parameter values, solid blue lines) are compared graphically to data (black dots) in Figure \ref{fig:ode_results}.
 
 \begin{savenotes}
 \begin{table}[h]
