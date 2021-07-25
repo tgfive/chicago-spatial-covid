@@ -88,43 +88,6 @@ Since the transition rate $\gamma$ is an ``individual'' parameter, and thus acts
 The transmission rate $\beta$ is more complicated, since at the PDE level the quantities $S$, $I$, and $R$ are densities rather than populations,
 which integrate over the spatial surface to the true population of each category.
 
-\subsection{ODE Dynamics}
-Here we briefly discuss some dynamics of the ODE system.
-Note that for the simply SIR model as we have here, $R$ is completely determined when $S$ and $I$ are known, so we need only consider
-\begin{align*}
-	S_t	&=	- \tilde{\beta} SI, \\
-	I_t	&=	\tilde{\beta} SI - \gamma I,
-\end{align*}
-where $\tilde{\beta} = \beta / N$.
-
-Immediately we see there are infinitely many non-isolated fixed points of the form $(S,0)$.
-Linearizing, we get
-\begin{equation*}
-	\mathbf{A}_{(S,0)} = \begin{bmatrix} 0 & - \tilde{\beta} S \\ 0 & \beta S - \gamma \end{bmatrix}.
-\end{equation*}
-Thus, as seen in Figure \ref{fig:localdyn}, for $S < \frac{\gamma}{\tilde{\beta}}$ the nodes are stable, and for $S > \frac{\gamma}{\tilde{\beta}}$ they are unstable.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.25\textwidth]{local_dynamics}
-	\caption{Stream plot for the local ODE dynamics. Note the transcritical bifurcation around $S_0 = 0.4$.}
-	\label{fig:localdyn}
-\end{figure}
-We can then conclude that an epidemic will occur only if $S_0 = S(t=0) > \frac{\gamma}{\tilde{\beta}}$ \cite{Wang_SIR}.
-Hence, a transcritical bifurcation occurs at $\Ro = \tilde{\beta} S_0 / \gamma$, which is known as the \textit{basic reproduction number}, and is used to estimate how the epidemic developed initially.
-
-Note that the ODE model can be viewed as a generalized chemical reaction
-\begin{align*}
-	S + I	&\longrightarrow	2 I, \\
-	I		&\longrightarrow	R.
-\end{align*}
-However, these two reactions are not reversible, so we are not able to write the energy-dissipation law for the ODE model \cite{Forster_2013, Wang_2020}.
-Indeed, taking $\frac{I_t}{S_t} = - 1 + \frac{\gamma}{\tilde{\beta} S}$ and solving this differential equation gives $I = - S + \frac{\gamma}{\tilde{\beta}} \ln(S) + C$.
-Thus,
-\begin{equation}
-	E(S,I) = S + I - \frac{\gamma}{\tilde{\beta}} \ln(S)
-\end{equation}
-is a conserved quantity for the system.
-
 \section{Results}
 \subsection{ODE Model}
 We begin by discussing the zero-dimensional model for Chicago.
@@ -172,6 +135,43 @@ Model predictions (with median parameter values, solid blue lines) are compared 
 	\label{fig:ode_results}
 \end{figure}
 
+\appendix
+\section{ODE Dynamics}
+Here we briefly discuss some dynamics of the ODE system.
+Note that for the simply SIR model as we have here, $R$ is completely determined when $S$ and $I$ are known, so we need only consider
+\begin{align*}
+S_t	&=	- \tilde{\beta} SI, \\
+I_t	&=	\tilde{\beta} SI - \gamma I,
+\end{align*}
+where $\tilde{\beta} = \beta / N$.
+
+Immediately we see there are infinitely many non-isolated fixed points of the form $(S,0)$.
+Linearizing, we get
+\begin{equation*}
+\mathbf{A}_{(S,0)} = \begin{bmatrix} 0 & - \tilde{\beta} S \\ 0 & \beta S - \gamma \end{bmatrix}.
+\end{equation*}
+Thus, as seen in Figure \ref{fig:localdyn}, for $S < \frac{\gamma}{\tilde{\beta}}$ the nodes are stable, and for $S > \frac{\gamma}{\tilde{\beta}}$ they are unstable.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.25\textwidth]{local_dynamics}
+	\caption{Stream plot for the local ODE dynamics. Note the transcritical bifurcation around $S_0 = 0.4$.}
+	\label{fig:localdyn}
+\end{figure}
+We can then conclude that an epidemic will occur only if $S_0 = S(t=0) > \frac{\gamma}{\tilde{\beta}}$ \cite{Wang_SIR}.
+Hence, a transcritical bifurcation occurs at $\Ro = \tilde{\beta} S_0 / \gamma$, which is known as the \textit{basic reproduction number}, and is used to estimate how the epidemic developed initially.
+
+Note that the ODE model can be viewed as a generalized chemical reaction
+\begin{align*}
+S + I	&\longrightarrow	2 I, \\
+I		&\longrightarrow	R.
+\end{align*}
+However, these two reactions are not reversible, so we are not able to write the energy-dissipation law for the ODE model \cite{Forster_2013, Wang_2020}.
+Indeed, taking $\frac{I_t}{S_t} = - 1 + \frac{\gamma}{\tilde{\beta} S}$ and solving this differential equation gives $I = - S + \frac{\gamma}{\tilde{\beta}} \ln(S) + C$.
+Thus,
+\begin{equation}
+E(S,I) = S + I - \frac{\gamma}{\tilde{\beta}} \ln(S)
+\end{equation}
+is a conserved quantity for the system.
 
 \bibliographystyle{abbrv}
 \bibliography{chicago-spatial-covid-draft}
