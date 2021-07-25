@@ -7,7 +7,7 @@ df = pd.read_csv("chicago_data.csv", parse_dates=["Date"])
 df = df.set_index(["Date"])
 
 # Select the date range
-start = '2020-03-01' # start of data collection
+start = '2020-03-17' # start of data collection
 end = '2020-09-30' # end of first wave
 
 # Reform dataframe to date range
@@ -19,10 +19,6 @@ series = pd.DataFrame()
 # Set dates to be index of the dataframe
 series["Date"] = df.index
 series = series.set_index(["Date"])
-
-# Create uniform time values and put them in the dataframe
-t_values = np.linspace(0,1,len(df.loc[:, "Daily Cases"]))
-series["Time"] = t_values
 
 # Create cases values and put them in the dataframe
 series["Cases"] = df["Daily Cases"] + df["Daily Hospitalizations"] + df["Cumulative Deaths"]
