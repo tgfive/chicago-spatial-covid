@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  25 JUL 2021 11:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  25 JUL 2021 13:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -140,6 +140,41 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen145
 \Gin@req@width=\dimen146
 )
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/01/03 v3.4h Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen147
+\captionmargin@=\dimen148
+\captionwidth=\dimen149
+\caption@tempdima=\dimen150
+\caption@indent=\dimen151
+\caption@parindent=\dimen152
+\caption@hangindent=\dimen153
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count188
+\c@continuedfloat=\count189
+)
+\c@KVtest=\count190
+\sf@farskip=\skip54
+\sf@captopadj=\dimen154
+\sf@capskip=\skip55
+\sf@nearskip=\skip56
+\c@subfigure=\count191
+\c@subfigure@save=\count192
+\c@lofdepth=\count193
+\c@subtable=\count194
+\c@subtable@save=\count195
+\c@lotdepth=\count196
+\sf@top=\skip57
+\sf@bottom=\skip58
+)
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
@@ -149,54 +184,54 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2019/11/07 v1.0c TeX engine tests
 ))
-\Gm@cnth=\count188
-\Gm@cntv=\count189
-\c@Gm@tempcnt=\count190
-\Gm@bindingoffset=\dimen147
-\Gm@wd@mp=\dimen148
-\Gm@odd@mp=\dimen149
-\Gm@even@mp=\dimen150
-\Gm@layoutwidth=\dimen151
-\Gm@layoutheight=\dimen152
-\Gm@layouthoffset=\dimen153
-\Gm@layoutvoffset=\dimen154
+\Gm@cnth=\count197
+\Gm@cntv=\count198
+\c@Gm@tempcnt=\count199
+\Gm@bindingoffset=\dimen155
+\Gm@wd@mp=\dimen156
+\Gm@odd@mp=\dimen157
+\Gm@even@mp=\dimen158
+\Gm@layoutwidth=\dimen159
+\Gm@layoutheight=\dimen160
+\Gm@layouthoffset=\dimen161
+\Gm@layoutvoffset=\dimen162
 \Gm@dimlist=\toks22
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count191
+\l__kernel_color_stack_int=\count266
 \l__pdf_internal_box=\box48
 )
 (./chicago-spatial-covid-draft.aux)
 \openout1 = `chicago-spatial-covid-draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count192
-\scratchdimen=\dimen155
+\scratchcounter=\count267
+\scratchdimen=\dimen163
 \scratchbox=\box49
-\nofMPsegments=\count193
-\nofMParguments=\count194
+\nofMPsegments=\count268
+\nofMParguments=\count269
 \everyMPshowfont=\toks23
-\MPscratchCnt=\count195
-\MPscratchDim=\dimen156
-\MPnumerator=\count196
-\makeMPintoPDFobject=\count197
+\MPscratchCnt=\count270
+\MPscratchDim=\dimen164
+\MPnumerator=\count271
+\makeMPintoPDFobject=\count272
 \everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -207,6 +242,10 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -241,12 +280,12 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -255,9 +294,9 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <./images/sir_schematic.pdf, id=1, 326.21875pt x 117.43875pt>
 File: ./images/sir_schematic.pdf Graphic file (type pdf)
 <use ./images/sir_schematic.pdf>
-Package pdftex.def Info: ./images/sir_schematic.pdf  used on input line 58.
+Package pdftex.def Info: ./images/sir_schematic.pdf  used on input line 59.
 (pdftex.def)             Requested size: 234.87749pt x 84.5594pt.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 68.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 69.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
@@ -269,9 +308,61 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 <./images/local_dynamics.png, id=37, 260.172pt x 258.0039pt>
 File: ./images/local_dynamics.png Graphic file (type png)
 <use ./images/local_dynamics.png>
-Package pdftex.def Info: ./images/local_dynamics.png  used on input line 107.
+Package pdftex.def Info: ./images/local_dynamics.png  used on input line 108.
 (pdftex.def)             Requested size: 117.43874pt x 116.46286pt.
- [2 <./images/local_dynamics.png>] (./chicago-spatial-covid-draft.bbl
+ [2 <./images/local_dynamics.png>]
+
+LaTeX Warning: Reference `ode_results' on page 3 undefined on input line 132.
+
+Package epstopdf Info: Source file: <./images/ode_cases.eps>
+(epstopdf)                    date: 2021-07-25 12:50:09
+(epstopdf)                    size: 79808 bytes
+(epstopdf)             Output file: <./images/ode_cases-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-07-25 12:59:24
+(epstopdf)                    size: 52412 bytes
+(epstopdf)             Command: <repstopdf --outfile=./images/ode_cases-eps-con
+verted-to.pdf ./images/ode_cases.eps>
+(epstopdf)             \includegraphics on input line 159.
+Package epstopdf Info: Output file is already uptodate.
+<./images/ode_cases-eps-converted-to.pdf, id=49, 427.5975pt x 315.1775pt>
+File: ./images/ode_cases-eps-converted-to.pdf Graphic file (type pdf)
+<use ./images/ode_cases-eps-converted-to.pdf>
+Package pdftex.def Info: ./images/ode_cases-eps-converted-to.pdf  used on input
+ line 159.
+(pdftex.def)             Requested size: 223.13647pt x 164.47034pt.
+Package epstopdf Info: Source file: <./images/ode_deaths.eps>
+(epstopdf)                    date: 2021-07-25 12:50:30
+(epstopdf)                    size: 79809 bytes
+(epstopdf)             Output file: <./images/ode_deaths-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-07-25 12:59:24
+(epstopdf)                    size: 52308 bytes
+(epstopdf)             Command: <repstopdf --outfile=./images/ode_deaths-eps-co
+nverted-to.pdf ./images/ode_deaths.eps>
+(epstopdf)             \includegraphics on input line 160.
+Package epstopdf Info: Output file is already uptodate.
+<./images/ode_deaths-eps-converted-to.pdf, id=50, 427.5975pt x 315.1775pt>
+File: ./images/ode_deaths-eps-converted-to.pdf Graphic file (type pdf)
+<use ./images/ode_deaths-eps-converted-to.pdf>
+Package pdftex.def Info: ./images/ode_deaths-eps-converted-to.pdf  used on inpu
+t line 160.
+(pdftex.def)             Requested size: 223.13647pt x 164.47034pt.
+Package epstopdf Info: Source file: <./images/ode_IR.eps>
+(epstopdf)                    date: 2021-07-25 13:15:52
+(epstopdf)                    size: 60860 bytes
+(epstopdf)             Output file: <./images/ode_IR-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-07-25 13:19:31
+(epstopdf)                    size: 36082 bytes
+(epstopdf)             Command: <repstopdf --outfile=./images/ode_IR-eps-conver
+ted-to.pdf ./images/ode_IR.eps>
+(epstopdf)             \includegraphics on input line 161.
+Package epstopdf Info: Output file is already uptodate.
+<./images/ode_IR-eps-converted-to.pdf, id=51, 427.5975pt x 315.1775pt>
+File: ./images/ode_IR-eps-converted-to.pdf Graphic file (type pdf)
+<use ./images/ode_IR-eps-converted-to.pdf>
+Package pdftex.def Info: ./images/ode_IR-eps-converted-to.pdf  used on input li
+ne 161.
+(pdftex.def)             Requested size: 223.13647pt x 164.47034pt.
+(./chicago-spatial-covid-draft.bbl
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
 .
 
@@ -283,41 +374,48 @@ Underfull \hbox (badness 2088) in paragraph at lines 4--8
 ta . cityofchicago . org / Health-[]Human-[]Services /
  []
 
-) [3] (./chicago-spatial-covid-draft.aux) ) 
+) [3] [4 <./images/ode_cases-eps-converted-to.pdf> <./images/ode_deaths-eps-con
+verted-to.pdf> <./images/ode_IR-eps-converted-to.pdf>]
+(./chicago-spatial-covid-draft.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3592 strings out of 483183
- 46381 string characters out of 5966292
- 283366 words of memory out of 5000000
- 18548 multiletter control sequences out of 15000+600000
- 552904 words of font info for 80 fonts, out of 8000000 for 9000
+ 4914 strings out of 483183
+ 70024 string characters out of 5966292
+ 305610 words of memory out of 5000000
+ 19847 multiletter control sequences out of 15000+600000
+ 553687 words of font info for 81 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 30i,15n,33p,324b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/trent/.texlive2019/texmf-var
-/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/trent/.texlive2019/texmf-va
-r/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </home/trent/.texlive2019/texmf-v
-ar/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/trent/.texlive2019/texmf-
-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/trent/.texlive2019/texmf
--var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/trent/.texlive2019/texm
-f-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/trent/.texlive2019/tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/trent/.texlive2019/te
-xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/trent/.texlive2019/t
-exmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/trent/.texlive2019/
-texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/trent/.texlive2019
-/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/trent/.texlive201
-9/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb>
-Output written on chicago-spatial-covid-draft.pdf (3 pages, 263876 bytes).
+ 50i,15n,48p,495b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600
+pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.60
+0pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.6
+00pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.
+600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800
+.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm060
+0.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti10
+95.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1
+095.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx
+1440.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecr
+m1000.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ec
+bx1000.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/e
+crm1200.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecrm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+bx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/euler/eufm10.pfb>
+Output written on chicago-spatial-covid-draft.pdf (4 pages, 402249 bytes).
 PDF statistics:
- 430 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
+ 458 PDF objects out of 1000 (max. 8388607)
+ 113 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

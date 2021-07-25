@@ -102,9 +102,7 @@ set(gca, 'TickLabelInterpreter','latex')
 
 figure() %IR plot
 plot(t,I,'b-',t,R,'r-')
-legend('$I(t)$','$R(t)$','Interpreter','latex','Location','southeast')
-xlabel('$t$ (days from March 17)','interpreter','latex')
-set(gca, 'TickLabelInterpreter','latex')
+legend(legend('$I(t)$','$C_{num}(t)$','Interpreter','latex','Location','southeast')
 
 %% Functions
 % Model
