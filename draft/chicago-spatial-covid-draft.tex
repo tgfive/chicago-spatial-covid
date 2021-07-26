@@ -105,15 +105,15 @@ Model predictions (with median parameter values, solid blue lines) are compared 
 \begin{savenotes}
 \begin{table}[h]
 	\centering
-	\caption{ODE parameters}
+	\caption{ODE parameters for Chicago: optimal (best-fitting), median and interquartile range, and variation range used in the optimization algorithm. Initial parameter guesses were uniformly sampled within these ranges.}
 	\label{tab:parameters}
 	\begin{tabular}{ c c c c }
 		\hline
 		\hline
 			&	&	Median (interquartile range)	&	Initial value \\
 		\hline
-		Population	&	$N$	&	2,695,598 \\
-		Initial population	&	$(I_0, R_0)$	&	(127, 2) \\
+		Population	&	$N$	&	2,695,598	& \\
+		Initial population	&	$(I_0, R_0)$	&	(127, 2)	& \\
 		Transmission rate, $S \rightarrow I$ [per day]	&	$\beta$\footnote{The transmission rate $\beta$ must be divided by $N$ when used in the ODE model.}	&	0.38206(0.38204-0.38209)	&	$c \in U[0,1]$ \\
 		Transition rate, $I \rightarrow R$ [per day]	&	$\gamma$	&	 0.39656(0.39654-0.39659)	&	$c \in U[0.25,0.75]$ \\
 		Diffusivity, $S$ [km$^2$/day]	&	$\D_S$	&	10	&	\\
