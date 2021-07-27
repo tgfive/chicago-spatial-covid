@@ -22,12 +22,26 @@
 \newcommand{\D}{\mathfrak{D}}
 \newcommand{\Ro}{\mathcal{R}_0}
 
+%insitute command
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\institute}[1]{% add institute to \maketitle
+	\apptocmd{\@author}{\end{tabular}
+	\par
+	\begin{tabular}[t]{c}
+		\small \textit{#1}}{}{}
+}
+\makeatother
+
 %margins
 \usepackage[letterpaper, total={6.5in, 9.5in}]{geometry}
 
 %opening
 \title{Reaction-diffusion spatial modeling of COVID-19 in Chicago}
-\author{Trent Gerew}
+\author{Trent Gerew\thanks{\texttt{tgerew@hawk.iit.edu}} \and 
+	Chun Liu\thanks{\texttt{cliu124@iit.edu}} \and 
+	Yiwei Wang\thanks{\texttt{ywang487@iit.edu}}}
+\institute{Department of Applied Mathematics, Illinois Institute of Technology, Chicago, Illinois}
 
 \begin{document}
 
