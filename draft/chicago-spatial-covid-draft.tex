@@ -98,6 +98,17 @@ that compared model predictions to jointly the number of cumulative infected and
 For each optimization, the initial guess for each parameter was uniformly sampled within a pre-specified range.
 The parameter ranges were determined from epidemiological information.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.6\textwidth]{obs_data}
+	\caption{Observed data for Chicago showing the three impact waves.}
+	\label{fig:obs_data}
+\end{figure}
+
+The COVID-19 pandemic had three major impact waves in Chicago, as seen clearly in Figure \ref{fig:obs_data}.
+For simplicity, we analyze only the first major wave, which ends at approximately October 30, 2020.
+Additionally, we begin the analysis at March 17 instead of the first day of data collection (March 1) because of reporting errors early in the pandemic.
+
 Upon performing the optimizations we find that the fitting yields the results summarized in Table \ref{tab:parameters}.
 We show the median parameters, as well as the interquartile range, and the range of variation used to sample the parameters.
 Model predictions (with median parameter values, solid blue lines) are compared graphically to data (black dots) in Figure \ref{fig:ode_results}.

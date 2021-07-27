@@ -3,6 +3,11 @@ import pandas as pd
 import datetime
 import matplotlib.pyplot as plt
 
+# LaTeX font for matplotlib
+import matplotlib
+matplotlib.rcParams['mathtext.fontset'] = 'stix'
+matplotlib.rcParams['font.family'] = 'STIXGeneral'
+
 # Read in csv and convert dates to DateTime format
 df = pd.read_csv("COVID-19_Daily_Cases__Deaths__and_Hospitalizations.csv", parse_dates=["Date"])
 # Use only the totals (not demographics)
