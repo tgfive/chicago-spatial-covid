@@ -96,7 +96,7 @@ We determine the optimal parameters by minimizing the Euclidean distance between
 	\N = \sum_i^{t_\text{fit}^\text{end}} \left( \left| \log(C_\num (t_i)) - \log(C_\obs (t_i)) \right|^2 + \left| \log(D_\num (t_i)) - \log(D_\obs (t_i)) \right|^2 \right)
 \end{equation}
 where the index $i$ identifies a point in the time series.
-The parameters are optimized to reproduce the reported total number of infected cases $C(t) = I(t) + R(t)$, and the total number of deceased $D(t)$.
+The parameters are optimized to reproduce the reported total number of infected cases $C(t) = I(t) + R(t)$, and the total number of deceased $D(t) = R(t)$.
 
 Since the transition rate $\gamma$ is an ``individual'' parameter, and thus acts ``on average'', we preserve the same value at the PDE level as at the ODE level.
 The transmission rate $\beta$ is more complicated, since at the PDE level the quantities $S$, $I$, and $R$ are densities rather than populations,
