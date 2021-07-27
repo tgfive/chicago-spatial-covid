@@ -6,45 +6,45 @@ Database file #1: chicago-spatial-covid-draft.bib
 Warning--entry type for "Forster_2013" isn't style-file defined
 --line 31 of file chicago-spatial-covid-draft.bib
 Warning--empty note in Wang_SIR
-You've used 5 entries,
+You've used 6 entries,
             2118 wiz_defined-function locations,
-            529 strings with 4600 characters,
-and the built_in function-call counts, 1239 in all, are:
-= -- 109
-> -- 72
+            537 strings with 4793 characters,
+and the built_in function-call counts, 1562 in all, are:
+= -- 141
+> -- 85
 < -- 0
-+ -- 29
-- -- 24
-* -- 78
-:= -- 230
-add.period$ -- 13
-call.type$ -- 5
-change.case$ -- 27
++ -- 34
+- -- 28
+* -- 103
+:= -- 284
+add.period$ -- 16
+call.type$ -- 6
+change.case$ -- 32
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 40
-empty$ -- 91
-format.name$ -- 24
-if$ -- 242
+cite$ -- 7
+duplicate$ -- 51
+empty$ -- 118
+format.name$ -- 28
+if$ -- 310
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 2
-newline$ -- 26
-num.names$ -- 10
-pop$ -- 35
+int.to.str$ -- 6
+missing$ -- 3
+newline$ -- 31
+num.names$ -- 12
+pop$ -- 38
 preamble$ -- 1
-purify$ -- 22
+purify$ -- 26
 quote$ -- 0
-skip$ -- 34
+skip$ -- 42
 stack$ -- 0
-substring$ -- 25
-swap$ -- 4
+substring$ -- 51
+swap$ -- 5
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 20
+type$ -- 24
 warning$ -- 1
-while$ -- 10
-width$ -- 6
-write$ -- 48
+while$ -- 13
+width$ -- 7
+write$ -- 59
 (There were 2 warnings)

@@ -6,6 +6,11 @@
 \newblock data retrieved from Chicago Data Portal,
   \url{https://data.cityofchicago.org/Health-Human-Services/Daily-Chicago-COVID-19-Cases-Deaths-and-Hospitaliz/kxzd-kd6a}.
 
+\bibitem{Drossinos_2020}
+Y.~Drossinos and N.~I. Stilianakis.
+\newblock What aerosol physics tells us about airborne pathogen transmission.
+\newblock {\em Aerosol Science and Technology}, 54(6):639--643, 2020.
+
 \bibitem{Forster_2013}
 J.~Forster.
 \newblock Mathematical modeling of complex fluids, March 2013.

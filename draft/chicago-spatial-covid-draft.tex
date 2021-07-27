@@ -113,6 +113,12 @@ Upon performing the optimizations we find that the fitting yields the results su
 We show the median parameters, as well as the interquartile range, and the range of variation used to sample the parameters.
 Model predictions (with median parameter values, solid blue lines) are compared graphically to data (black dots) in Figure \ref{fig:ode_results}.
 
+The optimal parameters were determined for a scenario in which restrictive measures (quarantine, lockdown) were not enforced.
+Therefore, we do not impose a time dependence on the transmission rate $\beta$.
+The transmission rate represents the rate of contact of susceptible individuals with infectious individuals that leads to infection by the virus.
+It may be expressed as the product of daily average contacts and the probability of infection given a contact \cite{Drossinos_2020}.
+Thus, restrictive measures such as mobility restrictions, social-distancing, face-mask wearing, and gathering limitations are expected to decrease the transmission rate, an effect not accounted for in this model.
+
 \begin{savenotes}
 \begin{table}[h]
 	\centering
@@ -134,6 +140,10 @@ Model predictions (with median parameter values, solid blue lines) are compared 
 	\end{tabular}
 \end{table}
 \end{savenotes}
+
+The two top panels of Figure \ref{fig:ode_results} show how well we capture the data for the Chicago outbreak.
+The model reproduces reasonable well the number of cases (top left panel) but not the number of deaths (top right panel).
+The model fails to capture the characteristic S-shape in the logarithmic plot of the top right panel (deaths).
 
 \begin{figure}
 	\centering
@@ -169,7 +179,7 @@ Thus, as seen in Figure \ref{fig:localdyn}, for $S < \frac{\gamma}{\tilde{\beta}
 	\label{fig:localdyn}
 \end{figure}
 We can then conclude that an epidemic will occur only if $S_0 = S(t=0) > \frac{\gamma}{\tilde{\beta}}$ \cite{Wang_SIR}.
-Hence, a transcritical bifurcation occurs at $\Ro = \tilde{\beta} S_0 / \gamma$, which is known as the \textit{basic reproduction number}, and is used to estimate how the epidemic developed initially.
+Hence, a transcritical bifurcation occurs at $\Ro = \tilde{\beta} S_0 / \gamma$, which is known as the \textit{basic reproduction number}, defined as the average number of secondary infections caused by a single infected individual \cite{Drossinos_2020}.
 
 Note that the ODE model can be viewed as a generalized chemical reaction
 \begin{align*}
