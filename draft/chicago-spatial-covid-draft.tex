@@ -77,8 +77,8 @@ We discuss parameter selection in the next section.
 
 The population model at the PDE level is an autonomous diffusion with a source:
 \begin{align}
-	S_t	&=	\Delta (\D_s \Delta S) - \beta SI,	\\
-	I_t	&=	\Delta (\D_I \Delta I) + \beta SI - \gamma I,	\\
+	S_t	&=	\nabla (\D_s \nabla S) - \beta SI,	\\
+	I_t	&=	\nabla (\D_I \nabla I) + \beta SI - \gamma I,	\\
 	R_t	&=	\gamma I.
 \end{align}
 In principle the $R$ population can have a diffusion, but since we assume this population has immunity we assign $\D_R = 0$.
