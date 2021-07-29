@@ -8,11 +8,11 @@ clc
 % Step sizes
 dx = 0.5;
 
-% Time interval
-tspan = [0 50];
-
 % Space interval
 xspan = [0 2*pi];
+
+% Time interval
+tspan = [0 50];
 
 % Contants
 kappa = 0.1;
@@ -21,7 +21,7 @@ kappa = 0.1;
 bc = [0 0];
 
 % Initial conditions
-ic = sin(xspan(1):dx:xspan(2));
+ic = sin(xspan(1):dx:xspan(2)); % sine wave over the interval, satisfies bc's
 
 %% Matrix Equations
 % Size of system
