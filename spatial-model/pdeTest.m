@@ -16,13 +16,13 @@ tspan = [0 50];
 
 % Contants
 kappa = 0.1;
-gamma = 0.1;
+gamma = -0.1;
 
 % Boundary conditions
-bc = [0 0];
+bc = [1 1];
 
 % Initial conditions
-ic = sin(xspan(1):dx:xspan(2)); % sine wave over the interval, satisfies bc's
+ic = cos(xspan(1):dx:xspan(2)); % sine wave over the interval, satisfies bc's
 
 %% Matrix Equations
 % Size of system
