@@ -1,12 +1,12 @@
 clear
 clc
 
-%% 1D Diffusion Equation
-%u_t = kappa * u_xx
+%% 1D Diffusion Equation with a Source
+%u_t = kappa * u_xx + gamma * u
 
 %% Problem Definition
 % Step sizes
-dx = 0.5;
+dx = 0.2;
 
 % Space interval
 xspan = [0 2*pi];
@@ -16,6 +16,7 @@ tspan = [0 50];
 
 % Contants
 kappa = 0.1;
+gamma = 0.1;
 
 % Boundary conditions
 bc = [0 0];
@@ -31,7 +32,7 @@ N = length(ic);
 b = zeros(N,1);
 b(2) = bc(1);
 b(end-1) = bc(2);
-b = kappa*b/dx;
+b = b/dx;
 
 % Operator matrix
 A = zeros(N);
@@ -42,13 +43,10 @@ A(1,:) = 0;
 A(:,1) = 0;
 A(end,:) = 0;
 A(:,end) = 0;
-A = kappa*A/dx;
-
-% Initial conditions vector
-u0 = ic(2:end-1)';
+A = A/dx;
 
 %% Solve System
-[t,u] = ode45(@(t,y) A*y + b, tspan, ic');
+[t,u] = ode45(@(t,y) kappa*(A*y + b) + gamma*y, tspan, ic');
 
 %% Plot results
 [X,Y] = meshgrid(1:N,t);
