@@ -1,0 +1,61 @@
+\begin{slide}{Local Model}
+
+\begin{center}
+\begin{tikzpicture}
+	%Susceptible
+	\node [draw,
+		fill=blue!20,
+		minimum width=2cm,
+		minimum height=1.2cm
+		]	(susceptible) at (0,0){$S(t)$};
+	
+	%Infected
+	\node [draw,
+		fill = blue!20,
+		minimum width=2cm,
+		minimum height=1.2cm,
+		right = 1.5cm of susceptible
+		]	(infected) {$I(t)$};
+	
+	%Removed
+	\node [draw,
+		fill = blue!20,
+		minimum width=2cm,
+		minimum height = 1.2cm,
+		right = 1.5cm of infected
+		]	(removed) {$R(t)$};
+		
+	%Arrows
+	\draw[-stealth] (susceptible.east) -- (infected.west)
+		node[midway,above]{$\lambda S$};
+	
+	\draw[-stealth] (infected.east) -- (removed.west)
+		node[midway,above]{$\gamma I$};
+		
+\end{tikzpicture}
+\end{center}
+
+\vfill
+
+\begin{columns}[T]
+	\begin{column}{.15\textwidth}
+	\vfill
+		\begin{align*}
+			\dot{S}	&=	-\lambda S \\
+			\dot{I}	&=	\lambda S - \gamma I \\
+			\dot{R}	&=	\gamma I
+		\end{align*}
+	\vfill
+	\end{column}
+	\begin{column}{.5\textwidth}
+		The force of infection describes the infection rate:
+		$$\lambda = \frac{\beta_I I}{N}$$
+		\begin{itemize}
+			\item $N = S + I + R$ is the total population
+			\item $\beta_I$ is the transmission rate
+			\item $\gamma$ is the removal rate
+		\end{itemize}
+	\end{column}
+\end{columns}
+ 
+\end{slide}

@@ -1,28 +1,34 @@
 \relax 
-\citation{Kevrekidis_2021}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction and Similar Work}{1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}ODE and PDE Model Setup}{1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Schematic diagram of the SIR model. The dashed line denotes the interaction of the infectious population with the susceptible population that leads to infection.\relax }}{1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:schematic}{{1}{1}}
-\citation{Wang_SIR}
-\newlabel{eq:obj}{{4}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}ODE Dynamics}{2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Stream plot for the local ODE dynamics. Note the transcritical bifurcation around $S_0 = 0.4$.\relax }}{2}\protected@file@percent }
-\newlabel{fig:localdyn}{{2}{2}}
-\citation{Forster_2013,Wang_2020}
+\citation{Kevrekidis_2021}
 \citation{Chicago_2021}
+\citation{Drossinos_2020}
+\newlabel{eq:obj}{{4}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Results}{2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}ODE Model}{2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Observed data for Chicago showing the three impact waves.\relax }}{3}\protected@file@percent }
+\newlabel{fig:obs_data}{{2}{3}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces ODE parameters for Chicago: optimal (best-fitting), median and interquartile range, and variation range used in the optimization algorithm. Initial parameter guesses were uniformly sampled within these ranges.\relax }}{3}\protected@file@percent }
+\newlabel{tab:parameters}{{1}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}PDE Model}{3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}ODE Dynamics}{3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces ODE model for Chicago with fitting to official data from March 17, 2020 ($t = t_\text  {init} = 1$) to September 30, 2020 ($t = t_\text  {fit}^\text  {end} = 198$). Left panel: Confirmed cases $C(t) = I(t) + R(t)$; Right panel: Number of deaths $D(t)$. Bottom panel shows the other populations: infected $I(t)$ and recovered $R(t)$.\relax }}{4}\protected@file@percent }
+\newlabel{fig:ode_results}{{3}{4}}
+\citation{Wang_SIR}
+\citation{Drossinos_2020}
+\citation{Forster_2013,Wang_2020}
 \bibstyle{abbrv}
 \bibdata{chicago-spatial-covid-draft}
 \bibcite{Chicago_2021}{{1}{}{{}}{{}}}
-\bibcite{Forster_2013}{{2}{}{{}}{{}}}
-\bibcite{Kevrekidis_2021}{{3}{}{{}}{{}}}
-\bibcite{Wang_SIR}{{4}{}{{}}{{}}}
-\bibcite{Wang_2020}{{5}{}{{}}{{}}}
+\bibcite{Drossinos_2020}{{2}{}{{}}{{}}}
+\bibcite{Forster_2013}{{3}{}{{}}{{}}}
+\bibcite{Kevrekidis_2021}{{4}{}{{}}{{}}}
+\bibcite{Wang_SIR}{{5}{}{{}}{{}}}
+\bibcite{Wang_2020}{{6}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{toc}{\contentsline {section}{\numberline {3}Results}{3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}ODE Model}{3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces ODE parameters\relax }}{3}\protected@file@percent }
-\newlabel{tab:parameters}{{1}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces ODE model for Chicago with fitting to official data from March 17, 2020 ($t = t_\text  {init} = 1$) to September 30, 2020 ($t = t_\text  {fit}^\text  {end} = 198$). Left panel: Confirmed cases $C(t) = I(t) + R(t)$; Right panel: Number of deaths $D(t)$. Bottom panel shows the other populations: infected $I(t)$ and recovered $R(t)$.\relax }}{4}\protected@file@percent }
-\newlabel{fig:ode_results}{{3}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Stream plot for the local ODE dynamics. Note the transcritical bifurcation around $S_0 = 0.4$.\relax }}{5}\protected@file@percent }
+\newlabel{fig:localdyn}{{4}{5}}

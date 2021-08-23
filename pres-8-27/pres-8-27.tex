@@ -1,0 +1,115 @@
+%%\documentclass[10pt]{beamer}
+\documentclass[10pt,aspectratio=169]{beamer}
+
+% Change the commenting on the following lines if you are using the version
+% of frontmacros in a different directory than the local one
+%
+%\input{/home/trentgerew/bin/frontmacros}
+\input{frontmacros}
+
+% MRCAT or Nanoelectrofuel project color scheme, comment out for 
+% IIT color scheme.
+%
+%\input{/home/segre/bin/MRCATcolortheme}
+%\input{MRCATcolortheme}
+
+% Plain slide theme with IIT colors, comment out for more decorated
+% IIT color scheme.
+%
+%\input{Plaincolortheme}
+%\input{Plaincolortheme}
+
+% Plain slide theme with MRCAT colors, comment out for more decorated
+% IIT color scheme.
+%
+%\input{/home/segre/bin/Greencolortheme}
+%\input{Greencolortheme}
+
+%
+\usepackage{amscd}
+\usepackage{floatflt}
+\usepackage{textpos}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\usepackage{ragged2e}
+
+\usepackage{url}
+\urlstyle{sf}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+
+% Nice graphics package & chemical formula support, 
+% uncomment if you need them
+%
+%\usepackage[version=3]{mhchem}
+%\usepackage{tikz}
+%\usetikzlibrary{decorations.pathmorphing}
+%\tikzset{>=stealth}
+
+\setbeamertemplate{caption}{\scriptsize\raggedright\insertcaption\par}
+
+\setbeamercolor{alerted text}{fg=blue}
+
+\setbeamerfont{footnote}{size=\tiny}
+
+\begin{document}  
+
+\title{Reaction-diffusion spatial modeling of COVID-19 in Chicago}
+
+\author[Illinois Institute of Technology]{Trent Gerew}
+\date{August 27, 2021}
+
+\institute[SoReMo]{Illinois Institue of Technology}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Outline}
+    \begin{cenpage}{90mm}
+    \Large \tableofcontents[currentsection, hideallsubsections]
+    \end{cenpage}
+  \end{frame}
+}
+
+
+\begin{frame} \titlepage \end{frame}
+
+% This needs to be after the title page generation 
+% unless you want it there too!
+%
+\addtobeamertemplate{frametitle}{}{ % Start of block, DO NOT remove
+
+% This block is for an IIT only presentation
+%
+ \begin{textblock*}{10mm}(0.965\textwidth,-7.2mm)
+  \includegraphics[height=5mm]{logos/iit_logo_trans}
+ \end{textblock*}
+
+} % End of block, DO NOT remove
+
+% Put pointers to slides here, use section and 
+% subsection headings for organization
+%
+ \input{slides/outline}
+ \input{slides/background}
+ \section{COVID-19 in Chicago and the Impact of Demographics}
+ \input{slides/chicago_model}
+ \input{slides/chicago_r_num}
+ \input{slides/chicago_dem}
+ \section{Accounting for Mobility}
+ \input{slides/local_model}
+ \input{slides/basic_r_num}
+ \input{slides/local_dynamics}
+ \input{slides/spatial_model}
+ %\input{slides/spatial_r_num}
+ \input{slides/mobility}
+ \input{slides/mobility_models}
+ \input{slides/model_contact}
+ 
+ 
+
+\end{document}

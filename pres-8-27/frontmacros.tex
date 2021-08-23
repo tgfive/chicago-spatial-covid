@@ -1,0 +1,382 @@
+\usepackage{xcolor,fancybox,alltt,graphicx}
+\usepackage{epstopdf}
+
+\usepackage[latin1]{inputenc}
+\usepackage{colortbl}
+\usepackage[english]{babel}
+\usepackage{multimedia}
+\usepackage{amssymb,amsmath}
+\usepackage{cancel}
+\usepackage{multirow}
+
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+
+\mode<article>{ \usepackage{fullpage}  \usepackage{pgf}  \usepackage{hyperref} }
+
+\mode<presentation>{
+  \usetheme{Boadilla}
+% The first color theme is good for IIT stuff
+% The second might be a choice for the ARPA-e program
+  \usecolortheme{beaver}  
+%  \usecolortheme{spruce}
+  \useinnertheme{circles}
+% This line changes itemize and enumerate bullets
+% the first one is lighter than the second
+  \setbeamercolor{local structure}{fg=darkred}
+%  \setbeamercolor{local structure}{fg=darkred!80!black}
+  \useoutertheme[]{infolines}
+% don't make uncovered text transparent
+  \setbeamercovered{invisible}
+%  \setbeamercovered{transparent}
+% This changes to different kinds of enumerate styles
+%  \setbeamertemplate{enumerate items}[ball]
+%  \setbeamertemplate{enumerate items}[square]
+%  \setbeamertemplate{enumerate items}[circle]
+  \setbeamertemplate{enumerate items}[default]
+%
+% Fix alignment of text in footline.  Default shifted to top alignment and 
+% the sep=0.75ex fixes this
+%
+%\setbeamertemplate{footline}{
+% \leavevmode%
+% \hbox{%
+%  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,sep=0.75ex,dp=1ex,center]{author in head/foot}%
+%      \usebeamerfont{title in head/foot}\insertshortauthor~~(\insertshortinstitute)
+%  \end{beamercolorbox}%
+%  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,sep=0.75ex,dp=1ex,center]{title in head/foot}%
+%      \usebeamerfont{title in head/foot}\insertshorttitle
+%  \end{beamercolorbox}%
+%  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,sep=0.75ex,dp=1ex,right]{date in head/foot}%
+%      \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%      \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+%  \end{beamercolorbox}}%
+% \vskip0pt%
+%}
+}
+
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+% eliminate the navigation bar in this presentation
+\setbeamertemplate{navigation symbols}{}
+\setlength{\fboxrule}{1pt}
+
+\newcommand{\vmm}{{\vspace{2mm}}}
+\newcommand{\hmm}{{\hspace{1mm}}}
+
+
+% Special symbol commands
+\newcommand{\mneg}{\scalebox{0.75}[1.0]{$\,-\!$}} % unary minus
+\newcommand{\sneg}{\scalebox{0.60}[1.0]{$\,-\!$}} % small unary minus
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bepsilon}{\boldsymbol{\epsilon}}
+\newcommand{\bDelta}{\boldsymbol{\Delta}}
+\newcommand{\bOmega}{\boldsymbol{\Omega}}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\bsigma}{\boldsymbol{\sigma}}
+\newcommand{\bln}{\boldsymbol{\ln}}
+\newcommand{\bsum}{\boldsymbol{\sum}}
+\newcommand{\bsim}{\boldsymbol{\sim}}
+\newcommand{\bsin}{\boldsymbol{\sin}}
+\newcommand{\bexp}{\boldsymbol{\exp}}
+\newcommand{\bint}{\boldsymbol{\int}}
+\newcommand{\bpsi}{\boldsymbol{\psi}}
+\newcommand{\bpropto}{\boldsymbol{\propto}}
+\newcommand{\bapprox}{\boldsymbol{\approx}}
+\newcommand{\bchi}{\boldsymbol{\chi}}
+\newcommand{\brho}{\boldsymbol{\rho}}
+\newcommand{\bpi}{\boldsymbol{\pi}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\blambda}{\boldsymbol{\lambda}}
+\newcommand{\blesssim}{\boldsymbol{\lesssim}}
+\newcommand{\brightarrow}{\boldsymbol{\rightarrow}}
+\newcommand{\bAA}{\boldsymbol{\rm\AA}}
+\newcommand{\mbf}[1]{{\ensuremath{\mathbf\mathit{#1}}}}
+\newcommand{\pthpar}[1]{{\ensuremath{\mathbf{\tt{\Blue{#1}}}}}}
+\newcommand{\feffc}[1]{{{\ensuremath{\mathbf{\Red{#1}}}}}}
+\newcommand{\reff}{{{\feffc{R_{\rm eff}}}}}
+\newcommand{\twothirds}{{{\textstyle{2 \over 3}}}}
+\newcommand{\fourthirds}{{{\textstyle{2 \over 3}}}}
+\newcommand{\masse}{{({{2m_e} / {\hbar^2}})}}
+\newcommand{\vecb}[1]{\boldsymbol{#1}}
+\newcommand{\sy}{\scriptstyle}
+\newcommand{\Ham}{\hskip0.7mm\hat{\hskip-0.7mm H}}
+\newcommand{\ehat}[1]{\hskip0.7mm\hat{\hskip-0.7mm #1}}
+\newcommand{\vect}[1]{\vec{#1}}
+\newcommand{\energy}{\mathcal{E}}
+\newcommand{\Program}[1]{\scshape{#1}}
+\newcommand{\atoms}{{\Program{atoms}}}
+\newcommand{\feffit}{{\Program{feffit}}}
+\newcommand{\ifeffit}{{\Program{ifeffit}}}
+\newcommand{\ease}{{\Program{EASE}}}
+\newcommand{\autobk}{{\Program{autobk}}}
+\newcommand{\ffchi}{{\Program{ff2chi}}}
+\newcommand{\diffkk}{{\Program{diffkk}}}
+\newcommand{\sixpack}{{\Program{sixpack}}}
+\newcommand{\hephaestus}{{\Program{hephaestus}}}
+\newcommand{\athena}{{\Program{athena}}}
+\newcommand{\artemis}{{\Program{artemis}}}
+\newcommand{\feff}{{\Program{feff}}}
+\newcommand{\mxan}{{\Program{mxan}}}
+\newcommand{\fdmnes}{{\Program{fdmnes}}}
+\newcommand{\gnuplot}{{\Program{gnuplot}}}
+
+\newcommand{\chik}{{\ensuremath{\chi(k)}}}
+\newcommand{\chir}{{\ensuremath{\chi(R)}}}
+\newcommand{\mue}{{\ensuremath{\mu(E)}}}
+\newcommand{\bkg}{{\ensuremath{\mu_0(E)}}}
+
+% Color definitions
+\definecolor{LightYellow}{rgb}{1.0,1.0,0.8}
+\definecolor{LightYellow2}{rgb}{1.0,1.0,0.97}
+\definecolor{LightPink}{rgb}{1.0,0.9,0.9}
+\definecolor{NearWhite}{rgb}{0.95,0.94,0.94}
+\definecolor{VeryWhite}{rgb}{0.99,0.99,0.99}
+\definecolor{White}{rgb}{1.0,1.0,1.0}
+\definecolor{DarkBlue}{rgb}{0,0,0.3}
+\definecolor{BrightBlue}{rgb}{0,0,0.7}
+\definecolor{DarkRed}{rgb}{0.5,0,0}
+\definecolor{BrightRed}{rgb}{0.8,0,0}
+\definecolor{RRed}{rgb}{0.95,0,0}
+\definecolor{BlueGrey}{rgb}{0.2,0.1,0.1}
+\definecolor{Red}{rgb}{0.1744,0.0000,0.0000}
+\definecolor{Red1}{rgb}{1.0000,0.0167,0.1067}
+\definecolor{Red2}{rgb}{0.6940,0.0057,0.0000}
+\definecolor{Red3}{rgb}{0.4421,0.0411,0.0000}
+\definecolor{Red4}{rgb}{1.0000,0.2455,0.1150}
+\definecolor{Red5}{rgb}{0.8441,0.0822,0.0339}
+\definecolor{Red6}{rgb}{0.5812,0.0547,0.0231}
+\definecolor{Red7}{rgb}{0.4421,0.0000,0.0411}
+\definecolor{Red8}{rgb}{0.2156,0.0053,0.0601}
+\definecolor{IITRed}{rgb}{0.7423,0.0020,0.0192}
+\definecolor{Lightred}{rgb}{1.0000,0.0000,0.0000}
+\definecolor{Magenta}{rgb}{0.1744,0.0000,0.1927}
+\definecolor{Magenta1}{rgb}{0.2533,0.0000,0.1209}
+\definecolor{Magenta2}{rgb}{0.2533,0.0411,0.0837}
+\definecolor{Magenta3}{rgb}{0.2533,0.0411,0.2294}
+\definecolor{Magenta4}{rgb}{0.2759,0.1080,0.6110}
+\definecolor{Magenta5}{rgb}{0.1101,0.0411,0.2792}
+\definecolor{Magenta6}{rgb}{0.1101,0.0057,0.2792}
+\definecolor{Magenta7}{rgb}{0.1101,0.0000,0.2792}
+\definecolor{Magenta8}{rgb}{0.0611,0.0023,0.2380}
+\definecolor{Lightmagenta}{rgb}{1.0000,0.0000,1.0000}
+\definecolor{Blue}{rgb}{0.0000,0.0000,0.1927}
+\definecolor{Blue1}{rgb}{0.0097,0.0000,0.2380}
+\definecolor{Blue2}{rgb}{0.0388,0.0000,0.4784}
+\definecolor{Blue3}{rgb}{0.0072,0.0000,0.7265}
+\definecolor{Blue4}{rgb}{0.0072,0.0057,0.7265}
+\definecolor{Blue5}{rgb}{0.0000,0.0411,1.0000}
+\definecolor{Blue6}{rgb}{0.0000,0.4460,0.8644}
+\definecolor{Blue7}{rgb}{0.0000,0.4829,1.0000}
+\definecolor{Blue8}{rgb}{0.2759,0.6154,1.0000}
+\definecolor{LightBlue}{rgb}{0.0000,0.0000,1.0000}
+\definecolor{Turquoise}{rgb}{0.0000,0.1953,0.1927}
+\definecolor{Turquoise1}{rgb}{0.0000,0.7302,1.0000}
+\definecolor{Turquoise2}{rgb}{0.0000,0.6223,0.6179}
+\definecolor{Turquoise3}{rgb}{0.0072,0.4829,0.7265}
+\definecolor{Turquoise4}{rgb}{0.0388,0.4829,0.4784}
+\definecolor{Turquoise5}{rgb}{0.0172,0.3597,0.3556}
+\definecolor{Turquoise6}{rgb}{0.0035,0.2368,0.2337}
+\definecolor{Turquoise7}{rgb}{0.0000,0.1225,0.1209}
+\definecolor{Turquoise8}{rgb}{0.0000,0.0459,0.0458}
+\definecolor{LightCyan}{rgb}{0.0000,1.0000,1.0000}
+\definecolor{Green}{rgb}{0.0000,0.1953,0.0000}
+\definecolor{Green1}{rgb}{0.0189,0.0870,0.0000}
+\definecolor{Green2}{rgb}{0.0748,0.2155,0.0064}
+\definecolor{Green3}{rgb}{0.1640,0.3762,0.0411}
+\definecolor{Green4}{rgb}{0.1180,0.2412,0.0276}
+\definecolor{Green5}{rgb}{0.0000,0.4221,0.0000}
+\definecolor{Green6}{rgb}{0.0172,0.6154,0.1067}
+\definecolor{Green7}{rgb}{0.0267,0.8435,0.0276}
+\definecolor{Green8}{rgb}{0.0072,1.0000,0.0164}
+\definecolor{MRCATGreen}{rgb}{0.1023,0.4643,0}
+\definecolor{LightGreen}{rgb}{0.0000,1.0000,0.0000}
+\definecolor{Yellow}{rgb}{1.0000,1.0000,0.0000}
+\definecolor{Yellow1}{rgb}{0.7753,1.0000,0.0000}
+\definecolor{Yellow2}{rgb}{1.0000,1.0000,0.3036}
+\definecolor{Yellow3}{rgb}{1.0000,1.0000,0.1067}
+\definecolor{Yellow4}{rgb}{0.7753,0.8052,0.0491}
+\definecolor{Yellow5}{rgb}{0.5742,0.6154,0.0000}
+\definecolor{Yellow6}{rgb}{0.4122,0.4520,0.0000}
+\definecolor{Yellow7}{rgb}{0.1744,0.1953,0.0032}
+\definecolor{Yellow8}{rgb}{0.0974,0.1080,0.0000}
+\definecolor{Brown}{rgb}{0.1744,0.1953,0.0000}
+\definecolor{Brown1}{rgb}{0.0461,0.0020,0.0000}
+\definecolor{Brown2}{rgb}{0.0974,0.0167,0.0000}
+\definecolor{Brown3}{rgb}{0.2759,0.1080,0.0173}
+\definecolor{Brown4}{rgb}{0.2759,0.1080,0.0173}
+\definecolor{Orange}{rgb}{1.0000,0.1953,0.0000}
+\definecolor{Orange1}{rgb}{0.5742,0.7009,0.0173}
+\definecolor{Orange2}{rgb}{1.0000,0.1080,0.0173}
+\definecolor{Orange3}{rgb}{1.0000,0.3073,0.1067}
+\definecolor{DarkOrange1}{RGB}{255,127,0}
+\definecolor{DarkOrange2}{RGB}{238,118,0}
+\definecolor{Orange4}{rgb}{1.0000,0.6154,0.3036}
+\definecolor{Gray}{rgb}{0.1744,0.1953,0.1927}
+\definecolor{Gray80}{rgb}{0.0172,0.0167,0.0173}
+\definecolor{Gray70}{rgb}{0.0461,0.0493,0.0491}
+\definecolor{Gray60}{rgb}{0.0974,0.1080,0.1067}
+\definecolor{Gray40}{rgb}{0.2759,0.3073,0.3036}
+\definecolor{Gray30}{rgb}{0.4122,0.4520,0.4475}
+\definecolor{Gray20}{rgb}{0.5742,0.6154,0.6110}
+\definecolor{Gray10}{rgb}{0.7753,0.8052,0.8022}
+\definecolor{BlueGray}{rgb}{0.7753,0.8052,1.0000}
+\definecolor{LightGray}{rgb}{0.4926,0.5343,0.5298}
+\definecolor{HalfGray}{gray}{0.4}
+\definecolor{DeepGray}{rgb}{0.15,0.05,0.05}
+\definecolor{lightyellow}{rgb}{1.0,1.0,0.8}
+\definecolor{lightyellow2}{rgb}{1.0,1.0,0.97}
+\definecolor{lightpink}{rgb}{1.0,0.9,0.9}
+\definecolor{DeepPink1}{RGB}{255,20,147}
+\definecolor{DeepPink2}{RGB}{238,18,137}
+\definecolor{nearwhite}{rgb}{0.95,0.94,0.94}
+\definecolor{verywhite}{rgb}{0.99,0.99,0.99}
+\definecolor{white}{rgb}{1.0,1.0,1.0}
+\definecolor{DarkBlue}{rgb}{0,0,0.3}
+\definecolor{BrightBlue}{rgb}{0,0,0.7}
+\definecolor{DarkRed}{rgb}{0.5,0,0}
+\definecolor{BrightRed}{rgb}{0.8,0,0}
+\definecolor{RRed}{rgb}{0.95,0,0}
+\definecolor{BlueGray}{rgb}{0.2,0.1,0.1}
+
+\newcommand{\Color}[2]{{\textcolor{#1}{#2}}}
+\newcommand{\Red}[1]{{\Color{BrightRed}{#1}}}
+\newcommand{\RRed}[1]{{\Color{RRed}{#1}}}
+\newcommand{\Blue}[1]{{\Color{BrightBlue}{#1}}}
+\newcommand{\BrightBlue}[1]{{\Color{BrightBlue}{#1}}}
+\newcommand{\Black}[1]{{\Color{black}{#1}}}
+\newcommand{\RedM}[1]{{\Color{red}{\mbf{#1}}}}
+\newcommand{\BlueM}[1]{{\Color{blue}{\mbf{#1}}}}
+\newcommand{\BlackM}[1]{{\Color{black}{\mbf{#1}}}}
+
+\newcommand{\RedEmph}[1]{{\Color{BrightRed}{\emph{#1}}}}
+\newcommand{\RedSl}[1]{{\Color{BrightRed}{\slshape{#1}}}}
+\newcommand{\BlueSl}[1]{{\Color{BrightBlue}{\slshape{#1}}}}
+\newcommand{\BlueEmph}[1]{{\Color{BrightBlue}{\emph{#1}}}}
+
+\newcommand{\R}[1]{{\Color{Red}{#1}}}
+\newcommand{\LR}[1]{{\Color{Lightred}{#1}}}
+\newcommand{\RA}[1]{{\Color{Red1}{#1}}}
+\newcommand{\RB}[1]{{\Color{Red2}{#1}}}
+\newcommand{\RC}[1]{{\Color{Red3}{#1}}}
+\newcommand{\RD}[1]{{\Color{Red4}{#1}}}
+\newcommand{\RE}[1]{{\Color{Red5}{#1}}}
+\newcommand{\RF}[1]{{\Color{Red6}{#1}}}
+\newcommand{\RG}[1]{{\Color{Red7}{#1}}}
+\newcommand{\RH}[1]{{\Color{Red8}{#1}}}
+\newcommand{\RI}[1]{{\Color{IITRed}{#1}}}
+\newcommand{\B}[1]{{\Color{Blue}{#1}}}
+\newcommand{\LB}[1]{{\Color{Lightblue}{#1}}}
+\newcommand{\BA}[1]{{\Color{Blue1}{#1}}}
+\newcommand{\BB}[1]{{\Color{Blue2}{#1}}}
+\newcommand{\BC}[1]{{\Color{Blue3}{#1}}}
+\newcommand{\BD}[1]{{\Color{Blue4}{#1}}}
+\newcommand{\BE}[1]{{\Color{Blue5}{#1}}}
+\newcommand{\BF}[1]{{\Color{Blue6}{#1}}}
+\newcommand{\BG}[1]{{\Color{Blue7}{#1}}}
+\newcommand{\BH}[1]{{\Color{Blue8}{#1}}}
+\newcommand{\G}[1]{{\Color{Green}{#1}}}
+\newcommand{\LG}[1]{{\Color{Lightgreen}{#1}}}
+\newcommand{\GA}[1]{{\Color{Green1}{#1}}}
+\newcommand{\GB}[1]{{\Color{Green2}{#1}}}
+\newcommand{\GC}[1]{{\Color{Green3}{#1}}}
+\newcommand{\GD}[1]{{\Color{Green4}{#1}}}
+\newcommand{\GE}[1]{{\Color{Green5}{#1}}}
+\newcommand{\GF}[1]{{\Color{Green6}{#1}}}
+\newcommand{\GG}[1]{{\Color{Green7}{#1}}}
+\newcommand{\GH}[1]{{\Color{Green8}{#1}}}
+\newcommand{\GM}[1]{{\Color{MRCATGreen}{#1}}}
+\newcommand{\M}[1]{{\Color{Magenta}{#1}}}
+\newcommand{\LM}[1]{{\Color{Lightmagenta}{#1}}}
+\newcommand{\MA}[1]{{\Color{Magenta1}{#1}}}
+\newcommand{\MB}[1]{{\Color{Magenta2}{#1}}}
+\newcommand{\MC}[1]{{\Color{Magenta3}{#1}}}
+\newcommand{\MD}[1]{{\Color{Magenta4}{#1}}}
+\newcommand{\ME}[1]{{\Color{Magenta5}{#1}}}
+\newcommand{\MF}[1]{{\Color{Magenta6}{#1}}}
+\newcommand{\MG}[1]{{\Color{Magenta7}{#1}}}
+\newcommand{\MH}[1]{{\Color{Magenta8}{#1}}}
+\newcommand{\OA}[1]{{\Color{Orange1}{#1}}}
+\newcommand{\OB}[1]{{\Color{Orange2}{#1}}}
+\newcommand{\OC}[1]{{\Color{Orange3}{#1}}}
+\newcommand{\OD}[1]{{\Color{Orange4}{#1}}}
+\newcommand{\OF}[1]{{\Color{DarkOrange1}{#1}}}
+\newcommand{\OG}[1]{{\Color{DarkOrange2}{#1}}}
+\newcommand{\HA}[1]{{\Color{Gray10}{#1}}}
+\newcommand{\HB}[1]{{\Color{LightGray}{#1}}}
+\newcommand{\HC}[1]{{\Color{HalfGray}{#1}}}
+\newcommand{\HD}[1]{{\Color{Gray}{#1}}} 
+\newcommand{\PA}[1]{{\Color{DeepPink1}{#1}}} 
+\newcommand{\PB}[1]{{\Color{DeepPink2}{#1}}} 
+\newcommand{\PC}[1]{{\Color{lightpink}{#1}}} 
+
+% Highlighting commands
+\newcommand{\highlightbox}[1]{{ \fcolorbox{black}{lightpink}{#1}}}
+
+\newenvironment{VerbSBox}%
+{\VerbatimEnvironment\begin{Sbox}%
+\begin{minipage}{1.50in}\begin{alltt}\tiny}%
+{\end{alltt}\end{minipage}\end{Sbox}\setlength{\fboxsep}{2mm}{%
+\begin{flushright}\shadowbox{\TheSbox}\end{flushright}}}
+%%
+\newenvironment{CodeBlock}[2]%
+{\VerbatimEnvironment\begin{minipage}{#1}\begin{block}{\small{#2}}\begin{semiverbatim}\tiny}% 
+{\end{semiverbatim}\end{block}\end{minipage}}%%
+
+\newenvironment{MFrame}[1]%%
+{\subsection{#1}\begin{frame}\frametitle{#1}}% 
+{\end{frame}}%
+
+
+\setbeamercolor{postit}{fg=black,bg=lightpink}
+
+\newenvironment{postitbox}[1]%%
+{\begin{center}\begin{minipage}{#1}\begin{beamercolorbox}[shadow=true,rounded=true]{postit}}%
+{\end{beamercolorbox}\end{minipage}\end{center}}%
+
+\newenvironment{postitboxC}[1]%%
+{\begin{minipage}{#1}\begin{beamercolorbox}[center,shadow=true,rounded=true]{postit}}%
+{\end{beamercolorbox}\end{minipage}}%
+
+\newcommand{\entrylabel}[1]{ {\Blue{#1:}}}
+%%\newcommand{\entrylabel}[1]{{\parbox[b]{10mm}{%
+%%      \makebox[10mm][l]{{\Red{#1:}}}\\}}}
+
+\newenvironment{entry}
+{\begin{list}{}{\renewcommand{\makelabel}{\entrylabel}%
+      \setlength{\labelwidth}{10mm}
+      \setlength{\leftmargin}{15mm}}}{\end{list}}
+
+\newenvironment{cenpage}[1]%%  centered minipage
+{\begin{center}\begin{minipage}{#1}}%
+    {\end{minipage}\end{center}}%%
+
+\newenvironment{slide}[1]%%  begin named slide 
+{\subsection{#1}\begin{frame}\frametitle{#1}}%
+    {\end{frame}}%%
+
+%\newcommand{\xdgraph}[2]{{%
+%        \ifpdf  \includegraphics[width={#1}]{figs/#2.png}%
+%        \else   \includegraphics[width={#1}]{figs/#2.eps}\fi}}
+\newcommand{\xdgraph}[2]{{%
+        \includegraphics[width={#1}]{figs/#2.png} }}
+%\newcommand{\wgraph}[2]{{%
+%        \ifpdf  \includegraphics[width={#1}]{figs/#2.png}%
+%        \else   \includegraphics[width={#1}]{figs/#2.eps}\fi}}
+\newcommand{\wgraph}[2]{{%
+        \includegraphics[width={#1}]{figs/#2} }}
+%\newcommand{\hgraph}[2]{{%
+%        \ifpdf  \includegraphics[height={#1}]{figs/#2.png}%
+%        \else   \includegraphics[height={#1}]{figs/#2.eps}\fi}}
+\newcommand{\hgraph}[2]{{%
+        \includegraphics[height={#1}]{figs/#2} }}
+\newcommand{\rgraph}[3]{{%
+        \includegraphics[height={#1}, angle={#2}]{figs/#3} }}
+
+\newcommand{\webpage}[1]{{{\Blue{{#1}}}}}

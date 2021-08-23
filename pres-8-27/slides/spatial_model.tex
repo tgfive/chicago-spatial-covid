@@ -1,0 +1,26 @@
+\begin{slide}{Spatial Model}
+
+Now suppose we have a set of $n$ connected communities.
+Assume $\gamma$ is community-independent, while $\lambda_i$ is the force of infection for community $i$.
+\begin{columns}[T]
+	\begin{column}{.5\textwidth}
+		\begin{align*}
+			\dot{S_i}	&=	-\lambda_i S_i \\
+			\dot{I_i}	&=	\lambda_i S_i - \gamma I_i \\
+			\dot{R_i}	&=	\gamma I_i
+		\end{align*}
+		\begin{definition}[\cite{Gatto10484}]
+			$$\lambda_i = \sum_{j=1}^n C_{ij}^S \frac{ \sum_{k=1}^n ( \beta_I C_{kj}^I I_k ) }{ \sum_{k=1}^n ( C_{kj}^S S_k + C_{kj}^I I_k + C_{kj}^R R_k ) }$$
+		\end{definition}
+	\end{column}
+	\begin{column}{.4\textwidth}
+		\centering
+		\includegraphics[height=1.75in]{images/map}	
+	\end{column}	
+\end{columns}
+
+\vfill
+
+$C_{ij}^X$ (with $X \in \{S,I,R\}$) is the probability that individuals who belong to compartment $X$ and are from community $i$ contact individuals in community $j$.
+
+\end{slide}

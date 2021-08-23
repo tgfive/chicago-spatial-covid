@@ -1,0 +1,22 @@
+\begin{slide}{Dynamics}
+
+\begin{columns}[T]
+	\begin{column}{.7\textwidth}
+		Let $k = \frac{\beta_I}{N}$, then $\dot{S} = -k S I$ and $\dot{I} = k S I - \gamma I$
+
+		There are infintely non-isolated fixed points of the form $(a,0)$.
+		Linearizing, we get
+		$$\mathbf{A_{(a,0)}} = \begin{bmatrix} 0 & -k a \\ 0 & k a - \gamma \end{bmatrix}$$
+		so for $a < \frac{\gamma}{k}$ the nodes are stable, and they are unstable for $a > \frac{\gamma}{k}$.
+	\end{column}
+	\begin{column}{.25\textwidth}
+		\centering
+		\includegraphics[height=1.5in]{images/local}
+	\end{column}
+\end{columns}
+Taking $\frac{\dot{I}}{\dot{S}} = -1 + \frac{\gamma}{k S}$ and solving this differential equation gives $I = - S + \frac{\gamma}{k} \ln (S) + C$.
+Thus
+$$E(S,I) = S + I - \frac{\gamma}{k} \ln (S)$$
+is a conserved quantity for the system.
+So there cannot be any attracting fixed points (\cite{strogatz:2000}).
+\end{slide}

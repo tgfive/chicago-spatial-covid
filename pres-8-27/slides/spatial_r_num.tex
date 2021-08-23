@@ -1,0 +1,19 @@
+\begin{slide}{Basic Reproduction Number for Spatial Model}
+
+Consider the disease-free equilibrium: $S_i=N_i$, $I_i=R_i=0$.\\
+\vfill
+Then the Jacobian matrix of the infection subsystem is
+$$\mathbf{J_0}	=
+	- \gamma \mathbf{I} + \beta_I \mathbf{N}
+	\begin{bsmallmatrix}
+		\left( \frac{C_{11}^I C_{11}^S}{N_1 C_{11}^S + N_2 C_{21}^S + N_3 C_{31}^S} + \frac{C_{12}^I C_{12}^S}{N_1 C_{12}^S + N_2 C_{22}^S + N_3 C_{32}^S} + \frac{C_{13}^I C_{13}^S}{N_1 C_{13}^S + N_2 C_{23}^S + N_3 C_{33}^S} \right) &
+		\left( \frac{C_{21}^I C_{11}^S}{N_1 C_{11}^S + N_2 C_{21}^S + N_3 C_{31}^S} + \frac{C_{22}^I C_{12}^S}{N_1 C_{12}^S + N_2 C_{22}^S + N_3 C_{32}^S} + \frac{C_{23}^I C_{13}^S}{N_1 C_{13}^S + N_2 C_{23}^S + N_3 C_{33}^S} \right) &
+		\left( \frac{C_{31}^I C_{11}^S}{N_1 C_{11}^S + N_2 C_{21}^S + N_3 C_{31}^S} + \frac{C_{32}^I C_{12}^S}{N_1 C_{12}^S + N_2 C_{22}^S + N_3 C_{32}^S} + \frac{C_{33}^I C_{13}^S}{N_1 C_{13}^S + N_2 C_{23}^S + N_3 C_{33}^S} \right) \\
+		\left( \frac{C_{11}^I C_{21}^S}{N_1 C_{11}^S + N_2 C_{21}^S + N_3 C_{31}^S} + \frac{C_{12}^I C_{22}^S}{N_1 C_{12}^S + N_2 C_{22}^S + N_3 C_{32}^S} + \frac{C_{13}^I C_{13}^S}{N_1 C_{23}^S + N_2 C_{23}^S + N_3 C_{33}^S} \right) &
+		\left( \frac{C_{21}^I C_{21}^S}{N_1 C_{11}^S + N_2 C_{21}^S + N_3 C_{31}^S} + \frac{C_{22}^I C_{22}^S}{N_1 C_{12}^S + N_2 C_{22}^S + N_3 C_{32}^S} + \frac{C_{23}^I C_{23}^S}{N_1 C_{13}^S + N_2 C_{23}^S + N_3 C_{33}^S} \right) &
+		\left( \frac{C_{31}^I C_{21}^S}{N_1 C_{11}^S + N_2 C_{21}^S + N_3 C_{31}^S} + \frac{C_{32}^I C_{22}^S}{N_1 C_{12}^S + N_2 C_{22}^S + N_3 C_{32}^S} + \frac{C_{33}^I C_{23}^S}{N_1 C_{13}^S + N_2 C_{23}^S + N_3 C_{33}^S} \right) \\
+		\left( \frac{C_{11}^I C_{31}^S}{N_1 C_{11}^S + N_2 C_{21}^S + N_3 C_{31}^S} + \frac{C_{12}^I C_{32}^S}{N_1 C_{12}^S + N_2 C_{22}^S + N_3 C_{32}^S} + \frac{C_{13}^I C_{33}^S}{N_1 C_{13}^S + N_2 C_{23}^S + N_3 C_{33}^S} \right) &
+		\left( \frac{C_{21}^I C_{31}^S}{N_1 C_{11}^S + N_2 C_{21}^S + N_3 C_{31}^S} + \frac{C_{22}^I C_{32}^S}{N_1 C_{12}^S + N_2 C_{22}^S + N_3 C_{32}^S} + \frac{C_{23}^I C_{33}^S}{N_1 C_{13}^S + N_2 C_{23}^S + N_3 C_{33}^S} \right) &
+		\left( \frac{C_{31}^I C_{31}^S}{N_1 C_{11}^S + N_2 C_{21}^S + N_3 C_{31}^S} + \frac{C_{32}^I C_{32}^S}{N_1 C_{12}^S + N_2 C_{22}^S + N_3 C_{32}^S} + \frac{C_{33}^I C_{33}^S}{N_1 C_{13}^S + N_2 C_{23}^S + N_3 C_{33}^S} \right)
+	\end{bsmallmatrix} $$
+\end{slide}

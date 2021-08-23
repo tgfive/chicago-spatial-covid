@@ -1,0 +1,17 @@
+\begin{slide}{Basic Reproduction Number}
+
+Consider the disease-free equilibrium: $S=N$, $I=R=0$.\\
+\vfill
+Then the Jacobian matrix of the infection subsystem is
+$$\mathbf{J_0}	= \begin{bmatrix} \frac{\partial \dot{I}}{\partial I} \end{bmatrix}
+			= \begin{bmatrix} - \gamma + \frac{\beta_I S I}{N^2} + \frac{\beta_I S}{N} \end{bmatrix}_{S=N , I = R = 0}
+			= - \gamma + \beta_I $$
+
+$\mathbf{J_0}$ can be decomposed into transmission ($\mathbf{T} = \beta_I$) and transition ($\mathbf{\Sigma} = - \gamma$) parts such that $\mathbf{J_0} = \mathbf{T} + \mathbf{\Sigma}$. \\
+\vfill
+The next-generation matrix is
+$$\mathbf{K_L} = - \mathbf{T} \mathbf{\Sigma}^{-1} = \frac{\beta_I}{\gamma}$$
+and the basic reproduction number is
+$$\mathcal{R}_0 = \rho ( \mathbf{K_L} ) = \frac{\beta_I}{\gamma}$$
+
+\end{slide}

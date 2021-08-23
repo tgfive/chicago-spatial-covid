@@ -1,0 +1,90 @@
+\begin{slide}{Chicago Model}
+
+\begin{center}
+\begin{tikzpicture}
+	%Susceptible
+	\node [draw,
+		fill=blue!20,
+		minimum width=1.5cm,
+		minimum height=0.8cm
+		]	(susceptible) at (0,0){$S(t)$};
+	
+	% Exposed
+	\node [draw,
+		fill = blue!20,
+		minimum width=1.5cm,
+		minimum height=0.8cm,
+		right = 1.2cm of susceptible
+		]	(exposed) {$E(t)$};
+			
+	%Infected
+	\node [draw,
+		fill = blue!20,
+		minimum width=1.5cm,
+		minimum height=0.8cm,
+		right = 1.2cm of exposed
+		]	(infected) {$I(t)$};
+	
+	%Recovered
+	\node [draw,
+		fill = blue!20,
+		minimum width=1.5cm,
+		minimum height = 0.8cm,
+		above right = 0.2cm and 1.5cm of infected
+		]	(recovered) {$R(t)$};
+		
+	%Dead
+	\node [draw,
+		fill = blue!20,
+		minimum width=1.5cm,
+		minimum height = 0.8cm,
+		below right = 0.2cm and 1.5cm of infected
+		]	(dead) {$D(t)$};
+		
+	%Arrows
+	\draw[-stealth] (susceptible.east) -- (exposed.west)
+		node[midway,above]{$\frac{\beta I S}{N}$};
+	
+	\draw[-stealth] (exposed.east) -- (infected.west)
+		node[midway,above]{$\delta I$};
+		
+	\draw[-stealth] (infected.east) -- (recovered.west)
+		node[midway,above = 0.3cm]{$(1 - \alpha) \gamma I$};
+		
+	\draw[-stealth] (infected.east) -- (dead.west)
+		node[midway,below = 0.2cm]{$\alpha \rho I$};
+		
+\end{tikzpicture}
+\end{center}
+
+\vfill
+
+\begin{columns}[T]
+	\begin{column}{.15\textwidth}
+		\begin{align*}
+			\dot{S}	&=	- \frac{\beta I S}{N}\\
+			\dot{E}	&=	\frac{\beta I S}{N} - \delta E \\
+			\dot{I}	&=	\delta E - (1 - \alpha) \gamma I - \alpha \rho I \\
+			\dot{R}	&=	(1 - \alpha) \gamma I \\
+			\dot{D}	&=	\alpha \rho I
+		\end{align*}
+		\vfill
+	\end{column}
+	\begin{column}{.5\textwidth}
+		\vfill
+		\begin{itemize}
+			\item $N$ is the total population of the group
+			\item $\beta$ is the transmission rate
+			\item $\alpha$ is the infection fatality rate
+			\item $\delta$, $\gamma$, and $\rho$ are the transition rates
+		\end{itemize}
+		\begin{definition}[Basic Reproduction Number]
+			$$R_0 = \frac{\beta}{\gamma}$$
+		\end{definition}
+		\vfill
+	\end{column}
+\end{columns}
+
+\vfill
+ 
+\end{slide}
