@@ -10,56 +10,26 @@
 \headcommand {\beamer@framepages {3}{3}}
 \headcommand {\beamer@sectionpages {1}{3}}
 \headcommand {\beamer@subsectionpages {1}{3}}
-\headcommand {\sectionentry {1}{COVID-19 in Chicago and the Impact of Demographics}{4}{COVID-19 in Chicago and the Impact of Demographics}{0}}
+\headcommand {\sectionentry {1}{The COVID Problem}{4}{The COVID Problem}{0}}
 \headcommand {\slideentry {1}{0}{1}{4/4}{}{0}}
 \headcommand {\beamer@framepages {4}{4}}
+\headcommand {\beamer@sectionpages {4}{4}}
 \headcommand {\beamer@subsectionpages {4}{4}}
-\headcommand {\beamer@subsectionentry {0}{1}{1}{5}{Chicago Model}}
-\headcommand {\slideentry {1}{1}{1}{5/5}{Chicago Model}{0}}
+\headcommand {\sectionentry {2}{Project Context and Objectives}{5}{Project Context and Objectives}{0}}
+\headcommand {\slideentry {2}{0}{1}{5/5}{}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@subsectionpages {4}{5}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{6}{Basic Reproduction Number}}
-\headcommand {\slideentry {1}{2}{1}{6/6}{Basic Reproduction Number}{0}}
+\headcommand {\beamer@sectionpages {5}{5}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\sectionentry {3}{Current Work}{6}{Current Work}{0}}
+\headcommand {\slideentry {3}{0}{1}{6/6}{}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@subsectionpages {4}{6}}
-\headcommand {\beamer@subsectionentry {0}{1}{3}{7}{Demographics and Death Rates}}
-\headcommand {\slideentry {1}{3}{1}{7/7}{Demographics and Death Rates}{0}}
+\headcommand {\beamer@sectionpages {6}{6}}
+\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\sectionentry {4}{Future Goals}{7}{Future Goals}{0}}
+\headcommand {\slideentry {4}{0}{1}{7/7}{}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@sectionpages {4}{7}}
-\headcommand {\beamer@subsectionpages {4}{7}}
-\headcommand {\sectionentry {2}{Accounting for Mobility}{8}{Accounting for Mobility}{0}}
-\headcommand {\slideentry {2}{0}{1}{8/8}{}{0}}
-\headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@subsectionpages {8}{8}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{9}{Local Model}}
-\headcommand {\slideentry {2}{1}{1}{9/9}{Local Model}{0}}
-\headcommand {\beamer@framepages {9}{9}}
-\headcommand {\beamer@subsectionpages {8}{9}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{10}{Basic Reproduction Number}}
-\headcommand {\slideentry {2}{2}{1}{10/10}{Basic Reproduction Number}{0}}
-\headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@subsectionpages {8}{10}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{11}{Dynamics}}
-\headcommand {\slideentry {2}{3}{1}{11/11}{Dynamics}{0}}
-\headcommand {\beamer@framepages {11}{11}}
-\headcommand {\beamer@subsectionpages {8}{11}}
-\headcommand {\beamer@subsectionentry {0}{2}{4}{12}{Spatial Model}}
-\headcommand {\slideentry {2}{4}{1}{12/12}{Spatial Model}{0}}
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\beamer@subsectionpages {8}{12}}
-\headcommand {\beamer@subsectionentry {0}{2}{5}{13}{Mobile Contact Probability}}
-\headcommand {\slideentry {2}{5}{1}{13/13}{Mobile Contact Probability}{0}}
-\headcommand {\beamer@framepages {13}{13}}
-\headcommand {\beamer@subsectionpages {8}{13}}
-\headcommand {\beamer@subsectionentry {0}{2}{6}{14}{Mobility Models}}
-\headcommand {\slideentry {2}{6}{1}{14/14}{Mobility Models}{0}}
-\headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@subsectionpages {8}{14}}
-\headcommand {\beamer@subsectionentry {0}{2}{7}{15}{Mobile Contact Probability}}
-\headcommand {\slideentry {2}{7}{1}{15/15}{Mobile Contact Probability}{0}}
-\headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@partpages {1}{15}}
-\headcommand {\beamer@subsectionpages {8}{15}}
-\headcommand {\beamer@sectionpages {8}{15}}
-\headcommand {\beamer@documentpages {15}}
-\headcommand {\gdef \inserttotalframenumber {15}}
+\headcommand {\beamer@partpages {1}{7}}
+\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\beamer@sectionpages {7}{7}}
+\headcommand {\beamer@documentpages {7}}
+\headcommand {\gdef \inserttotalframenumber {7}}
