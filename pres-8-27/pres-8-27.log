@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  24 AUG 2021 22:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  24 AUG 2021 23:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1226,7 +1226,7 @@ Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 103.
 ] (./slides/obj-01.tex
 File: logos/iit_logo_trans.png Graphic file (type png)
 <use logos/iit_logo_trans.png>
-Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 7.
+Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 8.
 (pdftex.def)             Requested size: 16.24023pt x 14.22636pt.
  [8
 
@@ -1234,36 +1234,46 @@ Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 7.
 <images/covid-map-0.png, id=140, 803.0pt x 488.82625pt>
 File: images/covid-map-0.png Graphic file (type png)
 <use images/covid-map-0.png>
-Package pdftex.def Info: images/covid-map-0.png  used on input line 10.
-(pdftex.def)             Requested size: 87.04747pt x 52.98787pt.
+Package pdftex.def Info: images/covid-map-0.png  used on input line 20.
+(pdftex.def)             Requested size: 108.811pt x 66.23483pt.
 <images/covid-map-1.png, id=141, 803.0pt x 490.83376pt>
 File: images/covid-map-1.png Graphic file (type png)
 <use images/covid-map-1.png>
-Package pdftex.def Info: images/covid-map-1.png  used on input line 10.
-(pdftex.def)             Requested size: 87.04747pt x 53.20547pt.
+Package pdftex.def Info: images/covid-map-1.png  used on input line 20.
+(pdftex.def)             Requested size: 108.811pt x 66.50685pt.
 <images/covid-map-2.png, id=142, 803.0pt x 491.8375pt>
 File: images/covid-map-2.png Graphic file (type png)
 <use images/covid-map-2.png>
-Package pdftex.def Info: images/covid-map-2.png  used on input line 10.
-(pdftex.def)             Requested size: 87.04747pt x 53.31427pt.
+Package pdftex.def Info: images/covid-map-2.png  used on input line 20.
+(pdftex.def)             Requested size: 108.811pt x 66.64285pt.
 <images/covid-map-3.png, id=143, 803.0pt x 490.83376pt>
 File: images/covid-map-3.png Graphic file (type png)
 <use images/covid-map-3.png>
-Package pdftex.def Info: images/covid-map-3.png  used on input line 10.
-(pdftex.def)             Requested size: 87.04747pt x 53.20547pt.
+Package pdftex.def Info: images/covid-map-3.png  used on input line 20.
+(pdftex.def)             Requested size: 108.811pt x 66.50685pt.
+<images/homogeneous.png, id=144, 702.625pt x 372.39125pt>
+File: images/homogeneous.png Graphic file (type png)
+<use images/homogeneous.png>
+Package pdftex.def Info: images/homogeneous.png  used on input line 20.
+(pdftex.def)             Requested size: 174.09828pt x 92.27365pt.
 File: logos/iit_logo_trans.png Graphic file (type png)
 <use logos/iit_logo_trans.png>
-Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 10.
+Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 20.
 (pdftex.def)             Requested size: 16.24023pt x 14.22636pt.
- [9
+
+Overfull \vbox (3.9134pt too high) detected at line 20
+ []
+
+[9
 
  <./images/covid-map-0.png> <./images/covid-map-1.png> <./images/covid-map-2.pn
-g> <./images/covid-map-3.png>]) (./pres-8-27.toc)
+g> <./images/covid-map-3.png> <./images/homogeneous.png>]) (./pres-8-27.toc)
 File: logos/iit_logo_trans.png Graphic file (type png)
 <use logos/iit_logo_trans.png>
 Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 106.
 (pdftex.def)             Requested size: 16.24023pt x 14.22636pt.
- [10
+
+[10
 
 ] (./pres-8-27.toc)
 File: logos/iit_logo_trans.png Graphic file (type png)
@@ -1284,18 +1294,17 @@ Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 108.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 112.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 112.
-
-(./pres-8-27.aux)
+ (./pres-8-27.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 112.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 112.
 Package rerunfilecheck Info: File `pres-8-27.out' has not changed.
 (rerunfilecheck)             Checksum: E22C92DB46E7B0176254BE7A002CB207;614.
  ) 
 Here is how much of TeX's memory you used:
- 24788 strings out of 483183
- 480994 string characters out of 5966292
- 745046 words of memory out of 5000000
- 39140 multiletter control sequences out of 15000+600000
+ 24796 strings out of 483183
+ 481178 string characters out of 5966292
+ 746046 words of memory out of 5000000
+ 39147 multiletter control sequences out of 15000+600000
  537201 words of font info for 42 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  54i,15n,71p,776b,864s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1305,10 +1314,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on pres-8-27.pdf (11 pages, 3642630 bytes).
+Output written on pres-8-27.pdf (11 pages, 3669343 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
+ 205 PDF objects out of 1000 (max. 8388607)
  155 compressed objects within 2 object streams
  33 named destinations out of 1000 (max. 500000)
- 185 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 190 words of extra memory for PDF output out of 10000 (max. 10000000)
 
