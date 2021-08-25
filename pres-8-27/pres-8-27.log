@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  24 AUG 2021 23:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  25 AUG 2021 09:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1301,11 +1301,11 @@ Package rerunfilecheck Info: File `pres-8-27.out' has not changed.
 (rerunfilecheck)             Checksum: E22C92DB46E7B0176254BE7A002CB207;614.
  ) 
 Here is how much of TeX's memory you used:
- 24796 strings out of 483183
- 481178 string characters out of 5966292
+ 24797 strings out of 483183
+ 481193 string characters out of 5966292
  746046 words of memory out of 5000000
- 39147 multiletter control sequences out of 15000+600000
- 537201 words of font info for 42 fonts, out of 8000000 for 9000
+ 39148 multiletter control sequences out of 15000+600000
+ 537508 words of font info for 43 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  54i,15n,71p,776b,864s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
@@ -1314,7 +1314,7 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on pres-8-27.pdf (11 pages, 3669343 bytes).
+Output written on pres-8-27.pdf (11 pages, 3671893 bytes).
 PDF statistics:
  205 PDF objects out of 1000 (max. 8388607)
  155 compressed objects within 2 object streams
