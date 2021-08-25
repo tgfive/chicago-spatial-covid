@@ -7,5 +7,6 @@
 \beamer@sectionintoc {2}{Project Context and Objectives}{7}{0}{2}
 \beamer@subsectionintoc {2}{1}{Project Context and Objectives}{8}{0}{2}
 \beamer@subsectionintoc {2}{2}{Project Context and Objectives}{9}{0}{2}
-\beamer@sectionintoc {3}{Current Work}{10}{0}{3}
-\beamer@sectionintoc {4}{Future Goals}{11}{0}{4}
+\beamer@subsectionintoc {2}{3}{Project Context and Objectives}{10}{0}{2}
+\beamer@sectionintoc {3}{Current Work}{11}{0}{3}
+\beamer@sectionintoc {4}{Future Goals}{12}{0}{4}
