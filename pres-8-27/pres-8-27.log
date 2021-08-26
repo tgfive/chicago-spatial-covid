@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  25 AUG 2021 14:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  25 AUG 2021 20:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1339,12 +1339,19 @@ Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 108.
 
 [12
 
-] (./pres-8-27.toc)
+] (./slides/work-01.tex
+File: logos/iit_logo_trans.png Graphic file (type png)
+<use logos/iit_logo_trans.png>
+Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 9.
+(pdftex.def)             Requested size: 16.24023pt x 14.22636pt.
+ [13
+
+]) (./pres-8-27.toc)
 File: logos/iit_logo_trans.png Graphic file (type png)
 <use logos/iit_logo_trans.png>
 Package pdftex.def Info: logos/iit_logo_trans.png  used on input line 110.
 (pdftex.def)             Requested size: 16.24023pt x 14.22636pt.
- [13
+ [14
 
 ]
 \tf@nav=\write7
@@ -1361,27 +1368,35 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
  (./pres-8-27.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 114.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 114.
-Package rerunfilecheck Info: File `pres-8-27.out' has not changed.
-(rerunfilecheck)             Checksum: 88E34D436E21BC6EA593EBE476A4B061;776.
+
+
+Package rerunfilecheck Warning: File `pres-8-27.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `pres-8-27.out':
+(rerunfilecheck)             Before: 88E34D436E21BC6EA593EBE476A4B061;776
+(rerunfilecheck)             After:  B093C951CCF2AEE0CDD7783B1D685331;839.
  ) 
 Here is how much of TeX's memory you used:
- 25247 strings out of 480608
- 494440 string characters out of 5903631
+ 25264 strings out of 480608
+ 494794 string characters out of 5903631
  758335 words of memory out of 5000000
- 40449 multiletter control sequences out of 15000+600000
+ 40460 multiletter control sequences out of 15000+600000
  538290 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,15n,72p,776b,864s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
-></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb>
-</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></
-usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><
-/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><
-/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on pres-8-27.pdf (13 pages, 3714453 bytes).
+</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
+</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><
+/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></u
+sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></
+usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></
+usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on pres-8-27.pdf (14 pages, 3724510 bytes).
 PDF statistics:
- 255 PDF objects out of 1000 (max. 8388607)
- 197 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
+ 269 PDF objects out of 1000 (max. 8388607)
+ 208 compressed objects within 3 object streams
+ 42 named destinations out of 1000 (max. 500000)
  216 words of extra memory for PDF output out of 10000 (max. 10000000)
 
