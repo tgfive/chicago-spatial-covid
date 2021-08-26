@@ -12,4 +12,6 @@
 \beamer@sectionintoc {3}{Current Work}{12}{0}{3}
 \beamer@subsectionintoc {3}{1}{Current Work}{13}{0}{3}
 \beamer@subsectionintoc {3}{2}{Current Work}{14}{0}{3}
-\beamer@sectionintoc {4}{Future Goals}{15}{0}{4}
+\beamer@subsectionintoc {3}{3}{Current Work}{15}{0}{3}
+\beamer@subsectionintoc {3}{4}{Current Work}{16}{0}{3}
+\beamer@sectionintoc {4}{Future Goals}{17}{0}{4}
