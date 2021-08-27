@@ -12,3 +12,4 @@
 \beamer@sectionintoc {3}{Social and Community Connections}{12}{0}{3}
 \beamer@subsectionintoc {3}{1}{Social and Community Connections}{13}{0}{3}
 \beamer@sectionintoc {4}{Current Work}{14}{0}{4}
+\beamer@subsectionintoc {4}{1}{Current Work}{15}{0}{4}
