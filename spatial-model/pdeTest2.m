@@ -1,6 +1,6 @@
 %% PDE Test 2
-% u_t = u_xx for 0 < x < pi, t > 0
-% u = 0      at x = 0, pi
+% u_t = u_xx + u for 0 < x < pi, t > 0
+% u = 0          at x = 0, pi
 % u(x,0) = phi(x)
 
 clear
@@ -17,7 +17,7 @@ s = 5/11; % s = delta_t / (delta_x)^2 < 1/2
 I = eye(J+1);
 
 % Tridiagonal matrix
-D = diag(-2*s*ones(1,J+1)) + diag(s*ones(1,J),1) + diag(s*ones(1,J),-1);
+D = diag(-2*s*ones(1,J+1)) + diag(s*delta_x^2*ones(1,J+1)) + diag(s*ones(1,J),1) + diag(s*ones(1,J),-1);
 D(1,:) = 0;
 D(J+1,:) = 0;
 
