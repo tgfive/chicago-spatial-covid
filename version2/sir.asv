@@ -1,0 +1,31 @@
+function dydt = sir(t,y,p1)
+    % Derivatives with respect to time
+    s = y(1);
+    e = y(2);
+    a = y(3);
+    i = y(5);
+    h = y(6);
+    
+    % System parameters
+    % Optimized parameters (p vector)
+    beta_sa = p1(1);
+    beta_si = p1(2);
+    sigma_a = p1(4);
+    sigma_i = p1(5);
+    m_ar = p1(6);
+    m = p1(7);
+    gamma = p1(8);
+    omega = p1(9);
+    chi = p1(10);
+    psi = p1(11);
+    eta_sa = p1(12);
+    eta_si = p1(13);
+    % Fixed parameters (q vector)
+    mu = p1(14);
+    t_q = p1(15);
+    
+    
+    
+    
+    
+    
