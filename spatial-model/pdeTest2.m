@@ -7,8 +7,8 @@ clear
 clc
 
 %% Step parameters
-J = 20; % Number of discrete steps
-delta_x = pi/20; % Space mesh
+J = 100; % Number of discrete steps
+delta_x = pi/J; % Space mesh
 s = 5/11; % s = delta_t / (delta_x)^2 < 1/2
 
 %% Define matrix

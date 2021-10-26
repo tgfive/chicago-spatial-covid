@@ -13,32 +13,12 @@ r0 = 2; %recovered
 s0 = n - i0 - r0; %susceptible
 y0 = [s0, i0, r0]; %initial conditions vector
 
-% Time domain
-%t = 1:61; %60 days
-
 %% Observed Data
 % Load time, total cases and total deaths
 [t,Cobs,Dobs] = loadData();
 
 % Convert to a single vector
 Yobs = [Cobs(:); Dobs(:)];
-
-%% Test Data (with noise)
-% % Parameters
-% p = [0.3/n, 0.3]; %[beta, gamma]
-% 
-% % Compute simulation
-% [~,Y] = ode45(@(t,y)sir(t,y,p),t,y0);
-% I = Y(:,2);
-% R = Y(:,3);
-% 
-% % Define total cases and deaths, and add noise
-% noise = 1000*sawtooth(t)';
-% Cobs = I + R + noise;
-% Dobs = R + noise;
-% 
-% % Convert to a single vector
-% Yobs = [Cobs(:); Dobs(:)];
 
 %% Model Solution
 % Define optimization iterations

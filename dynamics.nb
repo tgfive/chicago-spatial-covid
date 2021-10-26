@@ -1,0 +1,627 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     21848,        619]
+NotebookOptionsPosition[     19274,        570]
+NotebookOutlinePosition[     19841,        591]
+CellTagsIndexPosition[     19798,        588]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Stability analysis of ODE model", "Title"],
+ "\n\nIn this document we analyze the stability of the ODE model using the \
+methods as described in [1]."
+}], "Text",
+ CellChangeTimes->{{3.8437791322699003`*^9, 3.843779216547909*^9}, {
+  3.8437798952934513`*^9, 
+  3.843779940297113*^9}},ExpressionUUID->"27ea799d-6f98-45f8-b951-\
+24826b376a5a"],
+
+Cell["\<\
+We define the coupled system of ODE\[CloseCurlyQuote]s. Note that the ODE\
+\[CloseCurlyQuote]s are nonlinear and autonomous.\
+\>", "Text",
+ CellChangeTimes->{{3.843779948742*^9, 3.843780047010211*^9}, {
+  3.843780078115696*^9, 
+  3.843780089912538*^9}},ExpressionUUID->"10b65103-3ce0-4a83-a5a0-\
+8df9f6a86595"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"sT", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "\[Beta]SA"}], "*", "s", "*", "a"}], "-", 
+    RowBox[{"\[Beta]SI", "*", "s", "*", "i"}], "-", 
+    RowBox[{"\[Mu]", "*", "s"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eT", "=", 
+   RowBox[{
+    RowBox[{"\[Beta]SA", "*", "s", "*", "a"}], "+", 
+    RowBox[{"\[Beta]SI", "*", "s", "*", "i"}], "-", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[Sigma]A", "+", "\[Sigma]I"}], ")"}], "*", "e"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"aT", "=", 
+   RowBox[{
+    RowBox[{"\[Sigma]A", "*", "e"}], "-", 
+    RowBox[{"mAR", "*", "a"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"arT", "=", 
+   RowBox[{"mAR", "*", "a"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"iT", "=", 
+   RowBox[{
+    RowBox[{"\[Sigma]I", "*", "e"}], "-", 
+    RowBox[{"m", "*", "i"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hT", "=", 
+   RowBox[{
+    RowBox[{"\[Gamma]", "*", "m", "*", "i"}], "-", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "\[Omega]"}], ")"}], "*", "\[Chi]", "*", "h"}], "-", 
+    RowBox[{"\[Omega]", "*", "\[Psi]", "*", "h"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rT", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "\[Gamma]"}], ")"}], "*", "m", "*", "i"}], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "\[Omega]"}], ")"}], "*", "\[Chi]", "*", "h"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dT", "=", 
+   RowBox[{"\[Omega]", "*", "\[Psi]", "*", "h"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8437723740541*^9, 3.843772413166341*^9}, {
+  3.843772448778346*^9, 3.843772891628488*^9}, {3.843773308840926*^9, 
+  3.843773358430146*^9}, {3.8437734388242083`*^9, 3.843773522885322*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"ce663a41-cba1-4e83-80d9-62f9a08c0601"],
+
+Cell[TextData[{
+ "Now we find any critical points of the system. That is, the solutions of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    StyleBox[
+     SubscriptBox["x", "t"],
+     FontWeight->"Bold"], "=", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "e3920786-4812-49c7-95ac-14e9bd511840"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.843780000142269*^9, 3.8437800018242292`*^9}, {
+  3.843780095817284*^9, 
+  3.8437801696877127`*^9}},ExpressionUUID->"e84c9a67-46c1-4be4-bf79-\
+86c2c3695d5b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"critPts", "=", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"sT", "==", "0"}], "&&", 
+     RowBox[{"eT", "==", "0"}], "&&", 
+     RowBox[{"aT", "==", "0"}], "&&", 
+     RowBox[{"arT", "==", "0"}], "&&", 
+     RowBox[{"iT", "==", "0"}], "&&", 
+     RowBox[{"hT", "==", "0"}], "&&", 
+     RowBox[{"rT", "==", "0"}], "&&", 
+     RowBox[{"dT", "==", "0"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+     "s", ",", "e", ",", "a", ",", "ar", ",", "i", ",", "h", ",", "r", ",", 
+      "d"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8437729153161488`*^9, 3.8437729247170553`*^9}, {
+  3.8437729964583817`*^9, 3.84377310995021*^9}, {3.843773532477929*^9, 
+  3.8437735606191187`*^9}, {3.84377656533464*^9, 3.8437765689543552`*^9}},
+ CellLabel->"In[44]:=",ExpressionUUID->"9c50e4ea-8b7b-4ae7-a5c6-a0012f264a06"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Solve", "svars", 
+   "\"Equations may not give solutions for all \\\"solve\\\" variables.\"", 2,
+    44, 11, 26614818229590717729, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.843773111228979*^9, 3.843773561615838*^9, 
+  3.8437765705956583`*^9},
+ CellLabel->
+  "During evaluation of \
+In[44]:=",ExpressionUUID->"e791c2d3-87dd-437a-b91e-d92f3b8c7255"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"s", "\[Rule]", "0"}], ",", 
+    RowBox[{"e", "\[Rule]", "0"}], ",", 
+    RowBox[{"a", "\[Rule]", "0"}], ",", 
+    RowBox[{"i", "\[Rule]", "0"}], ",", 
+    RowBox[{"h", "\[Rule]", "0"}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.8437731113064537`*^9, 3.8437735616209*^9, 
+  3.843776570601417*^9},
+ CellLabel->"Out[44]=",ExpressionUUID->"278ed84b-c86d-41dc-9c85-0353f35c8229"]
+}, Open  ]],
+
+Cell[TextData[{
+ "This implies there are infinitely many non-isolated fixed points of the \
+form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    StyleBox[
+     SuperscriptBox["x", "*"],
+     FontWeight->"Bold"], "=", 
+    RowBox[{"(", 
+     RowBox[{"0", ",", "0", ",", "0", ",", 
+      StyleBox["AR",
+       FontSlant->"Italic"], ",", "0", ",", "0", ",", "R", ",", "D"}], 
+     ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "aa71a9fd-a7f7-4a52-980f-6d6b73cbbbbc"],
+ ". To analyze the stability of these points, we linearize the system around \
+the fixed points. First we compute the Jacobian ",
+ Cell[BoxData[
+  FormBox["J", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "06a41964-2b45-4964-bc6a-ae1003a7130d"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.8437802527055807`*^9, 3.8437803663134108`*^9}, {
+  3.843780402854039*^9, 3.8437804365098457`*^9}, {3.843780488152821*^9, 
+  3.843780514662318*^9}},ExpressionUUID->"cd1ddbfa-d9c1-4cbd-9853-\
+27390f4b0b8f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"J", "=", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "sT", ",", "eT", ",", "aT", ",", "arT", ",", "iT", ",", "hT", ",", "rT",
+        ",", "dT"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{
+       "s", ",", "e", ",", "a", ",", "ar", ",", "i", ",", "h", ",", "r", ",", 
+        "d"}], "}"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"J", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.8437751334243298`*^9, 3.843775172026222*^9}},
+ CellLabel->"In[45]:=",ExpressionUUID->"0c1ee198-e2e8-491b-a81a-597df02bd3b0"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "a"}], " ", "\[Beta]SA"}], "-", 
+       RowBox[{"i", " ", "\[Beta]SI"}], "-", "\[Mu]"}], "0", 
+      RowBox[{
+       RowBox[{"-", "s"}], " ", "\[Beta]SA"}], "0", 
+      RowBox[{
+       RowBox[{"-", "s"}], " ", "\[Beta]SI"}], "0", "0", "0"},
+     {
+      RowBox[{
+       RowBox[{"a", " ", "\[Beta]SA"}], "+", 
+       RowBox[{"i", " ", "\[Beta]SI"}]}], 
+      RowBox[{
+       RowBox[{"-", "\[Sigma]A"}], "-", "\[Sigma]I"}], 
+      RowBox[{"s", " ", "\[Beta]SA"}], "0", 
+      RowBox[{"s", " ", "\[Beta]SI"}], "0", "0", "0"},
+     {"0", "\[Sigma]A", 
+      RowBox[{"-", "mAR"}], "0", "0", "0", "0", "0"},
+     {"0", "0", "mAR", "0", "0", "0", "0", "0"},
+     {"0", "\[Sigma]I", "0", "0", 
+      RowBox[{"-", "m"}], "0", "0", "0"},
+     {"0", "0", "0", "0", 
+      RowBox[{"m", " ", "\[Gamma]"}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "\[Chi]"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Omega]"}], ")"}]}], "-", 
+       RowBox[{"\[Psi]", " ", "\[Omega]"}]}], "0", "0"},
+     {"0", "0", "0", "0", 
+      RowBox[{"m", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "-", "\[Gamma]"}], ")"}]}], 
+      RowBox[{"\[Chi]", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "-", "\[Omega]"}], ")"}]}], "0", "0"},
+     {"0", "0", "0", "0", "0", 
+      RowBox[{"\[Psi]", " ", "\[Omega]"}], "0", "0"}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.843775172725168*^9, 3.843776600701556*^9},
+ CellLabel->
+  "Out[46]//MatrixForm=",ExpressionUUID->"82d0713a-d4b3-447e-9ad0-\
+f761c1e40c96"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now we evaluate ",
+ Cell[BoxData[
+  FormBox["J", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "b37d13cd-1321-4afe-9235-db0865046817"],
+ " at the fixed point ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SuperscriptBox["x", "*"],
+    FontWeight->"Bold"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "03522aad-bd2c-427c-99d9-499163979cc9"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.843780462372304*^9, 3.843780476951199*^9}, {
+  3.843780780900807*^9, 
+  3.8437807991015053`*^9}},ExpressionUUID->"20dadaca-c2b4-4433-8f29-\
+49dead594e94"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"J1", "=", 
+   RowBox[{"J", "/.", 
+    RowBox[{"critPts", "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"J1", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.8437766086790857`*^9, 3.843776609846627*^9}, {
+  3.843776957872801*^9, 3.843776982104987*^9}, {3.843779236350794*^9, 
+  3.843779239664085*^9}, {3.843779522426581*^9, 3.843779526262907*^9}},
+ CellLabel->"In[60]:=",ExpressionUUID->"eaec7a1c-e2ac-4527-904b-3e20c0003175"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "\[Mu]"}], "0", "0", "0", "0", "0", "0", "0"},
+     {"0", 
+      RowBox[{
+       RowBox[{"-", "\[Sigma]A"}], "-", "\[Sigma]I"}], "0", "0", "0", "0", 
+      "0", "0"},
+     {"0", "\[Sigma]A", 
+      RowBox[{"-", "mAR"}], "0", "0", "0", "0", "0"},
+     {"0", "0", "mAR", "0", "0", "0", "0", "0"},
+     {"0", "\[Sigma]I", "0", "0", 
+      RowBox[{"-", "m"}], "0", "0", "0"},
+     {"0", "0", "0", "0", 
+      RowBox[{"m", " ", "\[Gamma]"}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "\[Chi]"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Omega]"}], ")"}]}], "-", 
+       RowBox[{"\[Psi]", " ", "\[Omega]"}]}], "0", "0"},
+     {"0", "0", "0", "0", 
+      RowBox[{"m", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "-", "\[Gamma]"}], ")"}]}], 
+      RowBox[{"\[Chi]", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "-", "\[Omega]"}], ")"}]}], "0", "0"},
+     {"0", "0", "0", "0", "0", 
+      RowBox[{"\[Psi]", " ", "\[Omega]"}], "0", "0"}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.843779239956958*^9, 3.843779526529292*^9},
+ CellLabel->
+  "Out[61]//MatrixForm=",ExpressionUUID->"960a589a-cc34-4429-b835-\
+9e698bea94bf"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Next we calculate the eigenvalues of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["J", 
+    StyleBox[
+     SuperscriptBox["x", "*"],
+     FontWeight->"Bold"]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f351916e-3b18-4f9a-8cd4-66974b4cfbc5"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.843780857279942*^9, 
+  3.843780888695198*^9}},ExpressionUUID->"6719a337-0421-4acb-bfcc-\
+e86ea7881664"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"eig1", "=", 
+  RowBox[{"Eigenvalues", "[", "J1", "]"}]}]], "Input",
+ CellChangeTimes->{{3.843775223700006*^9, 3.84377523447931*^9}, 
+   3.843776986531818*^9, {3.84377880482687*^9, 3.843778814785796*^9}, {
+   3.843778948563731*^9, 3.843778950292158*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"37b3733d-55ee-410a-9c26-dabd0bcd3347"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "0", ",", "0", ",", 
+   RowBox[{"-", "m"}], ",", 
+   RowBox[{"-", "mAR"}], ",", 
+   RowBox[{"-", "\[Mu]"}], ",", 
+   RowBox[{
+    RowBox[{"-", "\[Sigma]A"}], "-", "\[Sigma]I"}], ",", 
+   RowBox[{
+    RowBox[{"-", "\[Chi]"}], "+", 
+    RowBox[{"\[Chi]", " ", "\[Omega]"}], "-", 
+    RowBox[{"\[Psi]", " ", "\[Omega]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{3.84377522891467*^9, 3.8437769873330517`*^9, 
+  3.84377881597619*^9, 3.843778951165387*^9},
+ CellLabel->"Out[51]=",ExpressionUUID->"36d8f60f-c886-4453-a04e-d01c313820c5"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Note that the first three eigenvalues are ",
+ Cell[BoxData[
+  FormBox["0", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "c5f379c1-b6a2-47cb-95ac-91266832b192"],
+ ", which implies the critical points are non-isolated. This agrees with our \
+earlier observation. These fixed points will be stable when ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Lambda]", "i"], "<", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "02b63eff-07b8-4061-a9e3-f58b099ba2d1"],
+ " for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"4", " ", "<=", "i", "<=", "8"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "d0e2e5b6-7c36-44cc-a4fa-9067a13ea429"],
+ ". All the parameters in this system are positive; that is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"m", ",", 
+    SubscriptBox["m", "AR"], ",", "\[Mu]", ",", 
+    SubscriptBox["\[Sigma]", "A"], ",", 
+    SubscriptBox["\[Sigma]", "I"], ",", "\[Chi]", ",", "\[Omega]", ",", 
+    RowBox[{"\[Psi]", ">", "0"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "305ffe5f-f982-47ce-ba9f-2f82cb2045c7"],
+ ". This implies ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Lambda]", "i"], "<", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "c77956e0-74c8-44c6-99d1-681760018177"],
+ " for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"4", "<=", "i", "<=", "7"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8088441a-4da3-4333-9420-ba53c12498e2"],
+ ". The bifurcation occurs with ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Lambda]", "8"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "89ebf8f3-9738-4e23-9395-3a0bf3039e9a"],
+ ". We solve the inequality ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "\[Chi]"}], "+", "\[Chi]\[Omega]", "-", "\[Psi]\[Omega]"}], 
+    "<", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f8a46016-70bc-4931-a8a3-9c22c1fb879e"],
+ " for ",
+ Cell[BoxData[
+  FormBox["\[Chi]", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "1923557b-1f88-4847-958d-0c21c8055933"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.843780914061406*^9, 3.843780934766383*^9}, {
+  3.843780997959828*^9, 3.843781021248439*^9}, {3.84378106952814*^9, 
+  3.8437811583846188`*^9}, {3.843781234566565*^9, 3.8437814602430143`*^9}, {
+  3.843781493364253*^9, 3.843781571123321*^9}, {3.843782099719081*^9, 
+  3.8437821487775784`*^9}},ExpressionUUID->"4e86ea24-e672-4ea2-9343-\
+843f1bbcd48b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"bif", "=", 
+   RowBox[{"eig1", "[", 
+    RowBox[{"[", "8", "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Reduce", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"bif", "<", "0"}], ",", 
+     RowBox[{"\[Chi]", ">", "0"}], ",", 
+     RowBox[{"\[Omega]", ">", "0"}], ",", 
+     RowBox[{"\[Psi]", ">", "0"}]}], "}"}], ",", "\[Chi]"}], "]"}]}], "Input",\
+
+ CellChangeTimes->{{3.843780600511798*^9, 3.84378076951377*^9}, {
+  3.843781858385172*^9, 3.8437818736112823`*^9}, {3.843781945057897*^9, 
+  3.8437820071078873`*^9}, {3.843782042215733*^9, 3.84378205929278*^9}, {
+  3.843782169842024*^9, 3.8437821702578707`*^9}},
+ CellLabel->"In[92]:=",ExpressionUUID->"aad47fd6-77e8-4d08-9aec-7d38f8c73cf3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Psi]", ">", "0"}], "&&", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"0", "<", "\[Omega]", "\[LessEqual]", "1"}], "&&", 
+      RowBox[{"\[Chi]", ">", "0"}]}], ")"}], "||", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"\[Omega]", ">", "1"}], "&&", 
+      RowBox[{"0", "<", "\[Chi]", "<", 
+       FractionBox[
+        RowBox[{"\[Psi]", " ", "\[Omega]"}], 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "\[Omega]"}]]}]}], ")"}]}], 
+   ")"}]}]], "Output",
+ CellChangeTimes->{
+  3.843781874148984*^9, {3.843781992083838*^9, 3.8437820077454863`*^9}, {
+   3.84378204330438*^9, 3.843782059711138*^9}, 3.8437821710589952`*^9},
+ CellLabel->"Out[93]=",ExpressionUUID->"444da816-200a-4c35-a3b8-f24d900d93ea"]
+}, Open  ]],
+
+Cell[TextData[{
+ "There are two cases:\n1) For ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "<", "\[Omega]", "<=", "1"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "0e3c822c-6134-48e1-894c-d49499717f91"],
+ " the inequality holds,\n2) and for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Omega]", ">", "1"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "19689eec-2952-4aea-ae40-408aca6b03ca"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Chi]", " ", "<", 
+    RowBox[{"\[Psi]\[Omega]", "/", 
+     RowBox[{"(", 
+      RowBox[{"\[Omega]", "-", "1"}], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "33bcbe95-2f62-4789-a43e-c4037f13805d"],
+ " the inequality holds.\nWhen we have either of these conditions the \
+critical points are stable. We call this situation ",
+ StyleBox["endemic.",
+  FontSlant->"Italic"],
+ " If ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Lambda]", "8"], ">", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f7e64925-1d03-47bb-8bd6-3206142a9641"],
+ ", the critical points are unstable. This situation is an ",
+ StyleBox["epidemic",
+  FontSlant->"Italic"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.8437821603709793`*^9, 3.843782161651845*^9}, {
+  3.843782214383418*^9, 3.8437822849715433`*^9}, {3.843782387104652*^9, 
+  3.84378262108772*^9}},ExpressionUUID->"c1e30ecb-56a1-4395-bab1-\
+e64e5cbff30a"],
+
+Cell[TextData[{
+ StyleBox["References\n", "Section"],
+ "\n[1] Strogatz, S. H. (1994). ",
+ StyleBox["Nonlinear dynamics and Chaos: With applications to physics, \
+biology, chemistry, and engineering",
+  FontSlant->"Italic"],
+ ". Reading, Mass: Addison-Wesley Pub. "
+}], "Text",
+ CellChangeTimes->{{3.843782655194717*^9, 3.843782708318269*^9}, 
+   3.8437827679220324`*^9},ExpressionUUID->"d0dec5e9-ccaa-4578-8c61-\
+df67d1e17ca8"]
+},
+WindowSize->{1920, 1027},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PaperOrientation"->"Portrait",
+"PaperSize"->{Automatic, Automatic},
+"PostScriptOutputFile"->""},
+FrontEndVersion->"12.3 for Linux x86 (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c941dcc5-6dc9-49e5-8dc4-d49adababf63"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 368, 8, 119, "Text",ExpressionUUID->"27ea799d-6f98-45f8-b951-24826b376a5a"],
+Cell[929, 30, 320, 7, 35, "Text",ExpressionUUID->"10b65103-3ce0-4a83-a5a0-8df9f6a86595"],
+Cell[1252, 39, 1926, 55, 185, "Input",ExpressionUUID->"ce663a41-cba1-4e83-80d9-62f9a08c0601"],
+Cell[3181, 96, 517, 15, 35, "Text",ExpressionUUID->"e84c9a67-46c1-4be4-bf79-86c2c3695d5b"],
+Cell[CellGroupData[{
+Cell[3723, 115, 850, 20, 30, "Input",ExpressionUUID->"9c50e4ea-8b7b-4ae7-a5c6-a0012f264a06"],
+Cell[4576, 137, 409, 10, 28, "Message",ExpressionUUID->"e791c2d3-87dd-437a-b91e-d92f3b8c7255"],
+Cell[4988, 149, 450, 11, 34, "Output",ExpressionUUID->"278ed84b-c86d-41dc-9c85-0353f35c8229"]
+}, Open  ]],
+Cell[5453, 163, 1005, 27, 35, "Text",ExpressionUUID->"cd1ddbfa-d9c1-4cbd-9853-27390f4b0b8f"],
+Cell[CellGroupData[{
+Cell[6483, 194, 626, 16, 53, "Input",ExpressionUUID->"0c1ee198-e2e8-491b-a81a-597df02bd3b0"],
+Cell[7112, 212, 1986, 56, 169, "Output",ExpressionUUID->"82d0713a-d4b3-447e-9ad0-f761c1e40c96"]
+}, Open  ]],
+Cell[9113, 271, 597, 19, 35, "Text",ExpressionUUID->"20dadaca-c2b4-4433-8f29-49dead594e94"],
+Cell[CellGroupData[{
+Cell[9735, 294, 509, 10, 53, "Input",ExpressionUUID->"eaec7a1c-e2ac-4527-904b-3e20c0003175"],
+Cell[10247, 306, 1597, 45, 167, "Output",ExpressionUUID->"960a589a-cc34-4429-b835-9e698bea94bf"]
+}, Open  ]],
+Cell[11859, 354, 429, 14, 35, "Text",ExpressionUUID->"6719a337-0421-4acb-bfcc-e86ea7881664"],
+Cell[CellGroupData[{
+Cell[12313, 372, 356, 6, 30, "Input",ExpressionUUID->"37b3733d-55ee-410a-9c26-dabd0bcd3347"],
+Cell[12672, 380, 579, 14, 34, "Output",ExpressionUUID->"36d8f60f-c886-4453-a04e-d01c313820c5"]
+}, Open  ]],
+Cell[13266, 397, 2579, 70, 58, "Text",ExpressionUUID->"4e86ea24-e672-4ea2-9343-843f1bbcd48b"],
+Cell[CellGroupData[{
+Cell[15870, 471, 735, 18, 53, "Input",ExpressionUUID->"aad47fd6-77e8-4d08-9aec-7d38f8c73cf3"],
+Cell[16608, 491, 771, 21, 50, "Output",ExpressionUUID->"444da816-200a-4c35-a3b8-f24d900d93ea"]
+}, Open  ]],
+Cell[17394, 515, 1446, 41, 104, "Text",ExpressionUUID->"c1e30ecb-56a1-4395-bab1-e64e5cbff30a"],
+Cell[18843, 558, 427, 10, 97, "Text",ExpressionUUID->"d0dec5e9-ccaa-4578-8c61-df67d1e17ca8"]
+}
+]
+*)
+
