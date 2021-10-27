@@ -8,8 +8,7 @@
 \usepackage{amssymb}
 \usepackage{footnote}
 \usepackage{url}
-\usepackage{natbib}
-\usepackage{pgfplots}
+
 
 %images and image path
 \usepackage{graphicx}
@@ -51,9 +50,11 @@
 
 	\begin{figure}[h]
 		\centering
-		\input{chicago-data}
+		\includegraphics[height=12cm]{chicago-data}
 		\label{fig:data}
-		\caption{no}
+		\caption{Timeline of the progression of COVID-19 in Chicago with key public policy events marked.
+			The COVID-19 data was obtained from the City of Chicago Data Portal \cite{Chicago-cases}.
+			The dates of the policy events were gathered from the Illinois.gov press releases \cite{phase-5}, \cite{mask-lift}, \cite{full-vax}, \cite{start-vax}, \cite{phase-4}, the Chicago Tribune \cite{phase-3}, NBC Chicago \cite{phase-2}}
 	\end{figure}
 
 \section{Model Setup}
@@ -96,7 +97,8 @@
 	
 	\begin{table}[h]
 		\centering
-		\caption{Parameters for Chicago: optimal (best-fitting), median and interquartile range, and variation range used in the optimization algorithm. Initial parameter guesses were uniformly sampled within these ranges.}
+		\caption{Parameters for Chicago: optimal (best-fitting), median and interquartile range, and variation range used in the optimization algorithm.
+			Initial parameter guesses were uniformly sampled within these ranges.}
 		\label{tab:parameters}
 		\begin{tabular}{ c c c c }
 			\hline
@@ -155,6 +157,6 @@
 	If $\lambda_8 > 0$, the equilibrium points are unstable and the situation is an \textit{epidemic}.
 
 \bibliographystyle{abbrv}
-\bibliography{chicago-spatial-covid-draft}
+\bibliography{update-10-22}
 
 \end{document}

@@ -2,52 +2,48 @@ This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: update-10-22.aux
 The style file: abbrv.bst
-I couldn't open database file chicago-spatial-covid-draft.bib
----line 9 of file update-10-22.aux
- : \bibdata{chicago-spatial-covid-draft
- :                                     }
-I'm skipping whatever remains of this command
-I found no \citation commands---while reading file update-10-22.aux
-I found no database files---while reading file update-10-22.aux
-You've used 0 entries,
+Database file #1: update-10-22.bib
+Warning--to sort, need author or key in phase-2
+Warning--empty author in phase-2
+You've used 8 entries,
             2118 wiz_defined-function locations,
-            497 strings with 3740 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
+            532 strings with 5502 characters,
+and the built_in function-call counts, 1778 in all, are:
+= -- 174
+> -- 61
 < -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 26
+- -- 18
+* -- 80
+:= -- 305
+add.period$ -- 30
+call.type$ -- 8
+change.case$ -- 33
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 10
+duplicate$ -- 62
+empty$ -- 168
+format.name$ -- 18
+if$ -- 379
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 8
+missing$ -- 2
+newline$ -- 49
+num.names$ -- 14
+pop$ -- 57
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 25
 quote$ -- 0
-skip$ -- 1
+skip$ -- 51
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 40
+swap$ -- 8
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
-(There were 3 error messages)
+type$ -- 32
+warning$ -- 2
+while$ -- 14
+width$ -- 9
+write$ -- 94
+(There were 2 warnings)
