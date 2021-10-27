@@ -29,7 +29,7 @@ df["Cumulative Deaths"] = df["Daily Deaths"].cumsum()
 df = df.dropna()
 
 # Select a date range (also excludes any missing dates)
-df = df.loc["2020-03-01":"2021-07-16"]
+df = df.loc["2020-03-01":"2021-10-26"]
 
 # Export to a csv
 df.to_csv("chicago_data.csv")
@@ -37,3 +37,7 @@ df.to_csv("chicago_data.csv")
 # Create plot
 df.plot(figsize=(12,8))
 plt.show()
+
+# Export plot
+import tikzplotlib
+tikzplotlib.save("chicago-data.tex")
