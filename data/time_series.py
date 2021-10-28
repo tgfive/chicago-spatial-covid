@@ -7,7 +7,7 @@ df = pd.read_csv("chicago_data.csv", parse_dates=["Date"])
 df = df.set_index(["Date"])
 
 # Select the date range
-start = '2020-03-17' # start of data collection
+start = '2020-03-18' # start of data collection
 end = '2020-09-30' # end of first wave
 
 # Reform dataframe to date range
