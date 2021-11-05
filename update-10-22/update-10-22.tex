@@ -9,11 +9,12 @@
 \usepackage{footnote}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{subcaption}
 
 
 %images and image path
 \usepackage{graphicx}
-\usepackage{subfig}
+%\usepackage{subfig}
 \graphicspath{ {./images/} }
 
 %custom commands
@@ -144,6 +145,24 @@
 			\hline
 		\end{tabular}
 	\end{table}
+
+	\begin{figure}[h!]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[height=6cm]{cases}
+			\label{fig:ode-cases}
+			\caption{Confirmed cases $C(t) = I(t) + R(t) + H(t) + D(t)$.}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[height=6cm]{deaths}
+			\label{fig:ode-deaths}
+			\caption{Number of deaths $D(t)$.}
+		\end{subfigure}
+		\caption{ODE model with fitting to official data from March 18, 2020 ($t_i = 1$) to June 24, 2020 ($t_f = 99$).}
+		\label{fig:ode-results}
+	\end{figure}
 
 \section{ODE Dynamics}
 	We want to understand the trajectories of the dynamics of the ODE system under different initial conditions.

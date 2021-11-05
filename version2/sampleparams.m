@@ -31,5 +31,13 @@ function p0 = sampleparams(lb,ub,n)
     e0i0 = unifrnd(lb(13),ub(13)); % Exposed/Infected
     a0i0 = unifrnd(lb(13),ub(13)); % Asymptomatic/Infected
 
+    if 0 < omega && omega <= 1
+        %disp('Condition 1 stable')
+    elseif 1 < omega && chi < (psi * omega) / (omega - 1)
+        %disp('Conditon 2 stable')
+    else
+        disp('Unstable')
+    end
+
     p0 = [sigma_a, sigma_i, m_ar, m, gamma, omega, chi, psi, beta_sa / n, beta_si / n, eta_sa, eta_si, e0i0, a0i0];
 end

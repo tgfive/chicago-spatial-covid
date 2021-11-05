@@ -22,8 +22,8 @@ function obj = objfun(trange,Yobs,p,q,pops)
     
     % Compute the objective function
     try
-        %obj = norm((Cnum - Cobs).^2 + (Dnum - Dobs).^2);
-        obj = norm(Ynum - Yobs);
+        obj = norm((Cnum - Cobs) + (Dnum - Dobs));
+        %obj = norm(Ynum - Yobs);
     catch
         obj = 100000;
     end
