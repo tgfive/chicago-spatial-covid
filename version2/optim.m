@@ -1,4 +1,4 @@
-%% Main Program
+%% Optimization Program
 %
 %
 %% 
@@ -18,7 +18,7 @@ d0 = 3; % Initial deceased
 mu = 1.8997e-5;
 
 % Lockdown start
-t_q = 4;
+t_q = 15;
 
 %% Optimization Parameter Bounds
 
@@ -40,7 +40,7 @@ t_f = length(time);
 %% Optimum Solution
 
 % Define number of iterations
-iters = 1;
+iters = 20;
     
 % Define fixed parameters
 q = [mu, t_q];
@@ -65,16 +65,18 @@ for iter=1:iters
     toc % End timer
 
     disp("Iteration: " + num2str(iter))
+    
+    % Compute the final solution vector from the median of the estimates
+    pFin = median(pEst,1);
+    
+    % Compute the interquartile range
+    iqrange = iqr(pEst,1);
+    
+    % Save the results to a file
+    save('optimfile.mat','pFin','iqrange')
 end
 
-% Compute the final solution vector from the median of the estimates
-pFin = median(pEst,1);
 
-% Compute the interquartile range
-iqrange = iqr(pEst,1);
-
-% Save the results to a file
-save('optimfile.mat','pFin','iqrange')
 
 % Compute the solution vector
 [T,y] = computemodel(pFin,q,time,pops);
