@@ -60,7 +60,25 @@
 	\end{figure}
 
 \section{Model Setup}
-	\cite{mortality}
+	We estimate the non-COVID death rate $\mu$ using the average United States death rate in urban regions from 2019 \cite{death-trends}.
+	That is, $\mu = 1.8997 \times 10^{-5}$ [per day].
+	
+	\begin{table}[h]
+		\centering
+		\caption{Time sequence of events and simulation times.}
+		\label{tab:times}
+		\begin{tabular}{ c c c c }
+			\hline
+			\hline
+			Initial simulation time	&	Imposed lockdown	&	Effective lockdown	&	Last fitting day	\\
+			\hline
+			March 18, 2020	&	March 21, 2020	&	 April 1, 2020	&	June 24, 2020	\\
+			$t_i = 1$	&	$t_q = 4$	&	$t_q = 15$	&	$t_f = 99$ \\
+			\hline
+			\hline
+		\end{tabular}
+	\end{table}
+	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[height=6cm]{full-model}

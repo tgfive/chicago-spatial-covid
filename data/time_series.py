@@ -8,7 +8,7 @@ df = df.set_index(["Date"])
 
 # Select the date range
 start = '2020-03-18' # start of data collection
-end = '2020-09-30' # end of first wave
+end = '2020-06-24' # end of first wave
 
 # Reform dataframe to date range
 df = df.loc[start:end]
@@ -27,4 +27,4 @@ series["Cases"] = df["Daily Cases"] + df["Daily Hospitalizations"] + df["Cumulat
 series["Removed"] = df["Cumulative Deaths"]
 
 # Export new dataframe to a csv
-series.to_csv("../update-10-22/time_series.csv", header=False, index=False)
+series.to_csv("../version2/time_series.csv", header=False, index=False)

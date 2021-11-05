@@ -22,6 +22,14 @@ J.~Byrne, D.~Petrella, and A.~Lukach.
 \newblock Data retrieved from Chicago Data Portal,
   \url{https://data.cityofchicago.org/Health-Human-Services/Daily-Chicago-COVID-19-Cases-Deaths-and-Hospitaliz/kxzd-kd6a}.
 
+\bibitem{death-trends}
+S.~C. Curtin and M.~R. Spencer.
+\newblock {Trends in death rates in urban and rural areas: United States,
+  1999-2019}.
+\newblock {\em National Center for Health Statistics}, NCHS Data Brief, no 417,
+  September 2021.
+\newblock \url{https://www.cdc.gov/nchs/products/databriefs/db417.htm}.
+
 \bibitem{phase-4}
 {Illinois.gov}.
 \newblock {Gov. Pritzker releases guidelines to safely reopen additional
@@ -56,12 +64,5 @@ J.~Byrne, D.~Petrella, and A.~Lukach.
   seniors}.
 \newblock Press Release, March 2021.
 \newblock \url{https://www.illinois.gov/news/press-release.22868.html}.
-
-\bibitem{mortality}
-J.~Xu, S.~L. Murphy, K.~D. Kochnanek, and E.~Arias.
-\newblock {Mortality in the United States, 2018}.
-\newblock {\em National Center for Health Statistics}, NCHS Data Brief, no 355,
-  January 2020.
-\newblock \url{https://www.cdc.gov/nchs/products/databriefs/db355.htm}.
 
 \end{thebibliography}
