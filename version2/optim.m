@@ -12,6 +12,9 @@ clc
 load('params.mat');
 
 %% Optimization Parameter Bounds
+% Bounds are in the form:
+% [beta_si, beta_sa, eta_si, eta_sa, sigma_i, sigma_a, m, m_ar, chi, psi,
+% gamma, omega, e0/i0, a0/i0]
 
 % Lower bounds
 lb = [0, 0, 0, 0, 2, 2, 5, 5, 5, 5, 0.25, 0.1, 1, 1];
@@ -31,11 +34,14 @@ t_f = length(time);
 %% Optimum Solution
 
 % Define number of iterations
-iters = 3;
+iters = 1;
     
 % Define fixed parameters
 q = [mu, t_q];
 pops = [n, i0, h0, d0];
+
+% Preallocate the estimate matrix
+pEst = zeros(iters,length(lb));
 
 % Perform optimization iterations
 tic % Start timer
@@ -45,7 +51,7 @@ for iter=1:iters
     p0 = sampleparams(lb,ub,n);
     
     % Compute parameter estimate
-    pEst(iter,:) = fminsearch(@(p)objfun(time,Yobs,p,q,pops),p0);
+    pEst(iter,:) = fminsearch(@(p)objfun(time,Cobs,Dobs,p,q,pops),p0);
 
     disp("Iteration: " + num2str(iter))
 end

@@ -1,4 +1,4 @@
-function obj = objfun(trange,Yobs,p,q,pops)
+function obj = objfun(trange,Cobs,Dobs,p,q,pops)
 % OBJFUN   Compute objective function.
 %   obj = objfun(trange,Yobs,p,q,y0) compute norm2(Ynum - Yobs)
 %   where Ynum is the solution to sir(t,y,p1) over trange with
@@ -17,14 +17,6 @@ function obj = objfun(trange,Yobs,p,q,pops)
     Cnum = i + h + r + d;
     Dnum = d;
     
-    % Convert to a single vector
-    Ynum = [Cnum(:); Dnum(:)];
-    
     % Compute the objective function
-    try
-        %obj = norm((Cnum - Cobs).^2 + (Dnum - Dobs).^2);
-        obj = norm(Ynum - Yobs);
-    catch
-        obj = 100000;
-    end
+    obj = sum(vecnorm(log(Cnum) - log(Cobs)) + vecnorm(log(Dnum) - log(Dobs)));
 end

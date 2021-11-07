@@ -36,21 +36,21 @@ df.to_csv("chicago_data.csv")
 
 # Create labels
 label_list = [
-    (pd.to_datetime("2020-03-21"), 'Shelter-in-place\nbegins.', 'm', 1000),
-    (pd.to_datetime("2020-04-24"), 'Mask mandate\nbegins.', 'brown', 1550),
-    (pd.to_datetime("2020-05-5"), 'Phase 2', 'c', 200),
-    (pd.to_datetime("2020-05-29"), 'Shelter-in-place\nends.', 'm', 1000),
-    (pd.to_datetime("2020-06-3"), 'Phase 3', 'c', 550),
-    (pd.to_datetime("2020-06-26"), 'Phase 4', 'c', 200),
-    (pd.to_datetime("2021-01-25"), 'Limited vaccination begins.', 'indigo', 1000),
-    (pd.to_datetime("2021-04-12"), 'General vaccination\nbegins.', 'indigo', 500),
-    (pd.to_datetime("2021-05-18"), 'Mask mandate\nends.', 'brown', 1050),
-    (pd.to_datetime("2021-06-11"), 'Phase 5', 'c', 200),
-    (pd.to_datetime("2021-08-30"), 'Mask mandate\nreinstated.', 'brown', 1000)
+    (pd.to_datetime("2020-03-21"), 'Shelter-in-place\nbegins.', 'm', 6000),
+    (pd.to_datetime("2020-04-24"), 'Mask mandate\nbegins.', 'brown', 7600),
+    (pd.to_datetime("2020-05-5"), 'Phase 2', 'c', 1000),
+    (pd.to_datetime("2020-05-29"), 'Shelter-in-place\nends.', 'm', 6000),
+    (pd.to_datetime("2020-06-3"), 'Phase 3', 'c', 3700),
+    (pd.to_datetime("2020-06-26"), 'Phase 4', 'c', 1000),
+    (pd.to_datetime("2021-01-25"), 'Limited vaccination begins.', 'indigo', 2000),
+    (pd.to_datetime("2021-04-12"), 'General vaccination\nbegins.', 'indigo', 7600),
+    (pd.to_datetime("2021-05-18"), 'Mask mandate\nends.', 'brown', 5600),
+    (pd.to_datetime("2021-06-11"), 'Phase 5', 'c', 2000),
+    (pd.to_datetime("2021-08-30"), 'Mask mandate\nreinstated.', 'brown', 5600)
 ]
 
 # Create plot
-df.plot(figsize=(12,8))
+df.plot(figsize=(12,8),logy=True,kind='line',style=['.','.','.','-'])
 
 ax = plt.gca()
 for date_point, label, clr, y in label_list:

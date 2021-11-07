@@ -21,9 +21,6 @@ load('optimfile.mat', 'pFin');
 %% Load Observed Data
 [time, Cobs, Dobs] = loadData("time_series.csv");
 
-% Create y vector
-Yobs = [Cobs(:); Dobs(:)];
-
 % Define end of simulation time
 t_f = length(time);
 
@@ -50,7 +47,7 @@ Dnum = d;
 % Total cases
 cFig = figure(1);
 semilogy(T,Cnum,'r-',time,Cobs,'k.')
-legend('$C_{num}(t)$','$C_{obs}(t)$','Interpreter','latex','Location','southeast')
+legend('$C_\mathrm{num}(t)$','$C_\mathrm{obs}(t)$','Interpreter','latex','Location','southeast')
 xlabel('$t$ (days from March 18)','interpreter','latex')
 ylabel('$C(t)$','interpreter','latex')
 set(gca,'TickLabelInterpreter','latex')
@@ -58,7 +55,7 @@ set(gca,'TickLabelInterpreter','latex')
 % Total deaths
 dFig = figure(2);
 semilogy(T,Dnum,'r-',time,Dobs,'k.')
-legend('$D_{num}(t)$','$D_{obs}(t)$','Interpreter','latex','Location','southeast')
+legend('$D_\mathrm{num}(t)$','$D_\mathrm{obs}(t)$','Interpreter','latex','Location','southeast')
 xlabel('$t$ (days from March 18)','interpreter','latex')
 ylabel('$D(t)$','interpreter','latex')
 set(gca,'TickLabelInterpreter','latex')

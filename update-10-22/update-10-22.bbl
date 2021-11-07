@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{phase-2}
 {Read the full ‘restore Illinois' plan aimed at reopening the state during
@@ -29,6 +29,12 @@ S.~C. Curtin and M.~R. Spencer.
 \newblock {\em National Center for Health Statistics}, NCHS Data Brief, no 417,
   September 2021.
 \newblock \url{https://www.cdc.gov/nchs/products/databriefs/db417.htm}.
+
+\bibitem{Diekmann-1990}
+O.~Diekmann, J.~Heesterbeek, and J.~Metz.
+\newblock On the definition and the computation of the basic reproduction ratio
+  $r_0$ in models for infectious diseases in heterogeneous populations.
+\newblock {\em Journal of Mathematical Biology}, 28:365--382, 1990.
 
 \bibitem{phase-4}
 {Illinois.gov}.
@@ -64,5 +70,11 @@ S.~C. Curtin and M.~R. Spencer.
   seniors}.
 \newblock Press Release, March 2021.
 \newblock \url{https://www.illinois.gov/news/press-release.22868.html}.
+
+\bibitem{VANDENDRIESSCHE200229}
+P.~{van den Driessche} and J.~Watmough.
+\newblock Reproduction numbers and sub-threshold endemic equilibria for
+  compartmental models of disease transmission.
+\newblock {\em Mathematical Biosciences}, 180(1):29--48, 2002.
 
 \end{thebibliography}
