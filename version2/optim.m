@@ -48,10 +48,11 @@ tic % Start timer
 for iter=1:iters
 
     % Sample starting parameters
-    p0 = sampleparams(lb,ub,n);
+    %p0 = sampleparams(lb,ub,n);
+    p0 = (lb + ub) / 2;
     
     % Compute parameter estimate
-    pEst(iter,:) = fminsearch(@(p)objfun(time,Cobs,Dobs,p,q,pops),p0);
+    pEst(iter,:) = fmincon(@(p)objfun(time,Cobs,Dobs,p,q,pops),p0,[],[],[],[],lb,ub);
 
     disp("Iteration: " + num2str(iter))
 end

@@ -10,7 +10,6 @@
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{subcaption}
-\usepackage{multirow}
 
 
 %images and image path
@@ -94,24 +93,61 @@
 		\caption{Schematic diagram of the model. The dashed lines indicate the interaction of the infected populations with the susceptible populations that leads to infection.}
 	\end{figure}
 
-	\begin{align}
-		\label{eq:s_t}
-		S_t &=	\D_S \Delta S - \beta_{SA} S A - \beta_{SI} S I - \mu S, \\
-		\label{eq:e_t}
-		E_t	&=	\D_E \Delta E + \beta_{SA} S A + \beta_{SI} S I - (\sigma_A + \sigma_I) E, \\
-		\label{eq:ar_t}
+	\begin{align*}
+		S_t &=	\D_S \Delta S - \frac{\beta_{A} A}{N} S - \frac{\beta_{I} I}{N} S - \mu S, \\
+		E_t	&=	\D_E \Delta E + \frac{\beta_{A} A}{N} S + \frac{\beta_{I} I}{N} S - (\sigma_A + \sigma_I) E, \\
 		AR_t &= M_{AR} A, \\
-		\label{eq:a_t}
 		A_t	&=	\D_A \Delta A + \sigma_A E - M_{AR} A, \\
-		\label{eq:i_t}
 		I_t	&=	\sigma_I E - M I, \\
-		\label{eq:h_t}
 		H_t	&=	\gamma M I - (1 - \omega) \chi H - \omega \psi H, \\
-		\label{eq:r_t}
 		R_t	&=	(1 - \gamma) M I + (1 - \omega) \chi H, \\
-		\label{eq:d_t}
 		D_t	&=	\omega \psi H.
+	\end{align*}
+	
+	We begin by reducing the model.
+	First, we ignore non-COVID deaths, so $\mu = 0$.
+	Next we introduce the fractions
+	\begin{align*}
+		s &= \frac{S}{N}, & e &= \frac{E}{N}, & ar &= \frac{AR}{N}, & a &= \frac{A}{N}, \\
+		i &= \frac{I}{N}, & h &= \frac{H}{N}, & r &= \frac{R}{N}, & d &= \frac{D}{N}.
+	\end{align*}
+	With these fractions and $\mu = 0$, we have the conservation law
+	\begin{equation} \label{eq:conservation}
+		s + e + ar + a + i + h + r + d = 1.
+	\end{equation}
+	The ODE system becomes
+	\begin{align*}
+		s_t &=	 - \beta_{A} a s - \beta_{I} i s, \\
+		e_t	&=	\beta_{A} a s + \beta_{I} i s - (\sigma_A + \sigma_I) e, \\
+		ar_t &= M_{AR} a, \\
+		a_t	&=	\sigma_A e - M_{AR} a, \\
+		i_t	&=	\sigma_I e - M i, \\
+		h_t	&=	\gamma M i - (1 - \omega) \chi h - \omega \psi h, \\
+		r_t	&=	(1 - \gamma) M i + (1 - \omega) \chi h, \\
+		d_t	&=	\omega \psi h.
+	\end{align*}
+	At this point it is worth noting the dimensions of the components of the system.
+	Since $[X] = \mathrm{population}$ where $X \in \{N, S, E, AR, A, I, H, R, D\}$, then $[x] = 1$ where $x \in \{s, e, ar, a, i, h, r, d\}$.
+	Then,
+	$$[\beta_A] = [\beta_I] = [\sigma_A] = [\sigma_I] = [M_{AR}] = [M] = [\chi] = [\psi] = \frac{1}{T}$$
+	and $[\omega] = [\gamma] = 1$.
+	We introduce the non-dimensional time variable $\tau = t M$.
+	Then by the chain rule, $x_t = M x_\tau$.
+	Next, we define the following non-dimensional parameters
+	\begin{align*}
+		\alpha_A &= \frac{\beta_A}{M}, & \alpha_I &= \frac{\beta_I}{M}, & \lambda_A &= \frac{\sigma_A}{M}, & \lambda_I &= \frac{\sigma_I}{M}
+	\end{align*}
+	
+	Using these non-dimensional parameters and the conservation law in Equation \ref{eq:conservation}, we can replace the ODE system with
+	\begin{align}
+		s_\tau &= - \alpha_A a s - \alpha_I i s, \\
+		e_\tau &= \alpha_A a s + \alpha_I i s - (\lambda_A + \lambda_I) e, \\
+		ar_\tau &= \xi a, \\
+		a_\tau &= \lambda_A e - \xi a, \\
+		i_\tau &= \lambda_I e - i
 	\end{align}
+	
+	
 	
 	To create the PDE model, we first must find suitable parameters using the ODE model as in previous studies.
 	We utilize the MATLAB nonlinear optimization algorithm \verb|fminsearch| for this purpose.
@@ -159,8 +195,8 @@
 			\hline
 																								&					&	Median (IQR)	&	Initial value \\
 			\hline
-			Transmission rate, $S \to I$ [per day]\textsuperscript{a}							&	$\beta_{SI}$	&									&	$c \in \U [0,1]$ \\
-			Transmission rate, $S \to A$ [per day]\textsuperscript{a}							&	$\beta_{SA}$	&									& 	$c \in \U [0,1]$ \\
+			Transmission rate, $S \to I$							&	$\beta_{SI}$	&									&	$c \in \U [0,1]$ \\
+			Transmission rate, $S \to A$							&	$\beta_{SA}$	&									& 	$c \in \U [0,1]$ \\
 			Lockdown effect, $S \to I$															&	$\eta_{SI}$ 	&									& 	$c \in \U [0,1]$ \\
 			Lockdown effect, $S \to A$															&	$\eta_{SA}$		&									& 	$c \in \U [0,1]$ \\
 			Incubation period, $E \to I$ [days]													&	$1 / \sigma_I$	&									& 	$1 / k, k \in \U [2,7]$ \\
@@ -175,7 +211,6 @@
 			Initial population fraction, asymptomatic											&	$A_0 / I_0$		&									& 	$c \in \U [1,5]$ \\
 			\hline
 			\hline
-			\multicolumn{4}{c}{\small \textsuperscript{a} Note: The transmission rates $\beta$ must be divided by $N$ when used in the ODE model.}
 		\end{tabular}
 	\end{table}
 
