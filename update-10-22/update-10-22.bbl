@@ -22,14 +22,6 @@ J.~Byrne, D.~Petrella, and A.~Lukach.
 \newblock Data retrieved from Chicago Data Portal,
   \url{https://data.cityofchicago.org/Health-Human-Services/Daily-Chicago-COVID-19-Cases-Deaths-and-Hospitaliz/kxzd-kd6a}.
 
-\bibitem{death-trends}
-S.~C. Curtin and M.~R. Spencer.
-\newblock {Trends in death rates in urban and rural areas: United States,
-  1999-2019}.
-\newblock {\em National Center for Health Statistics}, NCHS Data Brief, no 417,
-  September 2021.
-\newblock \url{https://www.cdc.gov/nchs/products/databriefs/db417.htm}.
-
 \bibitem{Diekmann-1990}
 O.~Diekmann, J.~Heesterbeek, and J.~Metz.
 \newblock On the definition and the computation of the basic reproduction ratio

@@ -53,22 +53,32 @@
 
 	\begin{figure}[h]
 		\centering
-		\includegraphics[height=12cm]{chicago-data2}
-		\label{fig:data}
+		\includegraphics[height=11cm]{chicago-data2}
+		
 		\caption{Timeline of the progression of COVID-19 in Chicago with key public policy events marked.
 			The COVID-19 data was obtained from the City of Chicago Data Portal \cite{Chicago-cases}.
 			The dates of the policy events were gathered from the Illinois.gov press releases \cite{phase-5}, \cite{mask-lift}, \cite{full-vax}, \cite{start-vax}, \cite{phase-4}, the Chicago Tribune \cite{phase-3}, and NBC Chicago \cite{phase-2}.
 			Note the logarithmic scale.}
+		\label{fig:data}
 	\end{figure}
 
 \section{Model Setup}
-	We begin by explaining the ODE model.
-	This is obtained from the full PDE model in Equations (\ref{eq:s_t})-(\ref{eq:d_t}) by simply removing the diffusion terms.
+	The formulation presented here extends the standard SIR model to incorporate some key aspects of the COVID-19 virus.
+	A schematic of the model is given in Figure \ref{fig:model}.
 	
-	We extend the standard SIR model to incorporate key aspects of the COVID-19 virus.
+	We begin with a population of \textit{susceptibles} $S$, which may become \textit{exposed} $E$ due to the appearance of the virus in the population.
+	This represents the feature of COVID-19 to remain latent within the host for some time before the host becomes infectious.
+	After the latent period, exposed individuals may become \textit{asymptomatically infectious} $A$ or \textit{symptomatically infectious} $I$.
+	We assume both $A$ and $I$ can interact with $S$ to draw new members into $E$.
+	A fraction of hosts in $I$ may require hospitalization, generating the \textit{hospitalized} $H$ population.
+	A fraction of the $H$ population is successfully treated, moving to the \textit{recovered} $R$ population.
+	The remaining population in $H$ do not recover, leading the the population of \textit{deceased} $D$.
+	Meanwhile, asymptomatic hosts are assumed to all recover, moving to the \textit{asymptomatic recovered} $AR$ population.
 	
-	Given the time scale of the pandemic, we model a weak effect of the change in the susceptible population from births or other mortality factors with the term $- \mu S$.
-	We estimate $\mu = 1.8997 \times 10^{-5}$ [per day] using the average United States death rate in urban regions from 2019 \cite{death-trends}.
+	Importantly, the transfer between population groups is defined by the Law of Mass Action.
+	We consider $I/N$ and $A/N$ to be the probability of selecting an infective or asymptomatic individual, respectively.
+	Then we define the force of infection on $S$ as $\beta_I I / N$ and $\beta_A A / N$.
+	Thus, the rate of new infections are described by $\beta_I I S / N$ and $\beta_A A S / N$.
 	
 	\begin{table}[h]
 		\centering
@@ -89,43 +99,36 @@
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[height=6cm]{full-model}
-		\label{fig:model}
 		\caption{Schematic diagram of the model. The dashed lines indicate the interaction of the infected populations with the susceptible populations that leads to infection.}
+		\label{fig:model}
 	\end{figure}
 
+	The full model, including spatial terms, can be described by the following system of equations.
 	\begin{align*}
 		S_t &=	\D_S \Delta S - \frac{\beta_{A} A}{N} S - \frac{\beta_{I} I}{N} S - \mu S, \\
 		E_t	&=	\D_E \Delta E + \frac{\beta_{A} A}{N} S + \frac{\beta_{I} I}{N} S - (\sigma_A + \sigma_I) E, \\
-		AR_t &= M_{AR} A, \\
 		A_t	&=	\D_A \Delta A + \sigma_A E - M_{AR} A, \\
+		AR_t &= M_{AR} A, \\		
 		I_t	&=	\sigma_I E - M I, \\
 		H_t	&=	\gamma M I - (1 - \omega) \chi H - \omega \psi H, \\
 		R_t	&=	(1 - \gamma) M I + (1 - \omega) \chi H, \\
 		D_t	&=	\omega \psi H.
 	\end{align*}
+	The $- \mu S$ term models the net change in the population due to non-COVID factors.
 	
+\section{ODE Model}
 	We begin by reducing the model.
-	First, we ignore non-COVID deaths, so $\mu = 0$.
-	Next we introduce the fractions
+	We introduce the fractions
 	\begin{align*}
-		s &= \frac{S}{N}, & e &= \frac{E}{N}, & ar &= \frac{AR}{N}, & a &= \frac{A}{N}, \\
+		s &= \frac{S}{N}, & e &= \frac{E}{N}, & a &= \frac{A}{N}, & ar &= \frac{AR}{N}, \\
 		i &= \frac{I}{N}, & h &= \frac{H}{N}, & r &= \frac{R}{N}, & d &= \frac{D}{N}.
 	\end{align*}
-	With these fractions and $\mu = 0$, we have the conservation law
+	Next, we ignore non-COVID deaths.
+	That is, set $\mu = 0$.
+	This gives the conservation law
 	\begin{equation} \label{eq:conservation}
 		s + e + ar + a + i + h + r + d = 1.
 	\end{equation}
-	The ODE system becomes
-	\begin{align*}
-		s_t &=	 - \beta_{A} a s - \beta_{I} i s, \\
-		e_t	&=	\beta_{A} a s + \beta_{I} i s - (\sigma_A + \sigma_I) e, \\
-		ar_t &= M_{AR} a, \\
-		a_t	&=	\sigma_A e - M_{AR} a, \\
-		i_t	&=	\sigma_I e - M i, \\
-		h_t	&=	\gamma M i - (1 - \omega) \chi h - \omega \psi h, \\
-		r_t	&=	(1 - \gamma) M i + (1 - \omega) \chi h, \\
-		d_t	&=	\omega \psi h.
-	\end{align*}
 	At this point it is worth noting the dimensions of the components of the system.
 	Since $[X] = \mathrm{population}$ where $X \in \{N, S, E, AR, A, I, H, R, D\}$, then $[x] = 1$ where $x \in \{s, e, ar, a, i, h, r, d\}$.
 	Then,
@@ -145,19 +148,22 @@
 		s_\tau &= - \alpha_A a s - \alpha_I i s, \\
 		\label{eq:e_t}
 		e_\tau &= \alpha_A a s + \alpha_I i s - (\lambda_A + \lambda_I) e, \\
-		\label{eq:ar_t}
-		ar_\tau &= \xi a, \\
 		\label{eq:a_t}
 		a_\tau &= \lambda_A e - \xi a, \\
+		\label{eq:ar_t}
+		ar_\tau &= \xi a, \\
 		\label{eq:i_t}
 		i_\tau &= \lambda_I e - i, \\
+		\label{eq:h_t}
+		h_\tau &= \gamma i - (1 - \omega) \theta h - \omega \kappa h, \\
 		\label{eq:r_t}
 		r_\tau &= (1 - \gamma) i + (1 - \omega) \theta h.
 	\end{align}
 	Then by the conservation law, we have
 	\begin{equation} \label{eq:d_t}
-		d = n - (s + e + ar + a + i + r).
+		d = n - (s + e + a + ar + i + r)
 	\end{equation}
+	so we need not solve the differential equation for $d$.
 	
 	To create the PDE model, we first must find suitable parameters using the ODE model as in previous studies.
 	We utilize the MATLAB nonlinear optimization algorithm \verb|fminsearch| for this purpose.
@@ -168,6 +174,10 @@
 	where the index $i$ identifies a point in the time series.
 	The parameters are chosen to reproduce the time series of the total number of cases $C(t) = I(t) + H(t) + R(t) + D(t)$, and the total number of deceased $D(t)$.
 	
+	We seed the ODE model using data from March 13, 2020 as collected on the City of Chicago Data Portal \cite{Chicago-cases}.
+	The data collected is in Cases, Hospitalized, and Deceased.
+	In order to get the initial infected population $I_0$, we take $I_0 = \mathrm{Cases} - H_0 - D_0$.
+	The relevant data is shown in Table \ref{tab:populations}.
 	\begin{table}[h]
 		\centering
 		\caption{Population values for Chicago.
@@ -179,7 +189,7 @@
 			&	&	Population \\
 			\hline
 			Total population		&	$N$		&	2,695,598 \\
-			Initial infected		&	$I_0$	&	162	\\
+			Initial infected		&	$I_0$	&	121	\\
 			Initial hospitalized	&	$H_0$	&	38 \\
 			Initial deceased		&	$D_0$	&	3 \\
 			\hline
@@ -205,9 +215,9 @@
 			\hline
 																								&					&	Median (IQR)	&	Initial value \\
 			\hline
-			Transmission rate, $S \to I$														&	$\beta_{I}$	&									&	$c \in \U [0,1]$ \\
-			Transmission rate, $S \to A$														&	$\beta_{A}$	&									& 	$c \in \U [0,1]$ \\
-			Lockdown effect, $S \to I$															&	$\eta_{I}$ 	&									& 	$c \in \U [0,1]$ \\
+			Transmission rate, $S \to I$ [per day]												&	$\beta_{I}$		&									&	$c \in \U [0,1]$ \\
+			Transmission rate, $S \to A$ [per day]												&	$\beta_{A}$		&									& 	$c \in \U [0,1]$ \\
+			Lockdown effect, $S \to I$															&	$\eta_{I}$ 		&									& 	$c \in \U [0,1]$ \\
 			Lockdown effect, $S \to A$															&	$\eta_{A}$		&									& 	$c \in \U [0,1]$ \\
 			Incubation period, $E \to I$ [days]													&	$1 / \sigma_I$	&									& 	$1 / k, k \in \U [2,7]$ \\
 			Latent period, $E \to A$ [days]														&	$1 / \sigma_A$	&									& 	$1 / k, k \in \U [2,7]$ \\
@@ -229,55 +239,73 @@
 		\begin{subfigure}{0.5\textwidth}
 			\centering
 			\includegraphics[height=6cm]{cases}
-			\label{fig:ode-cases}
 			\caption{Confirmed cases $C(t) = I(t) + R(t) + H(t) + D(t)$.}
+			\label{fig:ode-cases}
 		\end{subfigure}%
 		\begin{subfigure}{0.5\textwidth}
 			\centering
 			\includegraphics[height=6cm]{deaths}
-			\label{fig:ode-deaths}
 			\caption{Number of deaths $D(t)$.}
+			\label{fig:ode-deaths}
 		\end{subfigure}
 		\caption{ODE model with fitting to official data from March 18, 2020 ($t_i = 1$) to June 24, 2020 ($t_f = 99$).
 		Here we show the case when $\beta$ changes exactly on the imposed lockdown on March 21, 2020 ($t_q = 4$).}
 		\label{fig:ode-results}
 	\end{figure}
 
+\section{PDE Model}
+	\begin{figure}[h!]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[height=6cm]{domain}
+			\caption{Computational domain for the PDE model.}
+			\label{fig:domain}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[height=6cm]{mesh}
+			\caption{Preliminary mesh of the domain.}
+			\label{fig:mesh}
+		\end{subfigure}
+		\caption{Computational domain and initial meshing for the PDE model.}
+		\label{fig:pde}
+	\end{figure}
+
 \section{ODE Dynamics}
 	We want to understand the trajectories of the dynamics of the ODE system (\ref{eq:s_t})-(\ref{eq:d_t}) under different initial conditions.
 	To do this we first find the equilibrium points by solving
-	$$S_t = E_t = A_t = I_t = H_t = R_t = D_t = 0$$
-	simultaneously for $\vec{x} = (S, E, A, AR, I, H, R, D)^\intercal$.
-	The solutions of this system are of the form $\vec{x^*} = (0, 0 , 0, AR, 0, 0, R, D)^\intercal$.
+	$$s_\tau = e_\tau = ar_\tau = a_\tau = i_\tau = h_\tau = r_\tau = 0$$
+	simultaneously for $\vec{x} = (s, e, a, ar, i, h, r)^\intercal$.
+	The solutions of this system are of the form $\vec{x^*} = (0, 0 , 0, AR, 0, 0, r)^\intercal$.
 	This implies there are infinitely many non-isolated equilibrium points.
 	We determine the stability of these equilibrium points by analyzing the linearized system near the points.
 	The Jacobian of the system is
 	\begin{equation}
 		\mat{J} = \begin{pmatrix}
-			- A \beta_{SA} - I \beta_{SI} - \mu	&	0						&	- S \beta_{SA}	&	0	&	- S \beta_{SI}	&	0									&	0	&	0	\\
-			A \beta_{SA} + I \beta_{SI}			&	- \sigma_A - \sigma_I	&	S \beta_{SA}	&	0	&	S \beta_{SI}	&	0									&	0	&	0	\\
-			0									&	\sigma_A				&	- M_{AR}		&	0	&	0				&	0									&	0	&	0	\\
-			0									&	0						&	M_{AR}			&	0	&	0				&	0									&	0	&	0	\\
-			0									&	\sigma_I				&	0				&	0	&	- M				&	0									&	0	&	0	\\
-			0									&	0						&	0				&	0	&	M \gamma		&	- \chi (1 - \omega) - \psi \omega	&	0	&	0	\\
-			0									&	0						&	0				&	0	&	M (1 - \gamma)	&	\chi (1 - \omega)					&	0	&	0	\\
-			0									&	0						&	0				&	0	&	0				&	\psi \omega							&	0	&	0
+			- a \alpha_{a} - i \alpha_{i}		&	0						&	- s \alpha_{a}	&	0	&	- s \alpha_{i}	&	0										&	0	\\
+			a \alpha_{a} + i \alpha_{i}			&	- \lambda_a - \lambda_i	&	s \alpha_{a}	&	0	&	s \alpha_{i}	&	0										&	0	\\
+			0									&	\lambda_a				&	- \xi			&	0	&	0				&	0										&	0	\\
+			0									&	0						&	\xi				&	0	&	0				&	0										&	0	\\
+			0									&	\lambda_i				&	0				&	0	&	- 1				&	0										&	0	\\
+			0									&	0						&	0				&	0	&		\gamma		&	- \theta (1 - \omega) - \kappa \omega	&	0	\\
+			0									&	0						&	0				&	0	&	1 - \gamma		&	\theta (1 - \omega)						&	0
 		\end{pmatrix}.
 	\end{equation}
 	Now evaluating $\mat{J}$ at the equilibrium point $\vec{x^*}$ and calculating the eigenvalues, we have
 	\begin{equation}
-		\vec{\lambda} = \{0 , 0, 0, - M, - M_{AR}, - \mu, - \sigma_A - \sigma_I, - \chi + \chi \omega - \psi \omega \}.
+		\vec{\lambda} = \{-1 , 0, 0, 0, - \lambda_a - \lambda_i , - \xi, - \theta + \theta \omega - \kappa \omega\}.
 	\end{equation}
-	Note that the first three eigenvalues are 0, which implies the equilibrium points are non-isolated.
+	Note that three of the eigenvalues are 0, which implies the equilibrium points are non-isolated.
 	This agrees with our earlier observation.
 	
-	The equilibrium points are stable when $\lambda_i < 0$ for $4 \leq i \leq 8$.
-	Since all the system parameters are positive, this implies $\lambda_i < 0$ for $4 \leq i \leq 7$.
-	Thus the stability depends on the sign of $\lambda_8$.
-	There are two cases when $\lambda_8 = - \chi + \chi \omega - \psi \omega < 0$ is true:
+	The equilibrium points are stable when $\lambda_i < 0$ for $5 \leq i \leq 7$.
+	Since all the system parameters are positive, this implies $\lambda_i < 0$ for $i = 5$ and $i = 6$.
+	Thus the stability depends on the sign of $\lambda_7$.
+	There are two cases when $\lambda_7 = - \theta + \theta \omega - \kappa \omega < 0$ is true:
 	\begin{enumerate}
 		\item $0 < \omega \leq 1$ implies $\lambda_8 < 0$, and
-		\item $\omega > 1$ and $\chi < \frac{\psi \omega}{\omega - 1}$ implies $\lambda_8 < 0$.
+		\item $\omega > 1$ and $\theta < \frac{\kappa \omega}{\omega - 1}$ implies $\lambda_8 < 0$.
 	\end{enumerate}
 	That is, whenever we have either of these conditions the equilibrium points are stable.
 	If $\lambda_8 > 0$, the equilibrium points are unstable.

@@ -10,17 +10,19 @@ function dydt = sir(t,y,p,t_q)
     
     % System parameters
     % Optimized parameters (p vector)
-    alpha_a = p(1);
+     = p(1);
     alpha_i = p(2);
-    eta_a = p(3);
-    eta_i = p(4);
-    lambda_a = p(5);
-    lambda_i = p(6);
-    xi = p(7);
-    gamma = p(8);
-    omega = p(9);
-    theta = p(10);
-    kappa = p(11);
+    m_ar = p(3);
+    m = p(4);
+    gamma = p(5);
+    omega = p(6);
+    chi = p(7);
+    psi = p(8);
+    alpha_sa = p(9);
+    beta_si = p(10);
+    eta_a = p(11);
+    eta_i = p(12);
+    
     
     % Calculate time dependent betas
     alpha_i_t = betafun([alpha_i,eta_i],t_q,t);

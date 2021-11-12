@@ -1,0 +1,2 @@
+	Given the time scale of the pandemic, we model a weak effect of the change in the susceptible population from births or other mortality factors with the term $- \mu S$.
+	We estimate $\mu = 1.8997 \times 10^{-5}$ [per day] using the average United States death rate in urban regions from 2019 \cite{death-trends}.

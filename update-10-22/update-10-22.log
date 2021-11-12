@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  11 NOV 2021 20:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.19)  12 NOV 2021 10:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -422,25 +422,20 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<chicago-data2.pdf, id=12, 867.24pt x 578.16pt>
+<chicago-data2.pdf, id=20, 867.24pt x 578.16pt>
 File: chicago-data2.pdf Graphic file (type pdf)
 <use chicago-data2.pdf>
 Package pdftex.def Info: chicago-data2.pdf  used on input line 56.
-(pdftex.def)             Requested size: 512.14357pt x 341.43306pt.
-
-Overfull \hbox (42.38858pt too wide) in paragraph at lines 56--61
- [][] 
- []
-
-[1
+(pdftex.def)             Requested size: 469.46713pt x 312.9803pt.
+ [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./chicago-data2.pdf>]
-<full-model.pdf, id=106, 531.9875pt x 299.1175pt>
+<full-model.pdf, id=113, 531.9875pt x 299.1175pt>
 File: full-model.pdf Graphic file (type pdf)
 <use full-model.pdf>
-Package pdftex.def Info: full-model.pdf  used on input line 91.
+Package pdftex.def Info: full-model.pdf  used on input line 101.
 (pdftex.def)             Requested size: 303.62567pt x 170.71652pt.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 105
+LaTeX Font Info:    Trying to load font information for U+euf on input line 116
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
@@ -450,21 +445,35 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [3]
-<cases.pdf, id=155, 421.575pt x 316.18124pt>
+<cases.pdf, id=163, 421.575pt x 316.18124pt>
 File: cases.pdf Graphic file (type pdf)
 <use cases.pdf>
-Package pdftex.def Info: cases.pdf  used on input line 231.
+Package pdftex.def Info: cases.pdf  used on input line 241.
 (pdftex.def)             Requested size: 227.6278pt x 170.71652pt.
-<deaths.pdf, id=156, 421.575pt x 316.18124pt>
+<deaths.pdf, id=164, 421.575pt x 316.18124pt>
 File: deaths.pdf Graphic file (type pdf)
 <use deaths.pdf>
-Package pdftex.def Info: deaths.pdf  used on input line 237.
+Package pdftex.def Info: deaths.pdf  used on input line 247.
 (pdftex.def)             Requested size: 227.6278pt x 170.71652pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4] [5 <./cases.pdf> <./deaths.pdf>] (./update-10-22.bbl
+<domain.pdf, id=165, 421.575pt x 316.18124pt>
+File: domain.pdf Graphic file (type pdf)
+<use domain.pdf>
+Package pdftex.def Info: domain.pdf  used on input line 261.
+(pdftex.def)             Requested size: 227.6278pt x 170.71652pt.
+<mesh.pdf, id=166, 421.575pt x 316.18124pt>
+File: mesh.pdf Graphic file (type pdf)
+<use mesh.pdf>
+Package pdftex.def Info: mesh.pdf  used on input line 267.
+(pdftex.def)             Requested size: 227.6278pt x 170.71652pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4] [5 <./cases.pdf> <./deaths.pdf> <./domain.pdf> <./mesh.pdf>]
+(./update-10-22.bbl
 Underfull \hbox (badness 4132) in paragraph at lines 4--9
 []\T1/cmr/m/n/10.95 Read the full `re-store Illi-nois' plan aimed at re-open-in
 g the state dur-ing coro-n-
@@ -490,29 +499,29 @@ Overfull \hbox (37.12161pt too wide) in paragraph at lines 11--18
  []
 
 [6])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 333.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 361.
  [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 333.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 361.
  (./update-10-22.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 333.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 333.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 361.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 361.
 Package rerunfilecheck Info: File `update-10-22.out' has not changed.
-(rerunfilecheck)             Checksum: B6F6177636B0B324E42FE6F2616DEF7F;93.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 333.
+(rerunfilecheck)             Checksum: 4B1FECC1D35827EA41F0E86E6538323C;181.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 361.
  ) 
 Here is how much of TeX's memory you used:
- 8643 strings out of 483183
- 128773 string characters out of 5966292
- 395505 words of memory out of 5000000
- 23450 multiletter control sequences out of 15000+600000
+ 8665 strings out of 483183
+ 129074 string characters out of 5966292
+ 393384 words of memory out of 5000000
+ 23469 multiletter control sequences out of 15000+600000
  554606 words of font info for 89 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 48i,19n,46p,906b,522s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600
-pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.60
-0pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.6
-00pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.
-600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0600
+ 48i,19n,46p,906b,516s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600
+pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.60
+0pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.6
+00pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0600.
+600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095
 .600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx144
 0.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm10
 95.600pk> </home/trent/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1
@@ -531,10 +540,10 @@ e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb>
-Output written on update-10-22.pdf (7 pages, 393179 bytes).
+Output written on update-10-22.pdf (7 pages, 945655 bytes).
 PDF statistics:
- 577 PDF objects out of 1000 (max. 8388607)
- 219 compressed objects within 3 object streams
- 44 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 602 PDF objects out of 1000 (max. 8388607)
+ 229 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 63 words of extra memory for PDF output out of 10000 (max. 10000000)
 

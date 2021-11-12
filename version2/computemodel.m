@@ -16,7 +16,7 @@ function [T,y] = computemodel(p,q,trange,pops)
     s0 = n - (e0 + a0 + ar0 + i0 + h0 + r0 + d0);
     
     % Define the initial population vector
-    y0 = [s0, e0, a0, ar0, i0, h0, r0, d0];
+    y0 = [s0, e0, a0, ar0, i0, h0, r0];
 
     % Compute the solution vector
     [T,y] = ode45(@(t,y)sir(t,y,p1,q),trange,y0);
