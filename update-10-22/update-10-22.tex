@@ -135,19 +135,29 @@
 	Then by the chain rule, $x_t = M x_\tau$.
 	Next, we define the following non-dimensional parameters
 	\begin{align*}
-		\alpha_A &= \frac{\beta_A}{M}, & \alpha_I &= \frac{\beta_I}{M}, & \lambda_A &= \frac{\sigma_A}{M}, & \lambda_I &= \frac{\sigma_I}{M}
+		\alpha_A &= \frac{\beta_A}{M}, & \alpha_I &= \frac{\beta_I}{M}, & \lambda_A &= \frac{\sigma_A}{M}, & \lambda_I &= \frac{\sigma_I}{M}, \\
+		\eta &= \frac{M_{AR}}{M}, & \theta &= \frac{\chi}{M}, & \kappa &= \frac{\psi}{M}.
 	\end{align*}
 	
 	Using these non-dimensional parameters and the conservation law in Equation \ref{eq:conservation}, we can replace the ODE system with
 	\begin{align}
+		\label{eq:s_t}
 		s_\tau &= - \alpha_A a s - \alpha_I i s, \\
+		\label{eq:e_t}
 		e_\tau &= \alpha_A a s + \alpha_I i s - (\lambda_A + \lambda_I) e, \\
+		\label{eq:ar_t}
 		ar_\tau &= \xi a, \\
+		\label{eq:a_t}
 		a_\tau &= \lambda_A e - \xi a, \\
-		i_\tau &= \lambda_I e - i
+		\label{eq:i_t}
+		i_\tau &= \lambda_I e - i, \\
+		\label{eq:r_t}
+		r_\tau &= (1 - \gamma) i + (1 - \omega) \theta h.
 	\end{align}
-	
-	
+	Then by the conservation law, we have
+	\begin{equation} \label{eq:d_t}
+		d = n - (s + e + ar + a + i + r).
+	\end{equation}
 	
 	To create the PDE model, we first must find suitable parameters using the ODE model as in previous studies.
 	We utilize the MATLAB nonlinear optimization algorithm \verb|fminsearch| for this purpose.
@@ -180,9 +190,9 @@
 	To account for changes in virus transmission due to the shelter-in-place order, we impose a time dependence on the transmission rates $\beta$ as in Equations (\ref{eq:beta-si}) and (\ref{eq:beta-sa}).
 	\begin{align}
 		\label{eq:beta-si}
-		\beta_{SI} (t) &= \beta_{SI} \left( \eta_{SI} + (1 - \eta_{SI}) \frac{1 - \tanh [2(t - t_q)]}{2} \right) \\
+		\beta_{I} (t) &= \beta_{I} \left( \eta_{I} + (1 - \eta_{I}) \frac{1 - \tanh [2(t - t_q)]}{2} \right) \\
 		\label{eq:beta-sa}
-		\beta_{SA} (t) &= \beta_{SA} \left( \eta_{SA} + (1 - \eta_{SA}) \frac{1 - \tanh [2(t - t_q)]}{2} \right)
+		\beta_{A} (t) &= \beta_{A} \left( \eta_{A} + (1 - \eta_{A}) \frac{1 - \tanh [2(t - t_q)]}{2} \right)
 	\end{align}
 	
 	\begin{table}[h]
@@ -195,10 +205,10 @@
 			\hline
 																								&					&	Median (IQR)	&	Initial value \\
 			\hline
-			Transmission rate, $S \to I$							&	$\beta_{SI}$	&									&	$c \in \U [0,1]$ \\
-			Transmission rate, $S \to A$							&	$\beta_{SA}$	&									& 	$c \in \U [0,1]$ \\
-			Lockdown effect, $S \to I$															&	$\eta_{SI}$ 	&									& 	$c \in \U [0,1]$ \\
-			Lockdown effect, $S \to A$															&	$\eta_{SA}$		&									& 	$c \in \U [0,1]$ \\
+			Transmission rate, $S \to I$														&	$\beta_{I}$	&									&	$c \in \U [0,1]$ \\
+			Transmission rate, $S \to A$														&	$\beta_{A}$	&									& 	$c \in \U [0,1]$ \\
+			Lockdown effect, $S \to I$															&	$\eta_{I}$ 	&									& 	$c \in \U [0,1]$ \\
+			Lockdown effect, $S \to A$															&	$\eta_{A}$		&									& 	$c \in \U [0,1]$ \\
 			Incubation period, $E \to I$ [days]													&	$1 / \sigma_I$	&									& 	$1 / k, k \in \U [2,7]$ \\
 			Latent period, $E \to A$ [days]														&	$1 / \sigma_A$	&									& 	$1 / k, k \in \U [2,7]$ \\
 			Infectivity period [days]															&	$1 / M$			&									& 	$1 / k, k \in \U [5,12]$ \\
