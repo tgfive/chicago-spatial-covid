@@ -1,0 +1,151 @@
+\documentclass[11pt]{article}
+
+%imports
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{footnote}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{tikz}
+
+\usetikzlibrary{fit,shapes.geometric}
+
+
+%images and image path
+\usepackage{graphicx}
+%\usepackage{subfig}
+\graphicspath{ {./images/} }
+
+%custom commands
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\num}{\text{num}}
+\newcommand{\obs}{\text{obs}}
+\newcommand{\D}{\mathfrak{D}}
+\newcommand{\Ro}{\mathcal{R}_0}
+\newcommand{\lap}{{\mathcal{L}}}
+\renewcommand\vec{\mathbf}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\U}{\mathcal{U}}
+
+%insitute command
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\institute}[1]{% add institute to \maketitle
+	\apptocmd{\@author}{\end{tabular}
+	\par
+	\begin{tabular}[t]{c}
+		\small \textit{#1}}{}{}
+}
+\makeatother
+
+%margins
+\usepackage[letterpaper, total={6.5in, 9.5in}]{geometry}
+
+%opening
+\title{Reaction-diffusion spatial modeling of COVID-19 in Chicago}
+\author{Trent Gerew\thanks{\texttt{tgerew@hawk.iit.edu}}}
+\institute{Department of Applied Mathematics, Illinois Institute of Technology, Chicago, Illinois}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	content...
+\end{abstract}
+
+\section{Introduction}
+
+\section{Materials and methods}
+	\subsection{Confirmed and death data}
+		In this study, we used the publicly available data set of COVID-19 provided by the City of Chicago Data Portal.
+		This data set includes daily counts of confirmed infected cases, hospitalizations, and deaths.
+	
+	\subsection{Mathematical model}
+		We focus our study on four components of the epidemic flow (Figure \ref{fig:model}).
+		That is, the populations of Susceptible individuals ($S$), Asymptomatic infected individuals ($A$), symptomatic Infected individuals ($I$), and Removed individuals ($R$).
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+				\node[shape=rectangle, draw=black, fill=green] (s) at (-3,0) {$S$};
+				\node[shape=rectangle, draw=black, fill=yellow] (a) at (0,1) {$A$};
+				\node[shape=rectangle, draw=black, fill=orange] (i) at (0,-1) {$I$};
+				\node[shape=rectangle, draw=black, fill=cyan] (r) at (3,0) {$R$};
+				\path[thick,->] (s) edge node[above,swap] {$\omega \frac{(\beta_A A + \beta_I I)}{N}$} (a);
+				\path[thick,->] (a) edge node[right,swap] {$\delta$} (i);
+				\path[thick,->] (a) edge node[above,swap] {$\gamma_A$}	(r);
+				\path[thick,->] (i) edge node[below,swap] {$\gamma_I$}	(r);
+			\end{tikzpicture}
+			\caption{Compartmental representation of the SAIR model.}
+			\label{fig:model}
+		\end{figure}
+		Our model is known as the SAIR model \cite{s+t+spain}, which substitutes the $E$ compartment of the SEIR model by the $A$ compartment.
+		This model is relevant when there are many undetected asymptomatic infectious individuals, which is known to be the case for COVID-19.
+		
+		We motivate the use of this simple model for the following reasons:
+		\begin{itemize}
+			\item
+				We do not consider the $E$ group in this work because we feel this population can be merged with the $A$ group.
+			\item
+				We do not distinguish between quarantined, hospitalized, or nursing-home populations.
+				Including these additional compartments would over parameterize the model.
+				Additionally, the way in which data has been collected and is provided by authorities has varied over time, making its usage rather difficult.
+				For the same reasons, we do not distinguish between deceased and recovered.
+		\end{itemize}
+	
+		To build the mathematical model, we followed the standard strategy developed in the literature concerning SIR models.
+		We assume that individuals in $S$ can be infected by both members of $A$ and $I$.
+		We suppose that the individuals in the $A$ and $I$ compartments may have different contact rates $\beta_A$ and $\beta_I$, and different recovery rates $\gamma_A$ and $\gamma_I$.
+		Furthermore, we consider a rate $\delta$ at which individuals in $A$ may develop symptoms or are otherwise detected and so will move to the $I$ compartment.
+		Lastly, we assume that only members of $S$ and $A$ are mobile.
+		
+		The dynamics is governed by a system of two partial differential equations (PDE) and two ordinary differential equations (ODE) as follows, for $\vec{x} = (x,y) \in \Omega \subset \R^2, t > 0$,
+		\begin{equation} \label{eq:model}
+			\begin{aligned}
+				\partial_t S - D(t) \Delta S &= - \omega(t) \frac{\beta_A A + \beta_I I}{N} S, \\
+				\partial_t A - D(t) \Delta A &= \omega(t) \frac{\beta_A A + \beta_I I}{N} S - (\gamma_A - \delta) A, \\
+				I' &= - \gamma_I I + \delta A, \\
+				R' &= \gamma_A A + \gamma_I.
+			\end{aligned}
+		\end{equation}
+		Since travel into the city of Chicago was heavily restricted for the early stages of the pandemic, the homogeneous Neumann boundary condition is imposed \cite{Mammeri+2020+102+113}.
+		The total population is $N = S + A + I + R$, and is considered a constant.
+	
+	\subsection{Parameter estimation}
+		To account for the lockdown, the average number of of contacts is updated as follows \cite{Kevrekidis-2021}
+		\begin{equation} \label{eq:contacts}
+			\omega (t) = \omega_0 \left[ \eta + (1 - \eta) \frac{1 - \tanh \left[2 (t - t_q) \right]}{2} \right],
+		\end{equation}
+		while the diffusion coefficient is similarly
+		\begin{equation} \label{eq:diffusion}
+			D (t) = D_0 \left[ \eta + (1 - \eta) \frac{1 - \tanh \left[2 (t - t_q) \right]}{2} \right].
+		\end{equation}
+		Here, $t_q = (t_{\mathrm{eol}} + t_{\mathrm{bol}}) / 2$, where $\mathrm{bol}$ denotes the beginning of the lockdown and $\mathrm{eol}$ denotes the end of the lockdown.
+		The parameter $0 \leq \eta \leq 1$ is a varying coefficient translating respect for social distancing and other preventative measures.
+		Note that $\omega_0$ is the average number of contacts before any intervention, and is a constant.
+	
+	\subsection{Numerical discretization}
+\section{Results}
+	\subsection{Existence of solutions and basic reproduction numbers}
+	
+	\subsection{Model resolution}
+	
+	\subsection{Spatial spread of COVID-19}
+
+\section{Discussion}
+	
+	\textbf{Acknowledgments:} \\
+	\textbf{Funding:}
+	This research was funded by the Socially Responsible Modeling, Computation, and Design (SoReMo) Initiative, through the Illinois Institute of Technology. \\
+	\textbf{Conflicts of Interest:}
+	Author states no conflict of interest. \\
+
+\bibliographystyle{abbrv}
+\bibliography{version3}
+
+\end{document}

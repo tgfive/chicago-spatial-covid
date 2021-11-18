@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}
+
+\bibitem{s+t+spain}
+F.~Aràndiga, A.~Baeza, I.~Cordero-Carrión, R.~Donat, M.~C. Martí, P.~Mulet,
+  and D.~F. Yáñez.
+\newblock A spatial-temporal model for the evolution of the covid-19 pandemic
+  in spain including mobility.
+\newblock {\em Mathematics}, 8(10), 2020.
+
+\bibitem{Kevrekidis-2021}
+P.~Kevrekidis, J.~Cuevas-Maraver, Y.~Drossinos, Z.~Rapti, and G.~Kevrekidis.
+\newblock Spatial modeling of covid-19: Greece and andalusia as case examples.
+\newblock {\em Physical Review E}, April 2021.
+
+\bibitem{Mammeri+2020+102+113}
+Y.~Mammeri.
+\newblock A reaction-diffusion system to better comprehend the unlockdown:
+  Application of seir-type model with diffusion to the spatial spread of
+  covid-19 in france.
+\newblock {\em Computational and Mathematical Biophysics}, 8(1):102--113, 2020.
+
+\end{thebibliography}
