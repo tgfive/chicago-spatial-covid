@@ -11,6 +11,7 @@
 \usepackage{hyperref}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage{amsthm}
 
 \usetikzlibrary{fit,shapes.geometric}
 
@@ -22,6 +23,7 @@
 
 %custom commands
 \newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\num}{\text{num}}
 \newcommand{\obs}{\text{obs}}
@@ -32,7 +34,11 @@
 \newcommand{\mat}[1]{\mathsf{#1}}
 \newcommand{\U}{\mathcal{U}}
 
-%insitute command
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{definition}{Definition}
+
+%intsitute command
 \usepackage{etoolbox}
 \makeatletter
 \providecommand{\institute}[1]{% add institute to \maketitle
@@ -130,9 +136,49 @@
 		Note that $\omega_0$ is the average number of contacts before any intervention, and is a constant.
 	
 	\subsection{Numerical discretization}
+	
 \section{Results}
 	\subsection{Existence of solutions and basic reproduction numbers}
-	
+		We define $\vec{x} = (S,  A, I, R)$ and $\vec{x}_0 = (S_0, A_0, I_0, R_0)$.
+		\begin{theorem}
+			Let $0 \leq \vec{x}_0 \leq N$ be the initial datum.
+			Then there exists a unique in time solution $\vec{x}$ of the initial value problem (\ref{eq:model}) without diffusion over $C \subset U \subset \R^4 \times \R^1$ where $C$ is a compact set that contains $(\vec{x}_0, t_0)$.
+			Moreover, the solution is $\C^1$.
+		\end{theorem}
+		\begin{proof}
+			Since $\vec{x}_t = f(\vec{x},t)$ is $\C^1$ on the open set $U \subset \R^4 \times \R^1$, it follows that there exists a solution of (\ref{eq:model}) without diffusion through the point $\vec{x}_0$ at $t = t_0$ for $|t - t_0|$ sufficiently small.
+			Moreover, $\vec{x} (t, t_0,\vec{x_0})$ is a $\C^1$ function \cite{dynamics}.
+			Since $C$ is a compact set containing $(\vec{x}_0, t_0)$, then the solution $\vec{x} (t, t_0, \vec{x}_0)$ can be uniquely extended backward and forward in $t$ up to the boundary of $C$ \cite{dynamics}.
+		\end{proof}
+		
+		\begin{conjecture}
+			Let $0 \leq \vec{x}_0 \leq N$ the initial datum.
+			Then there exists a unique global in time solution $\vec{x}$ of the initial boundary value problem (\ref{eq:model}).
+		\end{conjecture}
+		
+		An important parameter in understanding the initial growth of the disease is the basic reproduction number.
+		\begin{definition}[Basic Reproduction Number]
+			The basic reproduction number $\Ro$ can be computed using the next generation of the model without diffusion.
+			Since the infected individuals are in $A$ and $I$, new infections ($\mathcal{F}$) and transitions between compartments ($\mathcal{V}$) can be rewritten as
+			\begin{align*}
+				\mathcal{F} &= \begin{pmatrix} \omega (\beta_A A + \beta_I I) \frac{S}{N} \\ 0 \end{pmatrix}, &
+				\mathcal{V} &= \begin{pmatrix} (\gamma_A + \delta) A \\ \gamma_I - \delta A \end{pmatrix}.
+			\end{align*}
+			Thus, $\Ro = \rho (\mat{F} \mat{V}^{-1})$ of the next generation matrix
+			\begin{equation*}
+				\mat{F} \mat{V}^{-1} = \begin{pmatrix} 
+				\frac{S_0 \omega_0 \beta_A}{N (\gamma_A + \delta)} + \frac{S_0 \omega_0 \beta_I \delta}{N \gamma_I (\gamma_A + \delta)} & 
+				\frac{S_0 \omega_0 \beta_I}{N \gamma_I} \\ 
+				0 & 0 \end{pmatrix}.
+			\end{equation*}
+			So,
+			\begin{equation} \label{eq:ro}
+				\Ro =  \frac{\omega_0}{\gamma_A + \delta}  \left( \beta_A + \beta_I \frac{\delta}{\gamma_I} \right) \frac{S_0}{N}.
+			\end{equation}
+		\end{definition}
+		This number is dimensionless and has an epidemiological meaning.
+		The first term represents the transmission rate by asymptomatic individuals, and the second term represents the transmission rate by symptomatic individuals.
+			
 	\subsection{Model resolution}
 	
 	\subsection{Spatial spread of COVID-19}
@@ -144,6 +190,23 @@
 	This research was funded by the Socially Responsible Modeling, Computation, and Design (SoReMo) Initiative, at the Illinois Institute of Technology. \\
 	\textbf{Conflicts of Interest:}
 	Author states no conflict of interest. \\
+	
+\section*{Appendix}
+	\subsection*{Nomenclature (Units are indicated in brackets.)}
+		\begin{table}[h!]
+			\begin{tabular}{c c}
+				\textbf{Latin symbols} & \\
+				$A$ & Asymptomatic infected individuals [individuals] \\
+				$I$ & Symptomatic infected individuals [individuals] \\
+				$N$ & Total population of individuals [individuals] \\
+				$R$ & Removed individuals [individuals] \\
+				$S$ & Susceptible individuals [individuals] \\
+				\textbf{Greek symbols} & \\
+				$\beta_j$ & Contact rate of compartment $j$ [days\textsuperscript{-1}] \\
+				$\gamma_j$ & Recovery rate of compartment $j$ [days\textsuperscript{-1}] \\
+				$\delta$ & Rate of asymptomatic individuals that may develop symptoms [days\textsuperscript{-1}]
+			\end{tabular}
+		\end{table}
 
 \bibliographystyle{abbrv}
 \bibliography{version3}
