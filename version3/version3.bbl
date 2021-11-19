@@ -7,6 +7,12 @@ F.~Aràndiga, A.~Baeza, I.~Cordero-Carrión, R.~Donat, M.~C. Martí, P.~Mulet,
   in spain including mobility.
 \newblock {\em Mathematics}, 8(10), 2020.
 
+\bibitem{Chicago-cases}
+{City of Chicago}.
+\newblock Daily chicago covid-19 cases, deaths, and hospitalizations, 2021.
+\newblock Data retrieved from Chicago Data Portal,
+  \url{https://data.cityofchicago.org/Health-Human-Services/Daily-Chicago-COVID-19-Cases-Deaths-and-Hospitaliz/kxzd-kd6a}.
+
 \bibitem{bio-models}
 L.~Edelstein-Keshet.
 \newblock {\em Mathematical Models in Biology}.
@@ -23,6 +29,12 @@ Y.~Mammeri.
   Application of seir-type model with diffusion to the spatial spread of
   covid-19 in france.
 \newblock {\em Computational and Mathematical Biophysics}, 8(1):102--113, 2020.
+
+\bibitem{sara-data}
+S.~Simon.
+\newblock Why chicago data sucks.
+\newblock {\em Socially Responsible, Computation, and Design Journal}, 2(1),
+  2021.
 
 \bibitem{dynamics}
 S.~Wiggins.

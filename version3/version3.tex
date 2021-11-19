@@ -12,6 +12,7 @@
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage{amsthm}
+\usepackage{longtable}
 
 \usetikzlibrary{fit,shapes.geometric}
 
@@ -69,7 +70,7 @@
 
 \section{Materials and methods}
 	\subsection{Confirmed and death data}
-		In this study, we used the publicly available data set of COVID-19 provided by the City of Chicago Data Portal.
+		In this study, we used the publicly available data set of COVID-19 provided by the City of Chicago Data Portal \cite{Chicago-cases}.
 		This data set includes daily counts of confirmed infected cases, hospitalizations, and deaths.
 	
 	\subsection{Mathematical model}
@@ -100,7 +101,7 @@
 			\item
 				We do not distinguish between quarantined, hospitalized, or nursing-home populations.
 				Including these additional compartments would over parameterize the model.
-				Additionally, the way in which data has been collected and is provided by authorities has varied over time, making its usage rather difficult.
+				Additionally, the way in which data has been collected and is provided by authorities has varied over time, making its usage rather difficult \cite{sara-data}.
 				For the same reasons, we do not distinguish between deceased and recovered.
 		\end{itemize}
 	
@@ -139,7 +140,9 @@
 	
 \section{Results}
 	\subsection{Existence of solutions and basic reproduction numbers}
-		We define $\vec{x} = (S,  A, I, R)$ and $\vec{x}_0 = (S_0, A_0, I_0, R_0)$.
+		We show that we are justified in searching for suitable parameters to solve the model.
+		Let $\vec{x} = (S,  A, I, R)$ and $\vec{x}_0 = (S_0, A_0, I_0, R_0)$.
+		First we show that the solution of the initial value problem (\ref{eq:model}) exists for the case with no diffusion.
 		\begin{theorem}
 			Let $0 \leq \vec{x}_0 \leq N$ be the initial datum.
 			Then there exists a unique in time solution $\vec{x}$ of the initial value problem (\ref{eq:model}) without diffusion over $C \subset U \subset \R^4 \times \R^1$ where $C$ is a compact set that contains $(\vec{x}_0, t_0)$.
@@ -150,13 +153,14 @@
 			Moreover, $\vec{x} (t, t_0,\vec{x_0})$ is a $\C^1$ function \cite{dynamics}.
 			Since $C$ is a compact set containing $(\vec{x}_0, t_0)$, then the solution $\vec{x} (t, t_0, \vec{x}_0)$ can be uniquely extended backward and forward in $t$ up to the boundary of $C$ \cite{dynamics}.
 		\end{proof}
-		
+		\noindent We do provide a proof for the existence of solutions to the initial boundary value problem (\ref{eq:model}) with diffusion terms, but we assume it exists.
 		\begin{conjecture}
 			Let $0 \leq \vec{x}_0 \leq N$ the initial datum.
 			Then there exists a unique global in time solution $\vec{x}$ of the initial boundary value problem (\ref{eq:model}).
 		\end{conjecture}
+		\noindent A proof for this conjecture will be similar to the one given in \cite{Mammeri+2020+102+113}.
 		
-		An important parameter in understanding the initial growth of the disease is the basic reproduction number.
+		An important parameter in understanding the initial growth of the virus is the basic reproduction number.
 		\begin{definition}[Basic Reproduction Number]
 			The basic reproduction number $\Ro$ can be computed using the next generation of the model without diffusion.
 			Since the infected individuals are in $A$ and $I$, new infections ($\mathcal{F}$) and transitions between compartments ($\mathcal{V}$) can be rewritten as
@@ -176,7 +180,7 @@
 				\Ro =  \frac{\omega_0}{\gamma_A + \delta}  \left( \beta_A + \beta_I \frac{\delta}{\gamma_I} \right) \frac{S_0}{N}.
 			\end{equation}
 		\end{definition}
-		This number is dimensionless and has an epidemiological meaning.
+		\noindent This number is dimensionless and has an epidemiological meaning.
 		The first term represents the transmission rate by asymptomatic individuals, and the second term represents the transmission rate by symptomatic individuals.
 			
 	\subsection{Model resolution}
@@ -189,25 +193,23 @@
 	\textbf{Funding:}
 	This research was funded by the Socially Responsible Modeling, Computation, and Design (SoReMo) Initiative, at the Illinois Institute of Technology. \\
 	\textbf{Conflicts of Interest:}
-	Author states no conflict of interest. \\
 	
 \section*{Appendix}
 	\subsection*{Nomenclature (Units are indicated in brackets.)}
-		\begin{table}[h!]
-			\begin{tabular}{c c}
-				\textbf{Latin symbols} & \\
-				$A$ & Asymptomatic infected individuals [individuals] \\
-				$I$ & Symptomatic infected individuals [individuals] \\
-				$N$ & Total population of individuals [individuals] \\
-				$R$ & Removed individuals [individuals] \\
-				$S$ & Susceptible individuals [individuals] \\
-				\textbf{Greek symbols} & \\
-				$\beta_j$ & Contact rate of compartment $j$ [days\textsuperscript{-1}] \\
-				$\gamma_j$ & Recovery rate of compartment $j$ [days\textsuperscript{-1}] \\
-				$\delta$ & Rate of asymptomatic individuals that may develop symptoms [days\textsuperscript{-1}]
-			\end{tabular}
-		\end{table}
-
+		\begin{longtable}{c l l}
+			\textbf{Latin symbols} & & \\
+			$A$ & Asymptomatic infected individuals & [individuals] \\
+			$D$ & Diffusivity & \\
+			$I$ & Symptomatic infected individuals & [individuals] \\
+			$N$ & Total population of individuals & [individuals] \\
+			$R$ & Removed individuals & [individuals] \\
+			$S$ & Susceptible individuals & [individuals] \\
+			\textbf{Greek symbols} & & \\
+			$\beta_j$ & Contact rate of compartment $j$ & [days\textsuperscript{-1}] \\
+			$\gamma_j$ & Recovery rate of compartment $j$ & [days\textsuperscript{-1}] \\
+			$\delta$ & Rate of asymptomatic individuals that may develop symptoms & [days\textsuperscript{-1}] \\
+			$\omega$ & Contacts & 
+		\end{longtable}
 \bibliographystyle{abbrv}
 \bibliography{version3}
 
