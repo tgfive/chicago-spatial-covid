@@ -1,0 +1,80 @@
+%% this is necessary stuff to make the document compile:
+\documentclass[11pt]{amsart}
+\usepackage{amssymb, amsmath}
+\usepackage{colordvi,verbatim,hyperref}
+\usepackage{color,enumerate}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+%% this is for making margins the way I like them:
+\headheight=8pt
+\topmargin=0.375truein
+\topmargin=-0.2truein
+\textheight=9truein   \textwidth=6.3truein
+\oddsidemargin=.1in \evensidemargin=.1in
+
+%%this is to create new math commands. In other words, since I use theta^hat in equations a lot, I made a shorthand for it. So now instead of using $\hat\theta$ every time, I can just write $\thhat$. 
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\R}{{\mathbb{R}}}
+
+%% this is to write more serious math but you may not need it in your file. I will keep it here for convenience later.
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{facts}{Fact}
+\newtheorem{ex}{Example}
+\newtheorem{eg}{Example}
+\newtheorem{goal}{Goal}
+\newtheorem{qn}{Question}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem{rmk}{Remark}
+\newtheorem{prop}{Proposition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{lm}{Lemma}
+\newtheorem*{thrm}{Theorem}
+
+\pagestyle{plain}
+
+
+\date{\today}%7 Feb 2014}
+
+\begin{document}
+\title{Quiz 5}
+\author{Trent Gerew}
+
+\maketitle
+
+\begin{enumerate}
+	\item 
+		\begin{enumerate}
+			\item
+				$x^4 + x^2 + 1 > 0$
+				\begin{proof}
+					We begin by completing the square for the LHS.
+					\begin{align*}
+						x^4+ x^2 + 1 &= x^4 + x^2 + \frac{1}{4} + 1 - \frac{1}{4} \\
+						&= \left( x^2 + \frac{1}{2} \right)^2 + \frac{3}{4}
+					\end{align*}
+					Clearly $3/4 > 0$, and also $\left( x^2 + 1/2 \right)^2 > 0 \ \forall x$.
+					Therefore, $x^4 + x^2 + 1 > 0$.
+				\end{proof}
+			
+			\item
+				$$\frac{|x|}{1 + x^2} < 1$$
+				\begin{proof}
+					From the previous result, we have  $x^4 + x^2 + 1 > 0$.
+					Then adding $x^2$ to both sides gives $x^4 + 2 x^2 + 1 > x^4$.
+					Factoring results in $\left( x^2 + 1 \right)^2 > x^2$.
+					Now taking the square root we have $x^2 + 1 > |x|$, and rearranging gives the desired result.
+				\end{proof}
+			
+			\item
+				The function
+				$$f(x) = \frac{1}{1 + x^2}$$
+				is uniformly continuous on $\R$.
+		\end{enumerate}
+		
+\end{enumerate}
+
+\end{document}
