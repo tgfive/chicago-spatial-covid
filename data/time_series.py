@@ -21,10 +21,10 @@ series["Date"] = df.index
 series = series.set_index(["Date"])
 
 # Create cases values and put them in the dataframe
-series["Cases"] = df["Daily Cases"] + df["Daily Hospitalizations"] + df["Cumulative Deaths"]
+series["Cases"] = df["Daily Cases"] # + df["Daily Hospitalizations"] + df["Cumulative Deaths"]
 
 # Create removed values and put them in the dataframe
 series["Removed"] = df["Cumulative Deaths"]
 
 # Export new dataframe to a csv
-series.to_csv("../version2/time_series.csv", header=False, index=False)
+series.to_csv("../version3/time_series.csv", header=False, index=False)

@@ -1,11 +1,11 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: version3.aux
 The style file: abbrv.bst
 Database file #1: version3.bib
 You've used 7 entries,
             2118 wiz_defined-function locations,
-            536 strings with 4995 characters,
+            536 strings with 4976 characters,
 and the built_in function-call counts, 1909 in all, are:
 = -- 173
 > -- 101

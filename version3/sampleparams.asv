@@ -1,0 +1,31 @@
+function p0 = sampleparams(lb,ub,s0)
+    f = 0;
+
+    while f < 2
+        omega0betaA = unifrnd(lb(1),ub(1));
+        omega0betaI = unifrnd(lb(2),ub(2));
+    
+        eta = unifrnd(lb(3),ub(3));
+    
+        gammaA = unifrnd(lb(4),ub(4));
+        gammaI = unifrnd(lb(5),ub(5));
+    
+        delta = unifrnd(lb(6),ub(6));
+
+        q = 
+        
+        if delta < gammaA
+            f = f + 1;
+            if (gammaA + gammaI - delta - s0 *omega0betaA)^2 - 4 * (gammaA * gammaI - gammaI * delta - s0 * omega0betaA * gammaI - s0 * omega0betaI * delta) > 0
+                f = f + 1;
+                if 
+            else
+                f = 0;
+            end
+        else
+            f = 0;
+        end
+    end
+    
+    p0 = [omega0betaA, omega0betaI, eta, gammaA, gammaI, delta];
+end
