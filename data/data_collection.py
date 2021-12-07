@@ -60,7 +60,8 @@ for date_point, label, clr, y in label_list:
              verticalalignment='center',
              color=clr,
              bbox=dict(facecolor='white', alpha=0.9))
-plt.show()
 
 # Export plot
 plt.savefig('chicago-data.pdf')
+
+plt.show()

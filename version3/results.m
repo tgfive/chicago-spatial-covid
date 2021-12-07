@@ -50,4 +50,4 @@ set(gca,'TickLabelInterpreter','latex')
 set(cFig,'Units','Inches');
 pos = get(cFig,'Position');
 set(cFig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(cFig,'~/Documents/GitHub/chicago-spatial-covid/update-10-22/cases','-dpdf','-r0')
+print(cFig,'~/Documents/GitHub/chicago-spatial-covid/version3/cases','-dpng','-r0')
