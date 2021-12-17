@@ -1,6 +1,0 @@
-zips = shaperead('chicago_zip.shp','UseGeoCoords',false);
-aquif = CSGobj_v2(2,70,200,500,1);
-
-for i = 1:size(zips,1)
-    zips(i.1)
-aquif = aquif.readshapefile(zips)
