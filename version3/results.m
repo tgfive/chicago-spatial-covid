@@ -15,7 +15,11 @@ load('params.mat');
 y0 = [s0, a0, i0, r0];
 
 %% Load Optimized parameters
-load('optimfile.mat', 'pFin');
+pEst = load('pEst1.csv');
+pFin = median(pEst,1);
+
+% Compute the interquartile range
+iqrange = iqr(pEst,1);
 
 %% Load Observed Data
 [time, Cobs, Dobs] = loadData("time_series.csv");
@@ -41,13 +45,19 @@ Cnum = i;
 % Total cases
 cFig = figure(1);
 semilogy(T,Cnum,'r-',time,Cobs / n,'k.')
-legend('$C_\mathrm{num}(t)$','$C_\mathrm{obs}(t)$','Interpreter','latex','Location','southeast')
+legend('$I (t)$','$I_\mathrm{obs}(t)$','Interpreter','latex','Location','southeast')
 xlabel('$t$ (days from March 18)','interpreter','latex')
-ylabel('$C(t)$','interpreter','latex')
+ylabel('$I(t)$ (symptomatic infected)','interpreter','latex')
 set(gca,'TickLabelInterpreter','latex')
+
+cFig2 = figure(2);
+semilogy(T,Cnum,'r-',time,Cobs / n,'k.')
+legend('C_{num}','C_{obs}','Location','southeast')
+xlabel('t (days from March 18)')
+ylabel('C(t) (confirmed cases)')
 
 % Export cases plot
 set(cFig,'Units','Inches');
 pos = get(cFig,'Position');
 set(cFig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(cFig,'~/Documents/GitHub/chicago-spatial-covid/version3/cases','-dpng','-r0')
+print(cFig,'~/Documents/GitHub/chicago-spatial-covid/version3/cases','-dpdf','-r0')

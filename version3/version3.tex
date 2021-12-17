@@ -83,7 +83,7 @@
 				\node[shape=rectangle, draw=black, fill=yellow] (a) at (0,1) {$A$};
 				\node[shape=rectangle, draw=black, fill=orange] (i) at (0,-1) {$I$};
 				\node[shape=rectangle, draw=black, fill=cyan] (r) at (3,0) {$R$};
-				\path[thick,->] (s) edge node[above,swap] {$\omega \frac{(\beta_A A + \beta_I I)}{N}$} (a);
+				\path[thick,->] (s) edge node[above,swap] {$\omega (\beta_A A + \beta_I I)$} (a);
 				\path[thick,->] (a) edge node[right,swap] {$\delta$} (i);
 				\path[thick,->] (a) edge node[above,swap] {$\gamma_A$}	(r);
 				\path[thick,->] (i) edge node[below,swap] {$\gamma_I$}	(r);
@@ -114,30 +114,45 @@
 		The dynamics is governed by a system of two partial differential equations (PDE) and two ordinary differential equations (ODE) as follows, for $\vec{x} = (x,y) \in \Omega \subset \R^2, t > 0$,
 		\begin{equation} \label{eq:model}
 			\begin{aligned}
-				\partial_t S - D(t) \Delta S &= - \omega(t) \frac{\beta_A A + \beta_I I}{N} S, \\
-				\partial_t A - D(t) \Delta A &= \omega(t) \frac{\beta_A A + \beta_I I}{N} S - (\gamma_A - \delta) A, \\
-				I' &= - \gamma_I I + \delta A, \\
-				R' &= \gamma_A A + \gamma_I.
+				S_t - D(t) \Delta S &= - \omega(t) \frac{\beta_A A + \beta_I I}{N} S, \\
+				A_t - D(t) \Delta A &= \omega(t) \frac{\beta_A A + \beta_I I}{N} S - (\gamma_A - \delta) A, \\
+				I_t &= - \gamma_I I + \delta A, \\
+				R_t &= \gamma_A A + \gamma_I.
 			\end{aligned}
 		\end{equation}
 		Since travel into the city of Chicago was heavily restricted for the early stages of the pandemic, the homogeneous Neumann boundary condition is imposed \cite{Mammeri+2020+102+113}.
-		The total population is $N = S + A + I + R$, and is considered a constant.
+		The population compartments are considered fractions, such that $S + A + I + R = 1$.
 	
 	\subsection{Parameter estimation}
-		To account for the lockdown, the average number of of contacts is updated as follows \cite{Kevrekidis-2021}
+		To account for the lockdown, the average number of of contacts is updated as in  \cite{Kevrekidis-2021}
 		\begin{equation} \label{eq:contacts}
-			\omega (t) = \omega_0 \left[ \eta + (1 - \eta) \frac{1 - \tanh \left[2 (t - t_q) \right]}{2} \right],
+			\omega (t) = \omega_0 \left[ \eta + (1 - \eta) \frac{1 - \tanh \left[2 (t - t_q) \right]}{2} \right].
 		\end{equation}
-		while the diffusion coefficient is similarly
-		\begin{equation} \label{eq:diffusion}
-			D (t) = D_0 \left[ \eta + (1 - \eta) \frac{1 - \tanh \left[2 (t - t_q) \right]}{2} \right].
-		\end{equation}
-		Here, $t_q = (t_{\mathrm{eol}} + t_{\mathrm{bol}}) / 2$, where $\mathrm{bol}$ denotes the beginning of the lockdown and $\mathrm{eol}$ denotes the end of the lockdown.
+		Here, $t_q = (t_{\mathrm{eol}} + t_{\mathrm{bol}}) / 5$, where $\mathrm{bol}$ denotes the beginning of the lockdown and $\mathrm{eol}$ denotes the end of the lockdown.
 		The parameter $0 \leq \eta \leq 1$ is a varying coefficient translating respect for social distancing and other preventative measures.
 		Note that $\omega_0$ is the average number of contacts before any intervention, and is a constant.
+		
+		The parameters $\omega_0$, $\beta_A$, and $\beta_I$ are not independently identifiable, so the optimization problem reduces to five parameters $\theta = (\omega_0 \beta_A, \omega_0 \beta_I, \delta, \gamma_A, \gamma_I)$.
+		Given, for $n$ days, the observations $I_\mathrm{obs} (t_i)$, the objective function is the least square function
+		\begin{equation} \label{eq:obj}
+			J (\theta) = \sum_{i=1}^n \left[ I_\mathrm{obs} (t_i) - I (t_i) \right]^2
+		\end{equation}
+		with constraints $0 \leq \theta \leq 1$.
+		$I (t_i)$ denotes the output of the mathematical model at time $t_i$ computed with parameters $\theta$.
+		
+		The optimization problem is solved using the MATLAB nonlinear optimization function \verb|fmincon|.
+		The initial parameter guesses to seed \verb|fmincon| were randomly sampled from a uniform distribution over 1000 iterations.
+		The median of each resulting parameter was selected.
+		Figure \ref{fig:params} shows the estimated parameters.
 	
 	\subsection{Numerical discretization}
-	
+		
+		
+		while the diffusion coefficient is
+		\begin{equation} \label{eq:diffusion}
+		D (t) = D_0  - \eta H(t - t_q)
+		\end{equation}
+		where $H(t)$ is the Heaviside step function.
 \section{Results}
 	\subsection{Existence of solutions and basic reproduction numbers}
 		We show that we are justified in searching for suitable parameters to solve the model.
@@ -165,25 +180,58 @@
 			The basic reproduction number $\Ro$ can be computed using the next generation of the model without diffusion.
 			Since the infected individuals are in $A$ and $I$, new infections ($\mathcal{F}$) and transitions between compartments ($\mathcal{V}$) can be rewritten as
 			\begin{align*}
-				\mathcal{F} &= \begin{pmatrix} \omega (\beta_A A + \beta_I I) \frac{S}{N} \\ 0 \end{pmatrix}, &
+				\mathcal{F} &= \begin{pmatrix} \omega (\beta_A A + \beta_I I) S \\ 0 \end{pmatrix}, &
 				\mathcal{V} &= \begin{pmatrix} (\gamma_A + \delta) A \\ \gamma_I - \delta A \end{pmatrix}.
 			\end{align*}
 			Thus, $\Ro = \rho (\mat{F} \mat{V}^{-1})$ of the next generation matrix
 			\begin{equation*}
 				\mat{F} \mat{V}^{-1} = \begin{pmatrix} 
-				\frac{S_0 \omega_0 \beta_A}{N (\gamma_A + \delta)} + \frac{S_0 \omega_0 \beta_I \delta}{N \gamma_I (\gamma_A + \delta)} & 
-				\frac{S_0 \omega_0 \beta_I}{N \gamma_I} \\ 
+				\frac{S_0 \omega_0 \beta_A}{\gamma_A + \delta} + \frac{S_0 \omega_0 \beta_I \delta}{\gamma_I (\gamma_A + \delta)} & 
+				\frac{S_0 \omega_0 \beta_I}{\gamma_I} \\ 
 				0 & 0 \end{pmatrix}.
 			\end{equation*}
 			So,
 			\begin{equation} \label{eq:ro}
-				\Ro =  \frac{\omega_0}{\gamma_A + \delta}  \left( \beta_A + \beta_I \frac{\delta}{\gamma_I} \right) \frac{S_0}{N}.
+				\Ro =  \frac{S_0 \omega_0}{\gamma_A + \delta}  \left( \beta_A + \beta_I \frac{\delta}{\gamma_I} \right).
 			\end{equation}
 		\end{definition}
 		\noindent This number is dimensionless and has an epidemiological meaning.
 		The first term represents the transmission rate by asymptomatic individuals, and the second term represents the transmission rate by symptomatic individuals.
 			
 	\subsection{Model resolution}
+		Calibration of the model is done from March 18, 2020 to June 24, 2020.
+		This range corresponds approximately to the first ``wave'' of cases seen in Chicago.
+		The lockdown time points match exactly to the imposed lockdown of the city.
+		That is, $t_\mathrm{bol} =$ March 21, 2020 and $t_\mathrm{eol} =$ May 29, 2020.
+		\begin{figure}[h!]
+			\centering
+			\begin{subfigure}{0.55\textwidth}
+				\begin{tabular}{c c c c}
+					\hline
+					$\omega_0 \beta_A$ & transmission rate due to $A$ & 0.1969 & days\textsuperscript{-1} \\
+					$\omega_0 \beta_I$ & transmission rate due to $I$ & 0.3061 & days\textsuperscript{-1} \\
+					$\eta$ & lockdown scale factor & 0.5514 & 1 \\
+					$\delta$ & symptom onset rate & 0.0939 & days\textsuperscript{-1} \\
+					$\gamma_A$ & removal rate of $A$ & 0.3632 & days\textsuperscript{-1} \\
+					$\gamma_I$ & removal rate of $I$ & 0.1385 & days\textsuperscript{-1} \\
+					\hline
+				\end{tabular}
+			\end{subfigure}%
+			\begin{subfigure}{0.45\textwidth}
+				\includegraphics[width=\textwidth]{box-plot.pdf}
+			\end{subfigure}
+			\caption{Parameters calibrated according to data from the Chicago Data Portal.
+				On the right is a boxplot of the parameter distribution from 1000 optimization iterations.}
+			\label{fig:params}
+		\end{figure}
+	
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.5\textwidth]{cases.pdf}
+			\caption{Fitting symptomatic infected by the median value.
+				Note the logarithmic scale on the y-axis.}
+			\label{fig:fit}
+		\end{figure}
 	
 	\subsection{Spatial spread of COVID-19}
 

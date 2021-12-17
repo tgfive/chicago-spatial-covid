@@ -7,7 +7,16 @@ h = height(zips);
 faceColors = makesymbolspec('Polygon',...
     {'INDEX',[1 h],'FaceColor',polcmap(h)});
 
+cFig = figure(1)
+
 mapshow(zips,'SymbolSpec',faceColors)
+
+set(cFig,'Units','Inches');
+pos = get(cFig,'Position');
+set(cFig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(cFig,'~/Documents/GitHub/chicago-spatial-covid/version3/zips','-dpng','-r0')
+
+
 
 initdata = load("initial_data.csv");
 

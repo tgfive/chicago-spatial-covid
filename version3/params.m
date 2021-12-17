@@ -18,14 +18,14 @@ d0 = 3; % Initial deceased
 
 % Initial compartments
 i0 = (c0 + h0) / n;
-a0 = i0;
+a0 = 3 * i0;
 r0 = (d0 + 8) / n;
 s0 = 1 - (a0 + i0 + r0);
 
 % Lockdown times
 tbol = 4; % beginning of lockdown
 teol = 73; % end of lockdown
-tq = (tbol + teol) / 3;
+tq = (tbol + teol) / 5;
 
 % Export fixed parameters
 save('params.mat')

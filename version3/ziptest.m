@@ -7,7 +7,7 @@ h = height(zips);
 faceColors = makesymbolspec('Polygon',...
     {'INDEX',[1 h],'FaceColor',polcmap(h)});
 
-findata = load("final_data.csv");
+findata = load("tend_data.csv");
 
 for i=1:length(zips)
     zip = str2num(zips(i).zip);
@@ -27,7 +27,7 @@ for i=1:length(zips)
 end
 
 maxinfected = max([zips.objectid]);
-fall = flipud(autumn(height(zips)));
+fall = parula(height(zips));
 densityColors = makesymbolspec('Polygon', {'objectid', [0 maxinfected], 'FaceColor', fall});
 
 cFig = figure(1)
@@ -40,4 +40,4 @@ colorbar
 set(cFig,'Units','Inches');
 pos = get(cFig,'Position');
 set(cFig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(cFig,'~/Documents/GitHub/chicago-spatial-covid/version3/final-cases','-dpng','-r0')
+print(cFig,'~/Documents/GitHub/chicago-spatial-covid/version3/tend-cases','-dpng','-r0')

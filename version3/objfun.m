@@ -17,6 +17,7 @@ function obj = objfun(trange,Cobs,p,tq,y0,n)
     Cnum = i;
     
     % Compute the objective function
-    obj = sum(vecnorm(Cnum - Cobs / n));
-    disp(obj)
+    %obj = sum(vecnorm(Cnum - Cobs' / n));
+    obj = sum((Cnum - Cobs' / n).^2);
+    %disp(obj)
 end
