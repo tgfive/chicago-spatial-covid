@@ -5,7 +5,8 @@ import csv
 import matplotlib.pyplot as plt
 
 # Image path
-impath = '/home/trent/Documents/GitHub/chicago-spatial-covid/version3/images/'
+#impath = '/home/trent/Documents/GitHub/chicago-spatial-covid/version3/images/'
+impath = '/Users/trentgerew/GitHub/chicago-spatial-covid/version3/images/'
 
 # LaTeX font for matplotlib
 import matplotlib
@@ -21,7 +22,7 @@ tfin = 99 # Last day of fitting
 tq = (tbol + teol) / 5 # Calculate tq
 
 # Time step
-dt = 0.2
+dt = 0.1
 
 # Parameters
 eta = 0.5514 # Lockdown scale factor
@@ -84,7 +85,7 @@ i1 = np.genfromtxt('initialI.csv', dtype=float, delimiter=",")
 initial_fields = model.Fields(x=y, y=x, s=s1, a=a1, i=i1, D=D, omegaA=omegaA, omegaI=omegaI, gammaA=gammaA, gammaI=gammaI, l=l)
 
 # Create and run the simulation
-simulation = Simulation(model, initial_fields, dt=dt, tmax=tfin, hook=hook)
+simulation = Simulation(model, initial_fields, dt=dt, tmax=tfin)
 container = simulation.attach_container()
 t, fields = simulation.run()
 
