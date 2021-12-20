@@ -7,7 +7,7 @@ h = height(zips);
 faceColors = makesymbolspec('Polygon',...
     {'INDEX',[1 h],'FaceColor',polcmap(h)});
 
-findata = load("tend_data.csv");
+findata = load("t0_data.csv");
 
 for i=1:length(zips)
     zip = str2num(zips(i).zip);
@@ -32,12 +32,16 @@ densityColors = makesymbolspec('Polygon', {'objectid', [0 maxinfected], 'FaceCol
 
 cFig = figure(1)
 mapshow(zips,'SymbolSpec',densityColors)
+xlabel('$x$','interpreter','latex')
+ylabel('$y$','interpreter','latex')
+set(gca,'TickLabelInterpreter','latex')
 
 caxis([0 maxinfected])
 colormap(fall)
-colorbar
+c = colorbar;
+set(c,'TickLabelInterpreter','latex')
 
 set(cFig,'Units','Inches');
 pos = get(cFig,'Position');
 set(cFig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(cFig,'~/Documents/GitHub/chicago-spatial-covid/version3/tend-cases','-dpng','-r0')
+print(cFig,'~/Documents/GitHub/chicago-spatial-covid/version3/images/t0-cases','-dpdf','-r0')

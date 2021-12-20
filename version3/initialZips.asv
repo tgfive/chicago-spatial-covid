@@ -42,7 +42,7 @@ for j = 1:ypoints
             i0 = cases / population;
             a0 = 3 * i0;
             r0 = (deaths + 8) / population;
-            s0 = 1 - (i0 + a0 + r0);
+            s0 = (population - (2 * cases + deaths + 8)) / population;
 
             initialS(j,i) = s0;
             initialA(j,i) = a0;

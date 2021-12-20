@@ -13,13 +13,13 @@
 \usepackage{tikz}
 \usepackage{amsthm}
 \usepackage{longtable}
+\usepackage{float}
 
 \usetikzlibrary{fit,shapes.geometric}
 
 
 %images and image path
 \usepackage{graphicx}
-%\usepackage{subfig}
 \graphicspath{ {./images/} }
 
 %custom commands
@@ -70,8 +70,9 @@
 
 \section{Materials and methods}
 	\subsection{Confirmed and death data}
-		In this study, we used the publicly available data set of COVID-19 provided by the City of Chicago Data Portal \cite{Chicago-cases}.
-		This data set includes daily counts of confirmed infected cases, hospitalizations, and deaths.
+		In this study, we used the publicly available data sets of COVID-19 metrics provided by the City of Chicago Data Portal.
+		\cite{Chicago-cases} includes daily counts of city-wide confirmed infected cases, hospitalizations, and deaths.
+		Weekly cases, tests and deaths by ZIP code are logged in \cite{Chicago-zips}.
 	
 	\subsection{Mathematical model}
 		We focus our study on four components of the epidemic flow (Figure \ref{fig:model}).
@@ -94,16 +95,24 @@
 		Our model is known as the SAIR model \cite{s+t+spain}, which substitutes the $E$ compartment of the SEIR model by the $A$ compartment.
 		This model is relevant when there are many undetected asymptomatic infectious individuals, which is known to be the case for COVID-19.
 		
-		We motivate the use of this simple model for the following reasons:
+		A few notes motivating this very simple model are necessary.
 		\begin{itemize}
 			\item
-				We do not consider the $E$ group in this work because we feel this population can be merged with the $A$ group.
+				We do not consider the ``exposed'' $E$ group in this work.
+				Because the members of $A$ have separate infection and recovery rates, and because there is a possibility they are detected and move to $I$, we consider $E$ to be merged with $A$.
 			\item
-				We do not distinguish between quarantined, hospitalized, or nursing-home populations.
-				Including these additional compartments would over parameterize the model.
-				Additionally, the way in which data has been collected and is provided by authorities has varied over time, making its usage rather difficult \cite{sara-data}.
-				For the same reasons, we do not distinguish between deceased and recovered.
+				We do not distinguish between quarantined, hospitalized, or nursing home populations.
+				Nursing homes are now known to be epicenters of the virus, however the true case rates are notoriously difficult to track \cite{nursing-homes}.
+				Additionally, these three population groups can be assumed to be stationary in nature, and in the case of quarantined and hospitalized, isolated.
+				Therefore we ignore their individual contributions.
+			\item
+				In general, the way in which data has been collected and is provided by authorities has varied over time, making its usage rather difficult\footnote{For an in-depth analysis of the data collection problem, see \cite{sara-soremo}.} \cite{messy-data1}, \cite{messy-data2}, \cite{challenges}.
+				There is also the question of case counts being influenced by access to testing, especially early in the pandemic.
+				Including additional compartments would over-parameterize the model making it more difficult to verify, and would not provide useful information.
+			\item
+				Lastly, adding additional parameters reduces the computational feasibility of the optimization problem.
 		\end{itemize}
+		The goal of this model is to strike a reasonable balance between representation of the pandemic and the populations involved, and feasibility of data collection and computation.
 	
 		To build the mathematical model, we followed the standard strategy developed in the literature concerning SIR models \cite{bio-models}.
 		We assume that individuals in $S$ can be infected by both members of $A$ and $I$.
@@ -144,15 +153,43 @@
 		The initial parameter guesses to seed \verb|fmincon| were randomly sampled from a uniform distribution over 1000 iterations.
 		The median of each resulting parameter was selected.
 		Figure \ref{fig:params} shows the estimated parameters.
-	
-	\subsection{Numerical discretization}
 		
-		
-		while the diffusion coefficient is
+		The diffusion coefficient is also assumed to be altered by the lockdown, and is updated as a simple step function
 		\begin{equation} \label{eq:diffusion}
-		D (t) = D_0  - \eta H(t - t_q)
+			D (t) = D_0 \left[ 1 - \eta H(t - t_q) \right]
 		\end{equation}
 		where $H(t)$ is the Heaviside step function.
+		The average one-way commute in Chicago is about 5 miles \cite{travel}.
+		Thus, we set $D_0$ to the fixed value of $(5 / 0.72)^2 / 4 \Delta t$ where $\Delta t$ is the time step \cite{methods}.
+	
+	\subsection{Numerical discretization}
+		From the map of the city, the computational domain $\Omega$ is defined as the minimum square enclosing the city.
+		The city is contained by $\Omega' = \left\{ (X,Y) \mid X \in [-87.9397, -87.5245], \ Y \in [41.6447, 42.023] \right\}$ where $X$ represents degrees latitude and $Y$ represents degrees longitude.
+		Note that degrees latitude and longitude are not equal when converted to miles.
+		Therefore, we define the computational domain such that the grid spacing is approximately 0.72 miles in both axes.
+		This gives the domain
+		\begin{equation} \label{eq:domain}
+			\Omega = \left\{ \vec{x} \in \R^2 \mid x \in [0, 40], \ y \in [0, 29] \right\}.
+		\end{equation}
+		
+		The initial spatial distribution of the infected population is determined by sampling the ZIP code data of confirmed cases \cite{Chicago-zips} at the grid points, as shown in Figure \ref{fig:seeding}.
+		
+		The model is solved via finite differences, using the \verb|scikit-fdiff| Python module \cite{nicolas_cellier_2019_3236970}.
+	
+		\begin{figure}[h!]
+			\centering
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{t0-cases}
+				\caption{ZIP data.}
+			\end{subfigure}%
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{infected_0}
+				\caption{Seeded model.}
+			\end{subfigure}
+			\caption{Initial seeding of the model with data from March 18, 2020.}
+			\label{fig:seeding}
+		\end{figure}
+	
 \section{Results}
 	\subsection{Existence of solutions and basic reproduction numbers}
 		We show that we are justified in searching for suitable parameters to solve the model.
@@ -203,6 +240,8 @@
 		This range corresponds approximately to the first ``wave'' of cases seen in Chicago.
 		The lockdown time points match exactly to the imposed lockdown of the city.
 		That is, $t_\mathrm{bol} =$ March 21, 2020 and $t_\mathrm{eol} =$ May 29, 2020.
+		In Figure \ref{fig:params}, the table shows the estimated parameters.
+		Figure \ref{fig:fit} compares the data and the fitted symptomatic infected populations.
 		\begin{figure}[h!]
 			\centering
 			\begin{subfigure}{0.55\textwidth}
@@ -233,31 +272,115 @@
 			\label{fig:fit}
 		\end{figure}
 	
-	\subsection{Spatial spread of COVID-19}
+	\subsection{Spatial spread of COVID-19} \label{sec:spread}
+		Simulations are performed from March 18, 2020 to June 24, 2020.
+		The time step is $\Delta t = 0.2$ [days].
+		
+		Figure \ref{fig:spatial-results} presents three of the days from the simulation time: the effective lockdown $t_q$ day, the last day of simulation, and arbitrary day from the period in between.
+		The observed data is shown on the left, while the model results are on the right.
+		The data shows that the main progression of the disease is from the lake, to the southwest, then to center-west, then slowly decreases through most of the city.
+		In contrast, the model infected population is an order of magnitude different than the true population after only 15 days, and the difference increases as the simulation continues.
+		Furthermore, the hoped-for diffusion behavior is not present in the model results.
+		
+		In short, the proposed model does \textit{not} reproduce the spatial propagation of the virus.
+		\begin{figure}[H]
+			\centering
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{tq-cases}
+				\caption{Observed Day 15 ($t_q$): April 2, 2020}
+			\end{subfigure}%
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{infected_15}
+				\caption{Model Day 15 ($t_q$): April 2, 2020}
+			\end{subfigure}
+		
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{tmid-cases}
+				\caption{Observed Day 35: April 22, 2020}
+			\end{subfigure}%
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{infected_35}
+				\caption{Model Day 35: April 22, 2020}
+			\end{subfigure}
+		
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{tfin-cases}
+				\caption{Observed Day 99: June 24, 2020}
+			\end{subfigure}%
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{infected_99}
+				\caption{Model Day 99: June 24, 2020}
+			\end{subfigure}
+		
+			\caption{Comparison of observed infected cases and the model results.}
+			\label{fig:spatial-results}
+		\end{figure}
+	
 
 \section{Discussion}
+	As mentioned in \S \ref{sec:spread}, the proposed model does not reproduce the spatial propagation of the virus.
+	In this section, we address possible causes of these inaccuracies and discuss proposals for improving the results.
 	
-	\textbf{Acknowledgments:} \\
-	\textbf{Funding:}
-	This research was funded by the Socially Responsible Modeling, Computation, and Design (SoReMo) Initiative, at the Illinois Institute of Technology. \\
-	\textbf{Conflicts of Interest:}
+	The selected model populations may not, contrary to the assumption, be sufficient to describe the virus dynamics.
+	Figure \ref{fig:fit} suggests this conclusion, since the growth of the model population only roughly describes the observed data.
+	Likely, the Exposed compartment describing the latent period is necessary, as in \cite{Mammeri+2020+102+113}.
+	It is possible that the assumption that Deceased and Recovered populations can be modeled by the same population compartment is errant.
+	On the other hand, in either case these populations have no effect on the act of transmission, so the model dynamics would likely be similar for both cases.
+	A Deceased population may be useful for other reasons, as discussed below.
 	
+	
+
 \section*{Appendix}
 	\subsection*{Nomenclature (Units are indicated in brackets.)}
 		\begin{longtable}{c l l}
 			\textbf{Latin symbols} & & \\
-			$A$ & Asymptomatic infected individuals & [individuals] \\
+			$A$ & Asymptomatic infected individuals & [1] \\
 			$D$ & Diffusivity & \\
-			$I$ & Symptomatic infected individuals & [individuals] \\
-			$N$ & Total population of individuals & [individuals] \\
-			$R$ & Removed individuals & [individuals] \\
-			$S$ & Susceptible individuals & [individuals] \\
+			$I$ & Symptomatic infected individuals & [1] \\
+			$R$ & Removed individuals & [1] \\
+			$S$ & Susceptible individuals & [1] \\
 			\textbf{Greek symbols} & & \\
 			$\beta_j$ & Contact rate of compartment $j$ & [days\textsuperscript{-1}] \\
 			$\gamma_j$ & Recovery rate of compartment $j$ & [days\textsuperscript{-1}] \\
 			$\delta$ & Rate of asymptomatic individuals that may develop symptoms & [days\textsuperscript{-1}] \\
-			$\omega$ & Contacts & 
+			$\omega$ & Contacts & [1]
 		\end{longtable}
+	
+	\newpage
+	\subsection*{Model Populations}
+		\begin{figure}[H]
+			\centering
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{susceptible_15}
+				\caption{Susceptible Day 15 ($t_q$): April 2, 2020}
+			\end{subfigure}%
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{asymptomatic_15}
+				\caption{Asymptomatic Day 15 ($t_q$): April 2, 2020}
+			\end{subfigure}
+			
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{susceptible_35}
+				\caption{Susceptible Day 35: April 22, 2020}
+			\end{subfigure}%
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{asymptomatic_35}
+				\caption{Asymptomatic Day 35: April 22, 2020}
+			\end{subfigure}
+			
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{susceptible_99}
+				\caption{Susceptible Day 99: June 24, 2020}
+			\end{subfigure}%
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{asymptomatic_99}
+				\caption{Asymptomatic Day 99: June 24, 2020}
+			\end{subfigure}
+			
+			\caption{Model results for susceptible and asymptomatic populations.}
+			\label{fig:app-pops}
+		\end{figure}
+
 \bibliographystyle{abbrv}
 \bibliography{version3}
 

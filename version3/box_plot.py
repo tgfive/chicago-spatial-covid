@@ -14,10 +14,10 @@ df.columns = columns
 
 # Create a boxplot
 boxplot = df.boxplot(column=columns)
+boxplot.plot()
 
 # Export plot
-plt.savefig('box-plot.pdf')
+plt.savefig('/home/trent/Documents/GitHub/chicago-spatial-covid/version3/images/box-plot.pdf')
 
 # Plot the boxplot
-boxplot.plot()
 plt.show()

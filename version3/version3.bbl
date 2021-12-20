@@ -1,4 +1,13 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{travel}
+Travel trends: Understanding how our region moves.
+\newblock {\em Chicago Metropolitan Agency for Planning}, September 2016.
+
+\bibitem{messy-data2}
+J.~Achenbach and Y.~Abutaleb.
+\newblock Messy, incomplete u.s. data hobbles pandemic response.
+\newblock {\em Washington Post}, September 2021.
 
 \bibitem{s+t+spain}
 F.~Aràndiga, A.~Baeza, I.~Cordero-Carrión, R.~Donat, M.~C. Martí, P.~Mulet,
@@ -6,6 +15,27 @@ F.~Aràndiga, A.~Baeza, I.~Cordero-Carrión, R.~Donat, M.~C. Martí, P.~Mulet,
 \newblock A spatial-temporal model for the evolution of the covid-19 pandemic
   in spain including mobility.
 \newblock {\em Mathematics}, 8(10), 2020.
+
+\bibitem{challenges}
+R.~Badker, K.~Miller, and C.~Pardee.
+\newblock Challenges in reported covid-19 data: Best practices and
+  recommendations for future epidemics.
+\newblock {\em BMJ Global Heath}, 2021.
+
+\bibitem{nicolas_cellier_2019_3236970}
+N.~Cellier and C.~Ruyer-Quil.
+\newblock scikit-finite-diff, a new tool for pde solving, June 2019.
+
+\bibitem{methods}
+S.~C. Chapra and R.~P. Canale.
+\newblock {\em Numerical Methods for Engineers}.
+\newblock McGraw-Hill, 2006.
+
+\bibitem{Chicago-zips}
+{City of Chicago}.
+\newblock Covid-19 cases, tests, and deaths by zip code, 2021.
+\newblock Data retrieved from Chicago Data Portal,
+  \url{https://data.cityofchicago.org/Health-Human-Services/COVID-19-Cases-Tests-and-Deaths-by-ZIP-Code/yhhz-zm2v}.
 
 \bibitem{Chicago-cases}
 {City of Chicago}.
@@ -17,6 +47,13 @@ F.~Aràndiga, A.~Baeza, I.~Cordero-Carrión, R.~Donat, M.~C. Martí, P.~Mulet,
 L.~Edelstein-Keshet.
 \newblock {\em Mathematical Models in Biology}.
 \newblock SIAM, 2005.
+
+\bibitem{nursing-homes}
+C.~A. Grimm.
+\newblock Cms's covid-19 data included required imformation from the vast
+  majority of nursing homes, but cms could take actions to improve completeness
+  and accuracy of the data.
+\newblock {\em Department of Health and Human Services}, September 2021.
 
 \bibitem{Kevrekidis-2021}
 P.~Kevrekidis, J.~Cuevas-Maraver, Y.~Drossinos, Z.~Rapti, and G.~Kevrekidis.
@@ -30,11 +67,16 @@ Y.~Mammeri.
   covid-19 in france.
 \newblock {\em Computational and Mathematical Biophysics}, 8(1):102--113, 2020.
 
-\bibitem{sara-data}
+\bibitem{messy-data1}
+K.~Schechtman and S.~Simon.
+\newblock America's entire understanding of the pandemic was shaped by messy
+  data.
+\newblock {\em The Atlantic}, May 2021.
+
+\bibitem{sara-soremo}
 S.~Simon.
 \newblock tba.
-\newblock {\em Socially Responsible, Computation, and Design Journal}, 2(1),
-  2021.
+\newblock {\em Socially Responsible, Computation, and Design}, 2(1), 2021.
 
 \bibitem{dynamics}
 S.~Wiggins.

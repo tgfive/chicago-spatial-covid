@@ -4,6 +4,9 @@ import numpy as np
 import csv
 import matplotlib.pyplot as plt
 
+# Image path
+impath = '/home/trent/Documents/GitHub/chicago-spatial-covid/version3/images/'
+
 # LaTeX font for matplotlib
 import matplotlib
 matplotlib.rcParams['mathtext.fontset'] = 'stix'
@@ -11,13 +14,18 @@ matplotlib.rcParams['font.family'] = 'STIXGeneral'
 
 
 # Time points
-tq = 11 # Lockdown point tq = (tbol + teol) / 5
+tbol = 4 # Beginning of lockdown
+teol = 73 # End of lockdown
 tmid = 35 # Test point in the middle of fitting
 tfin = 99 # Last day of fitting
+tq = (tbol + teol) / 5 # Calculate tq
+
+# Time step
+dt = 0.2
 
 # Parameters
 eta = 0.5514 # Lockdown scale factor
-D = 1.105 # Diffusivity
+D = (5 / 0.72) ** 2 / (4 * dt) # Diffusivity
 omegaA = 0.1969 # Transmission rate due to A (initial)
 omegaI = 0.3061 # Transmission rate due to I (initial)
 gammaA = 0.3632 # Removal rate of A
@@ -26,8 +34,11 @@ l = 0.0939 # Symptom onset rate
 
 # Time dependent beta function
 def omegabeta(omega0beta,eta,t,tq):
-    result = omega0beta * (eta + (1 - eta) * (1 - np.tanh(2 * (t - tq))) / 2)
-    return result
+    return omega0beta * (eta + (1 - eta) * (1 - np.tanh(2 * (t - tq))) / 2)
+
+# Time dependent D function
+def diffusion(D,eta,t,tq):
+    return D * (1 - eta * np.heaviside(t - tq,1))
 
 
 ## PDE Model
@@ -41,19 +52,24 @@ model = Model(["D * (dxxs + dyys) - (omegaA * a + omegaI * i) * s",
               boundary_conditions="noflux") # No flux boundary condition (homogeneous Neumann)
 
 # Computational domain
-L = 40 # Space points
-x = y = np.linspace(0, L, L) # Domain space
+xpoints = 40
+ypoints = 29
+x = np.linspace(0, xpoints, xpoints)
+y = np.linspace(0, ypoints, ypoints)
 
 # Hook function for time dependent parameters
 def hook(t, fields):
-    global omegaA, omegaI, eta, tq
+    global omegaA, omegaI, D, eta, tq
+    
     # Define parameters at current time
-    omegaA = omegabeta(omegaA,eta,t,tq)
-    omegaI = omegabeta(omegaI,eta,t,tq)
+    omegaA = diffusion(omegaA,eta,t,tq)
+    omegaI = diffusion(omegaI,eta,t,tq)
+    D = diffusion(D,eta,t,tq)
 
     # Reassign fields
     fields["omegaA"] = omegaA
     fields["omegaI"] = omegaI
+    fields["D"] = D
 
     return fields
 
@@ -64,114 +80,42 @@ s1 = np.genfromtxt('initialS.csv', dtype=float, delimiter=",")
 a1 = np.genfromtxt('initialA.csv', dtype=float, delimiter=",")
 i1 = np.genfromtxt('initialI.csv', dtype=float, delimiter=",")
 
-# Approximate the time dependent parameters
-omegaA1 = omegabeta(omegaA,eta,0,tq)
-omegaI1 = omegabeta(omegaA,eta,0,tq)
-
 # Populate the model fields
-initial_fields1 = model.Fields(x=x, y=y, s=s1, a=a1, i=i1, D=D, omegaA=omegaA, omegaI=omegaI, gammaA=gammaA, gammaI=gammaI, l=l)
+initial_fields = model.Fields(x=y, y=x, s=s1, a=a1, i=i1, D=D, omegaA=omegaA, omegaI=omegaI, gammaA=gammaA, gammaI=gammaI, l=l)
 
 # Create and run the simulation
-simulation1 = Simulation(model, initial_fields1, dt=.1, tmax=tq, hook=hook)
-container1 = simulation1.attach_container()
-tmax1, final_fields1 = simulation1.run()
+simulation = Simulation(model, initial_fields, dt=dt, tmax=tfin, hook=hook)
+container = simulation.attach_container()
+t, fields = simulation.run()
 
-# Export results
-initial_fields1["a"].plot()
-plt.gca().invert_yaxis()
-plt.gca().axes.xaxis.set_visible(False)
-plt.gca().axes.yaxis.set_visible(False)
-plt.savefig('asymptomatic-t0.pdf')
-plt.show()
+## Export plots
 
-initial_fields1["i"].plot()
-plt.gca().invert_yaxis()
-plt.gca().axes.xaxis.set_visible(False)
-plt.gca().axes.yaxis.set_visible(False)
-plt.savefig('infected-t0.pdf')
-plt.show()
+# Infected plots
+for time in [0, tq, tmid, tfin]:
+    title = str(int(time))
+    container.data["i"].isel(t=int(time / dt)).plot()
+    plt.gca().invert_yaxis()
+    plt.gca().axes.xaxis.set_visible(False)
+    plt.gca().axes.yaxis.set_visible(False)
+    plt.savefig(impath + 'infected_' + title + '.pdf')
+    plt.show()
 
-final_fields1["a"].plot()
-plt.gca().invert_yaxis()
-plt.gca().axes.xaxis.set_visible(False)
-plt.gca().axes.yaxis.set_visible(False)
-plt.savefig('asymptomatic-tq.pdf')
-plt.show()
+# Asymptomatic plots
+for time in [0, tq, tmid, tfin]:
+    title = str(int(time))
+    container.data["a"].isel(t=int(time / dt)).plot()
+    plt.gca().invert_yaxis()
+    plt.gca().axes.xaxis.set_visible(False)
+    plt.gca().axes.yaxis.set_visible(False)
+    plt.savefig(impath + 'asymptomatic_' + title + '.pdf')
+    plt.show()
 
-final_fields1["i"].plot()
-plt.gca().invert_yaxis()
-plt.gca().axes.xaxis.set_visible(False)
-plt.gca().axes.yaxis.set_visible(False)
-plt.savefig('infected-tq.pdf')
-plt.show()
-
-## Simulation 2: t=tq -> t=tmid
-
-# Use the final fields from Simulation 1 to seed Simulation 2
-s2 = final_fields1["s"]
-a2 = final_fields1["a"]
-i2 = final_fields1["i"]
-
-# Approximate the time dependent parameters
-omegaA2 = omegabeta(omegaA,eta,tq,tq)
-omegaI2 = omegabeta(omegaA,eta,tq,tq)
-D2 = eta*D
-
-# Populate the model fields
-initial_fields2 = model.Fields(x=x, y=y, s=s2, a=a2, i=i2, D=D2, omegaA=omegaA, omegaI=omegaI, gammaA=gammaA, gammaI=gammaI, l=l)
-
-# Create and run the simulation
-simulation2 = Simulation(model, initial_fields2, dt=.1, tmax=tmid-tq, hook=hook)
-container2 = simulation2.attach_container()
-tmax2, final_fields2 = simulation2.run()
-
-# Export results
-final_fields2["a"].plot()
-plt.gca().invert_yaxis()
-plt.gca().axes.xaxis.set_visible(False)
-plt.gca().axes.yaxis.set_visible(False)
-plt.savefig('asymptomatic-tmid.pdf')
-plt.show()
-
-final_fields2["i"].plot()
-plt.gca().invert_yaxis()
-plt.gca().axes.xaxis.set_visible(False)
-plt.gca().axes.yaxis.set_visible(False)
-plt.savefig('infected-tmid.pdf')
-plt.show()
-
-
-## Simulation 3: t=tmid -> t=tfin
-
-# Use the final fields from Simulation 2 to seed Simulation 3
-s3 = final_fields2["s"]
-a3 = final_fields2["a"]
-i3 = final_fields2["i"]
-
-# Approximate the time dependent parameters
-omegaA3 = omegabeta(omegaA,eta,tmid,tq)
-omegaI3 = omegabeta(omegaA,eta,tmid,tq)
-D3 = eta*D
-
-# Populate the model fields
-initial_fields3 = model.Fields(x=x, y=y, s=s3, a=a3, i=i3, D=D3, omegaA=omegaA, omegaI=omegaI, gammaA=gammaA, gammaI=gammaI, l=l)
-
-# Create and run the simulation
-simulation3 = Simulation(model, initial_fields3, dt=.1, tmax=tfin-tmid-tq, hook=hook)
-container2 = simulation3.attach_container()
-tmax3, final_fields3 = simulation3.run()
-
-# Export results
-final_fields3["a"].plot()
-plt.gca().invert_yaxis()
-plt.gca().axes.xaxis.set_visible(False)
-plt.gca().axes.yaxis.set_visible(False)
-plt.savefig('asymptomatic-tfin.pdf')
-plt.show()
-
-final_fields3["i"].plot()
-plt.gca().invert_yaxis()
-plt.gca().axes.xaxis.set_visible(False)
-plt.gca().axes.yaxis.set_visible(False)
-plt.savefig('infected-tfin.pdf')
-plt.show()
+# Susceptible plots
+for time in [0, tq, tmid, tfin]:
+    title = str(int(time))
+    container.data["s"].isel(t=int(time / dt)).plot()
+    plt.gca().invert_yaxis()
+    plt.gca().axes.xaxis.set_visible(False)
+    plt.gca().axes.yaxis.set_visible(False)
+    plt.savefig(impath + 'susceptible_' + title + '.pdf')
+    plt.show()
