@@ -6,10 +6,15 @@ function b = betafun(p,t_q,t)
     % Create a t_q vector
     t_q = t_q * ones(length(t),1);
 
-    % Calculate beta at time t
-    b = 1 - tanh(2 * (t - t_q));
-    b = b / 2;
-    b = (1 - eta) * b;
-    b = eta + b;
-    b = beta * b;
+%     % Calculate beta at time t
+%     b = 1 - tanh(2 * (t - t_q));
+%     b = b / 2;
+%     b = (1 - eta) * b;
+%     b = eta + b;
+%     b = beta * b;
+    if t < t_q
+        b = beta;
+    else
+        b = eta * beta;
+    end
 end

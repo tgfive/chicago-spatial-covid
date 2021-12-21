@@ -5,8 +5,8 @@ import csv
 import matplotlib.pyplot as plt
 
 # Image path
-#impath = '/home/trent/Documents/GitHub/chicago-spatial-covid/version3/images/'
-impath = '/Users/trentgerew/GitHub/chicago-spatial-covid/version3/images/'
+impath = '/home/trent/Documents/GitHub/chicago-spatial-covid/version3/images/'
+#impath = '/Users/trentgerew/GitHub/chicago-spatial-covid/version3/images/'
 
 # LaTeX font for matplotlib
 import matplotlib
@@ -26,7 +26,8 @@ dt = 0.1
 
 # Parameters
 eta = 0.5514 # Lockdown scale factor
-D = (5 / 0.72) ** 2 / (4 * dt) # Diffusivity
+D = 5 / 0.72 # Diffusivity
+#D = (5 / 0.72) ** 2 / (4 * dt) # Diffusivity
 omegaA = 0.1969 # Transmission rate due to A (initial)
 omegaI = 0.3061 # Transmission rate due to I (initial)
 gammaA = 0.3632 # Removal rate of A
@@ -39,7 +40,7 @@ def omegabeta(omega0beta,eta,t,tq):
 
 # Time dependent D function
 def diffusion(D,eta,t,tq):
-    return D * (1 - eta * np.heaviside(t - tq,1))
+    return D * (1 - (1 - eta) * np.heaviside(t - tq,1))
 
 
 ## PDE Model
@@ -55,68 +56,83 @@ model = Model(["D * (dxxs + dyys) - (omegaA * a + omegaI * i) * s",
 # Computational domain
 xpoints = 40
 ypoints = 29
-x = np.linspace(0, xpoints, xpoints)
-y = np.linspace(0, ypoints, ypoints)
+x = np.linspace(0, 100, xpoints)
+y = np.linspace(0, 100, ypoints)
+
+# Check computational stability
+s1 = dt / x[1] ** 2
+s2 = dt / y[1] ** 2
+if not s1 < 0.5 or not s2 < 0.5:
+    print('Bad time step.')
+    sys.exit()
 
 # Hook function for time dependent parameters
 def hook(t, fields):
-    global omegaA, omegaI, D, eta, tq
-    
-    # Define parameters at current time
-    omegaA = diffusion(omegaA,eta,t,tq)
-    omegaI = diffusion(omegaI,eta,t,tq)
-    D = diffusion(D,eta,t,tq)
+	global omegaA, omegaI, D, eta, tq
 
-    # Reassign fields
-    fields["omegaA"] = omegaA
-    fields["omegaI"] = omegaI
-    fields["D"] = D
+	# Define parameters at current time
+	omegaA = omegabeta(omegaA,eta,t,tq)
+	omegaI = omegabeta(omegaI,eta,t,tq)
 
-    return fields
+	# Reassign fields
+	fields["omegaA"] = omegaA
+	fields["omegaI"] = omegaI
 
-## Simulation 1: t=0 -> t=tq
+	return fields
 
-# Import the initial populations
-s1 = np.genfromtxt('initialS.csv', dtype=float, delimiter=",")
-a1 = np.genfromtxt('initialA.csv', dtype=float, delimiter=",")
-i1 = np.genfromtxt('initialI.csv', dtype=float, delimiter=",")
+sim_start = 0
+## Simulation
+for sim_end in [tbol, tq, tmid, teol, tfin]:
+    # Initial populations
+    if sim_start == 0:
+        # Import initial populations from file
+        s0 = np.genfromtxt('initialS.csv', dtype=float, delimiter=",")
+        a0 = np.genfromtxt('initialA.csv', dtype=float, delimiter=",")
+        i0 = np.genfromtxt('initialI.csv', dtype=float, delimiter=",")
+    else:
+        # Set initial populations to final populations from previous simulation
+        s0 = container.data["s"].isel(t=int(tmax/dt))
+        a0 = container.data["a"].isel(t=int(tmax/dt))
+        i0 = container.data["i"].isel(t=int(tmax/dt))
 
-# Populate the model fields
-initial_fields = model.Fields(x=y, y=x, s=s1, a=a1, i=i1, D=D, omegaA=omegaA, omegaI=omegaI, gammaA=gammaA, gammaI=gammaI, l=l)
+    # Populate the model fields
+    initial_fields = model.Fields(x=y, y=x, s=s0, a=a0, i=i0, D=diffusion(D,eta,sim_start,tbol), omegaA=omegabeta(omegaA,eta,sim_start,tq), omegaI=omegabeta(omegaI,eta,sim_start,tq), gammaA=gammaA, gammaI=gammaI, l=l)
 
-# Create and run the simulation
-simulation = Simulation(model, initial_fields, dt=dt, tmax=tfin)
-container = simulation.attach_container()
-t, fields = simulation.run()
+    # Calculate final simulation time
+    tmax = sim_end - sim_start
 
-## Export plots
+    # Create and run the simulation
+    simulation = Simulation(model, initial_fields, dt=dt, tmax=tmax)
+    container = simulation.attach_container()
+    t, fields = simulation.run()
 
-# Infected plots
-for time in [0, tq, tmid, tfin]:
-    title = str(int(time))
-    container.data["i"].isel(t=int(time / dt)).plot()
+    # Export plots
+    # Infected plots
+    title = str(int(sim_end))
+    container.data["i"].isel(t=int(tmax/dt)).plot()
     plt.gca().invert_yaxis()
     plt.gca().axes.xaxis.set_visible(False)
     plt.gca().axes.yaxis.set_visible(False)
     plt.savefig(impath + 'infected_' + title + '.pdf')
     plt.show()
 
-# Asymptomatic plots
-for time in [0, tq, tmid, tfin]:
-    title = str(int(time))
-    container.data["a"].isel(t=int(time / dt)).plot()
+    # Asymptomatic plots
+    title = str(int(sim_end))
+    container.data["a"].isel(t=int(tmax/dt)).plot()
     plt.gca().invert_yaxis()
     plt.gca().axes.xaxis.set_visible(False)
     plt.gca().axes.yaxis.set_visible(False)
     plt.savefig(impath + 'asymptomatic_' + title + '.pdf')
     plt.show()
 
-# Susceptible plots
-for time in [0, tq, tmid, tfin]:
-    title = str(int(time))
-    container.data["s"].isel(t=int(time / dt)).plot()
+    # Susceptible plots
+    title = str(int(sim_end))
+    container.data["s"].isel(t=int(tmax/dt)).plot()
     plt.gca().invert_yaxis()
     plt.gca().axes.xaxis.set_visible(False)
     plt.gca().axes.yaxis.set_visible(False)
     plt.savefig(impath + 'susceptible_' + title + '.pdf')
     plt.show()
+
+    ## Prepare for next simulation
+    sim_start = sim_end

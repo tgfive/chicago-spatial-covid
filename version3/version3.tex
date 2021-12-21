@@ -63,10 +63,38 @@
 \maketitle
 
 \begin{abstract}
-	content...
+	We investigate whether a reaction-diffusion model considering only meanly daily movement is sufficient to describe the spread of the COVID-19 virus in Chicago.
+	The model is calibrated using publicly available health data published by the city.
+	We first study the system of partial differential equations, then derive the basic reproduction number $\Ro$.
+	Then we consider the numerical simulations conducted from March 18 to June 24, 2020.
+	Finally, we discuss shortcomings of the model, and offer some potential solutions.
 \end{abstract}
 
 \section{Introduction}
+	Emerging from Wuhan, China in late 2019, the COVID-19 virus rapidly spread throughout the globe \cite{covid-name}.
+	Since the outbreak, governments everywhere have been desperately trying to contain the pandemic.
+	Now, with safe and effective vaccines being distributed, it is hoped the pandemic can be overcome \cite{vaccine}.
+	Before the introduction of the vaccines, so-called ``non-therapeutic'' interventions \cite{interventions1} were frequently deployed.
+	Prominent among these are social distancing, self quarantining, lockdowns, gathering limitations, and the use of personal protective equipment.
+	Now with the Omicron variant on the rise \cite{omicron}, these interventions are once again becoming prominent with some European countries reintroducing lockdowns and travel restrictions \cite{lockdowns}.
+	
+	Many mathematical models have been proposed to study the spread of the virus.
+	Most are compartment models, where a population is divided into groups according to the state of individuals.
+	These are generally known as SIR type models.
+	The majority of such models ignore any spatial components.
+	\cite{s+t+spain} employs a SAIR model and includes mobility terms based on the position of cell phones to model the propagation of the disease through Spain.
+	Similarly, \cite{Danon2020.02.12.20022566} incorporates daily movements into an SEIR model.
+	In a different approach, \cite{giuliani2020modelling} considers a statistical model to handle diffusion of COVID-19 in Italy.
+	
+	Here, we follow \cite{Kevrekidis-2021} and \cite{Mammeri+2020+102+113} in building a virus model where the spatial propagation is modeled by a diffusion and the reactions are derived from an SAIR model.
+	Specifically, we examine the spread of COVID-19 in the city of Chicago.
+	Does a reaction-diffusion model, which considers only the average daily movements of the population, correctly describe the spread of the virus in Chicago?
+	If it does, we can use the model to assess possible vaccination strategies or reopening scenarios.
+	
+	The paper is organized as follows.
+	Section 2 outlines the methodology, including data collection, modeling assumptions, and parameter estimates.
+	Section 3 contains a brief analysis of the model and the results.
+	In Section 4, we offer a discussion of the shortcomings of the model, and how they can be improved.
 
 \section{Materials and methods}
 	\subsection{Confirmed and death data}
@@ -110,7 +138,7 @@
 				There is also the question of case counts being influenced by access to testing, especially early in the pandemic.
 				Including additional compartments would over-parameterize the model making it more difficult to verify, and would not provide useful information.
 			\item
-				Lastly, adding additional parameters reduces the computational feasibility of the optimization problem.
+				Lastly, adding additional compartments and parameters reduces the computational feasibility of the optimization problem.
 		\end{itemize}
 		The goal of this model is to strike a reasonable balance between representation of the pandemic and the populations involved, and feasibility of data collection and computation.
 	
@@ -123,8 +151,8 @@
 		The dynamics is governed by a system of two partial differential equations (PDE) and two ordinary differential equations (ODE) as follows, for $\vec{x} = (x,y) \in \Omega \subset \R^2, t > 0$,
 		\begin{equation} \label{eq:model}
 			\begin{aligned}
-				S_t - D(t) \Delta S &= - \omega(t) \frac{\beta_A A + \beta_I I}{N} S, \\
-				A_t - D(t) \Delta A &= \omega(t) \frac{\beta_A A + \beta_I I}{N} S - (\gamma_A - \delta) A, \\
+				S_t - D(t) \Delta S &= - \omega(t) \left( \beta_A A + \beta_I I \right) S, \\
+				A_t - D(t) \Delta A &= \omega(t) \left( \beta_A A + \beta_I I \right) S - (\gamma_A - \delta) A, \\
 				I_t &= - \gamma_I I + \delta A, \\
 				R_t &= \gamma_A A + \gamma_I.
 			\end{aligned}
@@ -155,12 +183,12 @@
 		Figure \ref{fig:params} shows the estimated parameters.
 		
 		The diffusion coefficient is also assumed to be altered by the lockdown, and is updated as a simple step function
-		\begin{equation} \label{eq:diffusion}
-			D (t) = D_0 \left[ 1 - \eta H(t - t_q) \right]
-		\end{equation}
+			\begin{equation} \label{eq:diffusion}
+				D(t) = D_0 \left[ 1 - (1 - \eta) H (t - t_\mathrm{bol}) \right]
+			\end{equation}
 		where $H(t)$ is the Heaviside step function.
 		The average one-way commute in Chicago is about 5 miles \cite{travel}.
-		Thus, we set $D_0$ to the fixed value of $(5 / 0.72)^2 / 4 \Delta t$ where $\Delta t$ is the time step \cite{methods}.
+		Thus we set the diffusion coefficient $D_0$ to the fixed value of $5 / 0.72$ to convert to the spacing used for the discretization.
 	
 	\subsection{Numerical discretization}
 		From the map of the city, the computational domain $\Omega$ is defined as the minimum square enclosing the city.
@@ -175,6 +203,7 @@
 		The initial spatial distribution of the infected population is determined by sampling the ZIP code data of confirmed cases \cite{Chicago-zips} at the grid points, as shown in Figure \ref{fig:seeding}.
 		
 		The model is solved via finite differences, using the \verb|scikit-fdiff| Python module \cite{nicolas_cellier_2019_3236970}.
+		It is important to note that due to the limitations of the solver, the simulation had to be broken into time blocks where the values of $\omega (t) \beta_A$, $\omega (t) \beta_I$, and $D(t)$ are evaluated for the initial time in each block and held constant.
 	
 		\begin{figure}[h!]
 			\centering
@@ -193,10 +222,10 @@
 \section{Results}
 	\subsection{Existence of solutions and basic reproduction numbers}
 		We show that we are justified in searching for suitable parameters to solve the model.
-		Let $\vec{x} = (S,  A, I, R)$ and $\vec{x}_0 = (S_0, A_0, I_0, R_0)$.
+		Let $\vec{x} = (S, A, I, R)$ and $\vec{x}_0 = (S_0, A_0, I_0, R_0)$.
 		First we show that the solution of the initial value problem (\ref{eq:model}) exists for the case with no diffusion.
 		\begin{theorem}
-			Let $0 \leq \vec{x}_0 \leq N$ be the initial datum.
+			Let $0 \leq \vec{x}_0 \leq 1$ be the initial datum.
 			Then there exists a unique in time solution $\vec{x}$ of the initial value problem (\ref{eq:model}) without diffusion over $C \subset U \subset \R^4 \times \R^1$ where $C$ is a compact set that contains $(\vec{x}_0, t_0)$.
 			Moreover, the solution is $\C^1$.
 		\end{theorem}
@@ -207,7 +236,7 @@
 		\end{proof}
 		\noindent We do provide a proof for the existence of solutions to the initial boundary value problem (\ref{eq:model}) with diffusion terms, but we assume it exists.
 		\begin{conjecture}
-			Let $0 \leq \vec{x}_0 \leq N$ the initial datum.
+			Let $0 \leq \vec{x}_0 \leq 1$ the initial datum.
 			Then there exists a unique global in time solution $\vec{x}$ of the initial boundary value problem (\ref{eq:model}).
 		\end{conjecture}
 		\noindent A proof for this conjecture will be similar to the one given in \cite{Mammeri+2020+102+113}.
@@ -274,15 +303,14 @@
 	
 	\subsection{Spatial spread of COVID-19} \label{sec:spread}
 		Simulations are performed from March 18, 2020 to June 24, 2020.
-		The time step is $\Delta t = 0.2$ [days].
+		The time step is $\Delta t = 0.2$ [days], chosen to satisfy the convergence condition \cite{pde}.
 		
 		Figure \ref{fig:spatial-results} presents three of the days from the simulation time: the effective lockdown $t_q$ day, the last day of simulation, and arbitrary day from the period in between.
 		The observed data is shown on the left, while the model results are on the right.
-		The data shows that the main progression of the disease is from the lake, to the southwest, then to center-west, then slowly decreases through most of the city.
-		In contrast, the model infected population is an order of magnitude different than the true population after only 15 days, and the difference increases as the simulation continues.
-		Furthermore, the hoped-for diffusion behavior is not present in the model results.
+		Comparing the model results to the data, we see that the model's diffusion mostly misses the diseases west-ward movement between days 15 and 35.
+		Additionally, the model shows significantly fewer cases than are seen in the data (note the difference in the scale of the colorbars).
 		
-		In short, the proposed model does \textit{not} reproduce the spatial propagation of the virus.
+		In short, this model does not produce a reasonable reproduction of the spatial spread of COVID-19.
 		\begin{figure}[H]
 			\centering
 			\begin{subfigure}{0.5\textwidth}
@@ -318,21 +346,33 @@
 	
 
 \section{Discussion}
-	As mentioned in \S \ref{sec:spread}, the proposed model does not reproduce the spatial propagation of the virus.
+	As mentioned in Section \ref{sec:spread}, the proposed model does not reproduce the spatial propagation of the virus.
 	In this section, we address possible causes of these inaccuracies and discuss proposals for improving the results.
 	
 	The selected model populations may not, contrary to the assumption, be sufficient to describe the virus dynamics.
 	Figure \ref{fig:fit} suggests this conclusion, since the growth of the model population only roughly describes the observed data.
+	Note that after Day 20, the model and data begin to diverge substantially.
+	This seems to correspond to the discrepancy in the number of cases seen in the spatial results in Figure \ref{fig:spatial-results}.
 	Likely, the Exposed compartment describing the latent period is necessary, as in \cite{Mammeri+2020+102+113}.
 	It is possible that the assumption that Deceased and Recovered populations can be modeled by the same population compartment is errant.
 	On the other hand, in either case these populations have no effect on the act of transmission, so the model dynamics would likely be similar for both cases.
 	A Deceased population may be useful for other reasons, as discussed below.
 	
-	Even if the model is based on faulty assumptions, we would still expect to see some evidence of diffusion in the spatial simulations.
-	Examining the simulated populations of $S$ and $A$ (Figure \ref{fig:app-pops}), we immediately see there is a problem with the spatial simulation.
-	The bounds on the computation domain are clearly not sufficient to describe the boundaries of the city, since the $S$ and $A$ populations almost entirely diffuse into Lake Michigan.
-	As a result, there are very few int
+	The boundaries imposed on the computational domain (Equation \ref{eq:domain}) are likely not sufficient to force the diffusion process to replicate the true virus propagation.
+	Figure \ref{fig:app-pops} shows the $S$ and $A$ populations at the same time points.
+	There is a notable amount of diffusion of the $S$ population out of the boundaries of the city, including into Lake Michigan.
+	Since the $S$ population diffuses into areas not reachable by the $I$ population, the reaction rates as described in Equation \ref{eq:model} are small.
+	This may also explain the differences in case numbers seen in Figure \ref{fig:spatial-results}.
+	It seems a tightening of the bounds of the computational domain is in order.
+	Ideally, we would define the computational domain to be exactly the boundaries of the city.
+	In practice, however, this is infeasible due to the irregularities of the shape.
+	A better alternative is to define a polygon that approximates the shape of the city to be the computational domain.
+	In any case, a new solver will be needed as the \verb|scikit-fdiff| module only allows rectangular domains.
 	
+	The optimization method can be improved in two ways.
+	First, by adding a Deceased population we can modify the objective function (Equation \ref{eq:obj}) to compare both cases and deaths, as in \cite{Kevrekidis-2021}.
+	COVID-19 death data is readily available, though requires caution to work with due to reporting inconsistencies.
+	Second, we can perform the optimization directly on the spatial model, as in \cite{Mammeri+2020+102+113}, rather than relying on parameters from a temporal-only model.
 
 \section*{Appendix}
 	\subsection*{Nomenclature (Units are indicated in brackets.)}
@@ -341,12 +381,19 @@
 			$A$ & Asymptomatic infected individuals & [1] \\
 			$D$ & Diffusivity & \\
 			$I$ & Symptomatic infected individuals & [1] \\
+			$J$ & Objective function & N/A \\
 			$R$ & Removed individuals & [1] \\
+			$\Ro$ & Basic reproduction number & [1] \\
 			$S$ & Susceptible individuals & [1] \\
 			\textbf{Greek symbols} & & \\
 			$\beta_j$ & Contact rate of compartment $j$ & [days\textsuperscript{-1}] \\
 			$\gamma_j$ & Recovery rate of compartment $j$ & [days\textsuperscript{-1}] \\
+			$\Delta$ & Laplacian operator & N/A \\
 			$\delta$ & Rate of asymptomatic individuals that may develop symptoms & [days\textsuperscript{-1}] \\
+			$\eta$ & Lockdown scale factor & [1] \\
+			$\theta$ & Parameter vector & N/A \\
+			$\rho$ & Spectral radius & N/A \\
+			$\Omega$ & Computational domain & N/A \\
 			$\omega$ & Contacts & [1]
 		\end{longtable}
 	

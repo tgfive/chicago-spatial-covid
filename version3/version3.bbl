@@ -26,11 +26,6 @@ R.~Badker, K.~Miller, and C.~Pardee.
 N.~Cellier and C.~Ruyer-Quil.
 \newblock scikit-finite-diff, a new tool for pde solving, June 2019.
 
-\bibitem{methods}
-S.~C. Chapra and R.~P. Canale.
-\newblock {\em Numerical Methods for Engineers}.
-\newblock McGraw-Hill, 2006.
-
 \bibitem{Chicago-zips}
 {City of Chicago}.
 \newblock Covid-19 cases, tests, and deaths by zip code, 2021.
@@ -43,10 +38,28 @@ S.~C. Chapra and R.~P. Canale.
 \newblock Data retrieved from Chicago Data Portal,
   \url{https://data.cityofchicago.org/Health-Human-Services/Daily-Chicago-COVID-19-Cases-Deaths-and-Hospitaliz/kxzd-kd6a}.
 
+\bibitem{Danon2020.02.12.20022566}
+L.~Danon, E.~Brooks-Pollock, M.~Bailey, and M.~Keeling.
+\newblock A spatial model of covid-19 transmission in england and wales: early
+  spread and peak timing.
+\newblock {\em medRxiv}, 2020.
+
 \bibitem{bio-models}
 L.~Edelstein-Keshet.
 \newblock {\em Mathematical Models in Biology}.
 \newblock SIAM, 2005.
+
+\bibitem{vaccine}
+C.~for Disease~Control and Prevention.
+\newblock Effectiveness.
+\newblock November 2021.
+\newblock
+  \url{https://www.cdc.gov/coronavirus/2019-ncov/vaccines/effectiveness/index.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Fcoronavirus%2F2019-ncov%2Fvaccines%2Feffectiveness.html}.
+
+\bibitem{giuliani2020modelling}
+D.~Giuliani, M.~M. Dickson, G.~Espa, and F.~Santi.
+\newblock Modelling and predicting the spatio-temporal spread of coronavirus
+  disease 2019 (covid-19) in italy, 2020.
 
 \bibitem{nursing-homes}
 C.~A. Grimm.
@@ -67,6 +80,24 @@ Y.~Mammeri.
   covid-19 in france.
 \newblock {\em Computational and Mathematical Biophysics}, 8(1):102--113, 2020.
 
+\bibitem{lockdowns}
+D.~Meyer.
+\newblock Lockdowns spread across europe in the face of omicron's 'lightning'
+  advance.
+\newblock {\em Fortune}, December 2021.
+\newblock
+  \url{https://fortune.com/2021/12/20/omicron-lockdown-netherlands-covid-europe-france-germany-italy-ireland/}.
+
+\bibitem{interventions1}
+W.~H. Organization.
+\newblock {\em Emerging Infectious Diseases}, 12(88), 2006.
+
+\bibitem{covid-name}
+W.~H. Organization.
+\newblock Naming the coronavirus disease (covid-19) and the virus that causes
+  it.
+\newblock 2020.
+
 \bibitem{messy-data1}
 K.~Schechtman and S.~Simon.
 \newblock America's entire understanding of the pandemic was shaped by messy
@@ -78,6 +109,18 @@ S.~Simon.
 \newblock Covid-19 data in historical perspective: Lessons from chicago's 1995
   heat wave.
 \newblock {\em Socially Responsible, Computation, and Design}, 2(1), 2021.
+
+\bibitem{omicron}
+M.~Stobbe.
+\newblock Omicron sweeps across nation, now 73% of new us covid cases.
+\newblock {\em Associated Press}, December 2021.
+\newblock
+  \url{https://apnews.com/article/omicron-majority-us-cases-833001ef99862bd6ac17935f65c896cf}.
+
+\bibitem{pde}
+W.~A. Strauss.
+\newblock {\em Partial Differential Equations: An Introduction}.
+\newblock Wiley, 2008.
 
 \bibitem{dynamics}
 S.~Wiggins.

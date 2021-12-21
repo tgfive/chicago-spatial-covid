@@ -1,61 +1,64 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: version3.aux
 The style file: abbrv.bst
 Database file #1: version3.bib
-I was expecting a `,' or a `}'---line 230 of file version3.bib
+I was expecting a `,' or a `}'---line 259 of file version3.bib
  :  
  :  volume = {6},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 239 of file version3.bib
+I was expecting a `,' or a `}'---line 268 of file version3.bib
  :  
  :  journal = {New York Times}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Warning--entry type for "nicolas_cellier_2019_3236970" isn't style-file defined
---line 282 of file version3.bib
+--line 351 of file version3.bib
 Warning--to sort, need author or key in travel
 Warning--empty author in travel
-You've used 15 entries,
+Warning--empty journal in vaccine
+Warning--empty title in interventions1
+Warning--empty journal in covid-name
+You've used 22 entries,
             2118 wiz_defined-function locations,
-            571 strings with 6231 characters,
-and the built_in function-call counts, 3730 in all, are:
-= -- 341
-> -- 186
+            605 strings with 7494 characters,
+and the built_in function-call counts, 5384 in all, are:
+= -- 495
+> -- 267
 < -- 0
-+ -- 77
-- -- 60
-* -- 220
-:= -- 667
-add.period$ -- 43
-call.type$ -- 15
-change.case$ -- 72
++ -- 111
+- -- 86
+* -- 313
+:= -- 972
+add.period$ -- 65
+call.type$ -- 22
+change.case$ -- 105
 chr.to.int$ -- 0
-cite$ -- 17
-duplicate$ -- 148
-empty$ -- 299
-format.name$ -- 60
-if$ -- 754
+cite$ -- 27
+duplicate$ -- 215
+empty$ -- 424
+format.name$ -- 86
+if$ -- 1081
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 15
-newline$ -- 76
-num.names$ -- 28
-pop$ -- 97
+int.to.str$ -- 22
+missing$ -- 21
+newline$ -- 112
+num.names$ -- 42
+pop$ -- 137
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 87
 quote$ -- 0
-skip$ -- 108
+skip$ -- 158
 stack$ -- 0
-substring$ -- 102
-swap$ -- 15
+substring$ -- 138
+swap$ -- 20
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 54
-warning$ -- 2
-while$ -- 30
-width$ -- 17
-write$ -- 151
+type$ -- 82
+warning$ -- 5
+while$ -- 44
+width$ -- 24
+write$ -- 222
 (There were 2 error messages)
