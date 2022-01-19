@@ -1,0 +1,59 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+
+\pagenumbering{gobble}
+
+%intsitute command
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\institute}[1]{% add institute to \maketitle
+	\apptocmd{\@author}{\end{tabular}
+	\par
+	\begin{tabular}[t]{c}
+		\small \textit{#1}}{}{}
+}
+\makeatother
+
+%margins
+\usepackage[letterpaper, total={6.5in, 9.5in}]{geometry}
+
+\begin{document}
+	\vspace{1in}
+	
+	\begin{center}
+		{\Large Response to Referee Requests for ``Reaction-diffusion spatial modeling of COVID-19 in Chicago''}
+	\end{center}
+
+	\vspace{0.25in}
+		
+	
+	I would like to thank the anonymous reviewers of my project writeup, ``Reaction-diffusion spatial modeling of COVID-19 in Chicago'' for their comments and critiques.
+	
+	I've revised the paper to address multiple mathematical and form errors, including the presentation of the optimization problem as well as the vector notation.
+	I have also included phrases to better introduce some of the mathematics.
+	For example, the number of contacts and the diffusion coefficient are now introduced before the presentation of the dynamical system.
+	The acronyms for the various epidemic models discussed are now spelled out, as requested.
+	
+	Additionally, I've introduced language to hopefully clarify the connection between my project and the values of the SoReMo initiative.
+	In truth, I was hoping to obtain better mathematical results, in which case I had planned on including visualizations of inequalities in the city overlayed on the model results.
+	I had also hoped to be able to offer suggestions for further use of the model to study how the pandemic interacted with social justice; unfortunately I was forced to offer thoughts on the failure of the model to reproduce the data.
+	
+	Lastly, in light of the overall failure of the model, I believe the request to include a discussion of the reasonableness of the parameters is beyond the scope of this project.
+	Had the model been successful in describing the propagation of the disease, a discussion of the biological implication of the model would certainly be warranted.
+	Since that did not happen, I'm not sure how much value such a discussion would add.
+	I think the question of reasonableness is already addressed within the current scope of the project, in that the underlying assumptions about the transmission of the virus need to be revisited.
+	
+	\vspace{0.25in}
+	
+	\begin{FlushRight}
+		Trent Gerew
+		
+		\today
+	\end{FlushRight}
+\end{document}
